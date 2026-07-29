@@ -648,6 +648,7 @@ def _verify_runtime_identity(identity: Any, label: str) -> None:
             "python_version",
             "python_implementation",
             "python_full_version",
+            "torch_module_version",
             "torch_cuda_build",
             "distributions",
         },
@@ -657,6 +658,7 @@ def _verify_runtime_identity(identity: Any, label: str) -> None:
         "python_version",
         "python_implementation",
         "python_full_version",
+        "torch_module_version",
         "torch_cuda_build",
     ):
         _require(
@@ -1478,7 +1480,7 @@ def _verify_receipts(
         )
         runtime_distributions = contract["runtime_identity"]["distributions"]
         _require(
-            software["torch_version"] == runtime_distributions["torch"]["version"]
+            software["torch_version"] == contract["runtime_identity"]["torch_module_version"]
             and software["package_versions"]["triton"] == runtime_distributions["triton"]["version"]
             and software["package_versions"]["nvidia-cutlass-dsl"]
             == runtime_distributions["nvidia_cutlass_dsl"]["version"]
@@ -2028,8 +2030,7 @@ def verify_bundle(bundle: Path) -> dict[str, Any]:
     _verify_build_lock(build, contract)
     environment_sha256 = _verify_environment(environment)
     _require(
-        environment["torch_version"]
-        == contract["runtime_identity"]["distributions"]["torch"]["version"]
+        environment["torch_version"] == contract["runtime_identity"]["torch_module_version"]
         and environment["torch_cuda_version"] == contract["runtime_identity"]["torch_cuda_build"],
         "environment differs from the contract runtime identity",
     )

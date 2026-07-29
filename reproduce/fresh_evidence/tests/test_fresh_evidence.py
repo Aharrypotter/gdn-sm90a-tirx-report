@@ -154,11 +154,12 @@ def _private_contract() -> dict[str, Any]:
         "python_version": "3.13.5",
         "python_implementation": "CPython",
         "python_full_version": "3.13.5 synthetic CPython",
+        "torch_module_version": "2.11.0a0+eb65b36914.nv26.02",
         "torch_cuda_build": "13.0",
         "distributions": {
             "torch": {
                 "distribution": "torch",
-                "version": "2.9.0+cu130",
+                "version": "2.11.0a0+eb65b36914.nv26.2",
                 "metadata_root": "/private/runtime/site-packages",
             },
             "triton": {
@@ -264,7 +265,7 @@ def _environment() -> dict[str, Any]:
         "binding_mode": "full_gpu_uuid",
         "cuda_compiler_release": "13.0",
         "logical_cuda_device_count": 1,
-        "torch_version": "2.9.0+cu130",
+        "torch_version": "2.11.0a0+eb65b36914.nv26.02",
         "torch_cuda_version": "13.0",
         "torch_logical_device_name": "NVIDIA H20",
         "torch_logical_compute_capability": "9.0",
@@ -502,7 +503,7 @@ def _receipt(
         "oracle_sha256": _digest(f"oracle-{row['row_id']}"),
         "input_seed": row["seed"],
         "row": row,
-        "torch_version": "2.9.0+cu130",
+        "torch_version": "2.11.0a0+eb65b36914.nv26.02",
         "torch_cuda_version": "13.0",
         "package_versions": PACKAGE_VERSIONS,
         "python_executable": "/private/venv/bin/python",
@@ -772,6 +773,15 @@ class FreshEvidenceTest(unittest.TestCase):
         result = verify_bundle(self.bundle)
         self.assertEqual(result["status"], "PASS")
         self.assertEqual(result["receipt_count"], 54)
+        contract = json.loads((self.bundle / "contract.json").read_text())
+        self.assertEqual(
+            contract["runtime_identity"]["torch_module_version"],
+            "2.11.0a0+eb65b36914.nv26.02",
+        )
+        self.assertEqual(
+            contract["runtime_identity"]["distributions"]["torch"]["version"],
+            "2.11.0a0+eb65b36914.nv26.2",
+        )
         second = self.root / "bundle-second"
         if second.exists():
             shutil.rmtree(second)
@@ -794,6 +804,17 @@ class FreshEvidenceTest(unittest.TestCase):
         inputs["launches_path"] = self.root / "missing-launches.jsonl"
         with self.assertRaisesRegex(EvidenceError, "launch ledger is missing"):
             derive_bundle(output=self.root / "missing-launch-bundle", **inputs)
+
+    def test_environment_torch_module_version_drift_is_rejected(self) -> None:
+        inputs = _make_inputs(self.root / "environment-torch-drift-inputs")
+        environment = json.loads(inputs["environment_path"].read_text())
+        environment["torch_version"] = "2.11.0a0+eb65b36914.nv26.03"
+        _write_json(inputs["environment_path"], environment)
+        with self.assertRaisesRegex(
+            EvidenceError,
+            "torch/CUDA versions differ from the contract runtime identity",
+        ):
+            derive_bundle(output=self.root / "environment-torch-drift-bundle", **inputs)
 
     def test_truncated_private_runner_attestation_is_rejected(self) -> None:
         inputs = _make_inputs(self.root / "truncated-runner-inputs")
@@ -845,6 +866,16 @@ class FreshEvidenceTest(unittest.TestCase):
         path.write_bytes(b"".join(canonical_json_bytes(receipt) + b"\n" for receipt in receipts))
         seal_bundle(bundle, replace=True)
         with self.assertRaisesRegex(VerificationError, "summary does not match samples"):
+            verify_bundle(bundle)
+
+    def test_torch_module_version_tamper_after_forged_reseal_is_rejected(self) -> None:
+        bundle = self.copy_bundle("tamper-torch-version-resealed")
+        path = bundle / "timing-receipts.jsonl"
+        receipts = [json.loads(line) for line in path.read_text().splitlines()]
+        receipts[0]["software"]["torch_version"] = "2.11.0a0+eb65b36914.nv26.03"
+        path.write_bytes(b"".join(canonical_json_bytes(receipt) + b"\n" for receipt in receipts))
+        seal_bundle(bundle, replace=True)
+        with self.assertRaisesRegex(VerificationError, "torch drift"):
             verify_bundle(bundle)
 
     def test_forbidden_private_field_after_forged_reseal_is_rejected(self) -> None:

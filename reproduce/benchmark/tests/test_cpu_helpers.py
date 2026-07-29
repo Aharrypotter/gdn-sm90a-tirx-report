@@ -169,11 +169,12 @@ class RuntimePathTest(unittest.TestCase):
             "python_version": "3.12.3",
             "python_implementation": "CPython",
             "python_full_version": "3.12.3 (test)",
+            "torch_module_version": "2.11.0a0+eb65b36914.nv26.02",
             "torch_cuda_build": "13.1",
             "distributions": {
                 "torch": {
                     "distribution": "torch",
-                    "version": "2.11.0",
+                    "version": "2.11.0a0+eb65b36914.nv26.2",
                     "metadata_root": str((temporary / "system-site").resolve()),
                 },
                 "triton": {

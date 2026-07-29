@@ -468,11 +468,15 @@ def capture_runtime_identity(
     cuda_build = getattr(getattr(torch, "version", None), "cuda", None)
     if not isinstance(cuda_build, str) or not cuda_build:
         raise ContractError("the selected torch distribution has no CUDA build string")
+    module_version = getattr(torch, "__version__", None)
+    if not isinstance(module_version, str) or not module_version:
+        raise ContractError("the selected torch module has no version string")
     return {
         "sys_executable": os.path.abspath(sys.executable),
         "python_version": platform.python_version(),
         "python_implementation": platform.python_implementation(),
         "python_full_version": sys.version,
+        "torch_module_version": module_version,
         "torch_cuda_build": cuda_build,
         "distributions": distributions,
     }
@@ -988,6 +992,7 @@ def validate_contract(contract: dict[str, Any]) -> None:
         "python_version",
         "python_implementation",
         "python_full_version",
+        "torch_module_version",
         "torch_cuda_build",
     ):
         if not isinstance(runtime_identity.get(key), str) or not runtime_identity[key]:

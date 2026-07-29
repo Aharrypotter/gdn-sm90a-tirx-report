@@ -211,8 +211,11 @@ backend, fallback, reused cache, or correctness failure invalidates the
 attempt.  Oracle generation, every worker, the run orchestrator, and the
 receipt reporter revalidate the report checkout, CuTe dependency tree, and
 runtime identity before and after their work.  Receipts, run summary, and final
-report carry those attestations.  The harness never kills a conflicting
-process.
+report carry those attestations.  The runtime identity locks the PyTorch module
+version and the PyTorch distribution-metadata version as distinct exact fields;
+this preserves vendor version strings such as `nv26.02` even when package
+metadata normalizes the corresponding segment to `nv26.2`.  The harness never
+kills a conflicting process.
 
 ## Optional: seal a committed source delta
 

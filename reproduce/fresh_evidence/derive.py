@@ -391,6 +391,7 @@ def _safe_runtime_identity(contract: dict[str, Any]) -> dict[str, Any]:
         "python_version": identity["python_version"],
         "python_implementation": identity["python_implementation"],
         "python_full_version": identity["python_full_version"],
+        "torch_module_version": identity["torch_module_version"],
         "torch_cuda_build": identity["torch_cuda_build"],
         "distributions": distributions,
     }
@@ -1136,7 +1137,7 @@ def _receipt_public(
     _require(isinstance(package_versions, dict), f"{prefix}: package versions missing")
     runtime_distributions = contract["runtime_identity"]["distributions"]
     _require(
-        receipt["torch_version"] == runtime_distributions["torch"]["version"]
+        receipt["torch_version"] == contract["runtime_identity"]["torch_module_version"]
         and package_versions.get("triton") == runtime_distributions["triton"]["version"]
         and package_versions.get("nvidia-cutlass-dsl")
         == runtime_distributions["nvidia_cutlass_dsl"]["version"]
@@ -1678,8 +1679,7 @@ def derive_bundle(
     environment_private, environment_raw = _read_json(environment_path)
     environment = _environment_public(environment_private)
     _require(
-        environment["torch_version"]
-        == contract["runtime_identity"]["distributions"]["torch"]["version"]
+        environment["torch_version"] == contract["runtime_identity"]["torch_module_version"]
         and environment["torch_cuda_version"] == contract["runtime_identity"]["torch_cuda_build"],
         "environment: torch/CUDA versions differ from the contract runtime identity",
     )
