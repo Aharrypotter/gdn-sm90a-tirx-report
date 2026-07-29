@@ -108,4 +108,4 @@ https://github.com/Aharrypotter/cuLA/tree/gdn-sm90a-comparator-r1
 ## 17
 
 Fresh source-derived report:
-https://github.com/Aharrypotter/gdn-sm90a-tirx-report/blob/gdn-sm90a-r1/reports/fresh-public-tag-performance.md
+https://github.com/Aharrypotter/gdn-sm90a-tirx-report/blob/gdn-sm90a-r2/reports/fresh-public-tag-performance.md

@@ -98,7 +98,7 @@ CuTeDSL 对照实现绑定到 88737e9d906cf313995a092624656a89d74dd65e 上的 gd
 
 ## 公开标签的 fresh characterization
 
-公开包状态为 HISTORICAL_EVIDENCE_BOUND；unofficial-personal-fork 为 true，upstream-merge 为 false。
+历史证据包状态为 HISTORICAL_EVIDENCE_BOUND；unofficial-personal-fork 为 true，upstream-merge 为 false。
 
 当前 historical evidence bundle 仍是从不可变历史 release seal 按字段 allowlist 派生的，不会被改名或覆盖。
 

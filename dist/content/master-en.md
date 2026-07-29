@@ -137,7 +137,7 @@ and the machine-readable [link map](../../contracts/link-map.json).
 
 ## Historical and fresh evidence classes
 
-The public package status is HISTORICAL_EVIDENCE_BOUND; unofficial-personal-fork is true and upstream-merge is false.
+The historical package status is HISTORICAL_EVIDENCE_BOUND; unofficial-personal-fork is true and upstream-merge is false.
 
 The sanitized bundle is deterministic, privacy-safe, and bound to an immutable
 historical release seal. It contains numerical receipts and compact

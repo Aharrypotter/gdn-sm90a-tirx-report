@@ -79,7 +79,7 @@ CuTeDSL 对照实现绑定到 88737e9d906cf313995a092624656a89d74dd65e 上的 gd
 修正后的 CuTeDSL 源码：
 https://github.com/Aharrypotter/cuLA/tree/gdn-sm90a-comparator-r1
 
-公开包状态为 HISTORICAL_EVIDENCE_BOUND；unofficial-personal-fork 为 true，upstream-merge 为 false。
+历史证据包状态为 HISTORICAL_EVIDENCE_BOUND；unofficial-personal-fork 为 true，upstream-merge 为 false。
 
 ## 16
 
@@ -88,4 +88,4 @@ https://github.com/Aharrypotter/cuLA/tree/gdn-sm90a-comparator-r1
 ## 17
 
 Fresh 来源派生报告：
-https://github.com/Aharrypotter/gdn-sm90a-tirx-report/blob/gdn-sm90a-r1/reports/fresh-public-tag-performance.md
+https://github.com/Aharrypotter/gdn-sm90a-tirx-report/blob/gdn-sm90a-r2/reports/fresh-public-tag-performance.md

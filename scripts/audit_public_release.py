@@ -315,6 +315,184 @@ def _download_release_assets(
     return results
 
 
+def _audit_superseded_release_lock(
+    client: GitHubClient,
+    *,
+    record: dict[str, Any],
+    expected_body: str,
+) -> dict[str, Any]:
+    """Anonymously prove that the superseded public release remains immutable."""
+
+    _require(
+        record.get("schema") == "gdn-sm90a.report-release-supersession.v1",
+        "superseded release record schema mismatch",
+    )
+    _require(
+        record.get("status") == "SUPERSEDED_FOR_PUBLICATION_GUIDANCE",
+        "superseded release record status mismatch",
+    )
+    superseded = record.get("superseded_release")
+    _require(isinstance(superseded, dict), "superseded release identity is missing")
+    repository = superseded.get("repository")
+    tag = superseded.get("tag")
+    tag_object = superseded.get("tag_object")
+    commit = superseded.get("commit")
+    tree = superseded.get("tree")
+    for name, value in {
+        "repository": repository,
+        "tag": tag,
+        "tag_object": tag_object,
+        "commit": commit,
+        "tree": tree,
+    }.items():
+        _require(isinstance(value, str) and value, f"superseded release {name} is missing")
+    _require(
+        superseded.get("retention") == "PUBLIC_UNMODIFIED_AUDIT_RECORD",
+        "superseded release retention policy mismatch",
+    )
+    expected_mutation_policy = {
+        "edit_r1_release_body": False,
+        "move_or_delete_r1_tag": False,
+        "replace_or_delete_r1_assets": False,
+    }
+    _require(
+        record.get("mutation_policy") == expected_mutation_policy,
+        "superseded release mutation policy mismatch",
+    )
+    expected_validity = {
+        "evidence_integrity": "VALID_UNCHANGED",
+        "performance_facts": "VALID_UNCHANGED",
+        "publication_guidance": "SUPERSEDED",
+        "runtime_source": "VALID_UNCHANGED",
+        "source_provenance": "VALID_UNCHANGED",
+    }
+    _require(
+        record.get("validity") == expected_validity,
+        "superseded release validity record mismatch",
+    )
+
+    tag_result = _audit_tag(
+        client,
+        repository=repository,
+        tag=tag,
+        expected_tag_object=tag_object,
+        expected_commit=commit,
+        expected_tree=tree,
+        authenticated=False,
+    )
+    release = _release_by_tag(
+        client,
+        repository=repository,
+        tag=tag,
+        authenticated=False,
+    )
+    _require(release.get("tag_name") == tag, "superseded release tag mismatch")
+    _require(
+        release.get("id") == superseded.get("release_id"),
+        "superseded release ID mismatch",
+    )
+    _require(release.get("draft") is False, "superseded release became draft")
+    _require(release.get("prerelease") is False, "superseded release became prerelease")
+    _require(
+        release.get("published_at") == superseded.get("published_at_utc"),
+        "superseded release publication time mismatch",
+    )
+    release_url = superseded.get("release_url")
+    _require(isinstance(release_url, str) and release_url, "superseded release URL is missing")
+    _require(release.get("html_url") == release_url, "superseded release URL mismatch")
+    body = release.get("body")
+    _require(isinstance(body, str), "superseded release body is missing")
+    _require(
+        _canonical_body(body) == _canonical_body(expected_body),
+        "superseded release body drift",
+    )
+
+    asset_lock = record.get("asset_lock")
+    _require(isinstance(asset_lock, list) and asset_lock, "superseded asset lock is missing")
+    expected_assets = {}
+    for entry in asset_lock:
+        _require(isinstance(entry, dict), "superseded asset lock entry is invalid")
+        name = entry.get("name")
+        size_bytes = entry.get("size_bytes")
+        sha256 = entry.get("sha256")
+        _require(isinstance(name, str) and name, "superseded asset name is missing")
+        _require(
+            isinstance(size_bytes, int) and not isinstance(size_bytes, bool) and size_bytes >= 0,
+            f"{name}: invalid locked size",
+        )
+        _require(
+            isinstance(sha256, str)
+            and len(sha256) == 64
+            and all(character in "0123456789abcdef" for character in sha256),
+            f"{name}: invalid locked SHA256",
+        )
+        _require(name not in expected_assets, f"{name}: duplicate superseded asset lock")
+        expected_assets[name] = entry
+
+    remote_assets = release.get("assets")
+    _require(isinstance(remote_assets, list), "superseded release assets are missing")
+    _require(
+        len(remote_assets) == len(expected_assets),
+        "superseded release asset count mismatch",
+    )
+    by_name = {
+        asset.get("name"): asset
+        for asset in remote_assets
+        if isinstance(asset, dict) and isinstance(asset.get("name"), str)
+    }
+    _require(
+        set(by_name) == set(expected_assets),
+        "superseded release asset membership mismatch",
+    )
+    downloaded_assets = []
+    for name in sorted(expected_assets):
+        expected = expected_assets[name]
+        asset = by_name[name]
+        _require(asset.get("size") == expected["size_bytes"], f"{name}: locked size drift")
+        digest = asset.get("digest")
+        if digest is not None:
+            _require(
+                digest == f"sha256:{expected['sha256']}",
+                f"{name}: GitHub asset digest mismatch",
+            )
+        download_url = asset.get("browser_download_url")
+        _require(isinstance(download_url, str), f"{name}: missing browser download URL")
+        payload = client.web_bytes(download_url, authenticated=False)
+        _require(len(payload) == expected["size_bytes"], f"{name}: downloaded size drift")
+        _require(
+            builder.sha256_bytes(payload) == expected["sha256"],
+            f"{name}: downloaded SHA256 drift",
+        )
+        downloaded_assets.append(
+            {
+                "name": name,
+                "size_bytes": len(payload),
+                "sha256": expected["sha256"],
+                "anonymous_download": True,
+                "status": "PASS",
+            }
+        )
+    client.web_bytes(release_url, authenticated=False)
+
+    return {
+        "status": "PASS",
+        "repository": repository,
+        "tag": tag,
+        "tag_object": tag_result["tag_object"],
+        "commit": tag_result["commit"],
+        "tree": tag_result["tree"],
+        "release_id": release["id"],
+        "release_url": release_url,
+        "published_at_utc": release["published_at"],
+        "draft": release["draft"],
+        "prerelease": release["prerelease"],
+        "body": "EXACT_MATCH",
+        "downloaded_assets": downloaded_assets,
+        "mutation_policy": expected_mutation_policy,
+        "validity": expected_validity,
+    }
+
+
 def _audit_sources(
     client: GitHubClient,
     *,
@@ -535,9 +713,47 @@ def audit_public_release(
         keyword_search=mode == "public",
     )
     anonymous_release_page = False
+    latest_release = None
+    superseded_release_lock = None
     if mode == "public":
         client.web_bytes(manifest["release"]["release_url"], authenticated=False)
         anonymous_release_page = True
+        latest = client.api_json(
+            f"repos/{repository}/releases/latest",
+            authenticated=False,
+        )
+        _require(latest.get("tag_name") == tag, "public release is not GitHub latest")
+        latest_release = {
+            "tag": latest["tag_name"],
+            "release_id": latest.get("id"),
+            "status": "PASS",
+        }
+        supersession_path = "releases/gdn-sm90a-r1-supersession.json"
+        if tag == "gdn-sm90a-r2":
+            _require(
+                supersession_path in blobs,
+                "r2 public audit requires the r1 supersession record",
+            )
+        if supersession_path in blobs:
+            supersession_record = _json_object(
+                builder.blob_bytes(blobs, supersession_path),
+                supersession_path,
+            )
+            superseding = supersession_record.get("superseding_release")
+            _require(isinstance(superseding, dict), "superseding release identity is missing")
+            _require(
+                superseding.get("repository") == repository,
+                "superseding release repository mismatch",
+            )
+            _require(superseding.get("tag") == tag, "superseding release tag mismatch")
+            superseded_release_lock = _audit_superseded_release_lock(
+                client,
+                record=supersession_record,
+                expected_body=builder.blob_bytes(
+                    blobs,
+                    "releases/gdn-sm90a-r1.md",
+                ).decode(),
+            )
 
     return {
         "schema": AUDIT_SCHEMA,
@@ -553,6 +769,8 @@ def audit_public_release(
         "draft": release["draft"],
         "prerelease": release["prerelease"],
         "anonymous_release_page": anonymous_release_page,
+        "latest_release": latest_release,
+        "superseded_release_lock": superseded_release_lock,
         "report_tag": report_tag,
         "downloaded_assets": downloaded_assets,
         "source_links": sources,

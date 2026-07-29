@@ -28,6 +28,8 @@ import string
 from pathlib import Path
 from typing import Any
 
+import publication_state
+
 EXPECTED_CLAIM_IDS = tuple(f"C{index:02d}" for index in range(1, 15))
 CANONICAL_PERFORMANCE_PATH = (
     "evidence/historical/gdn-sm90a-h20-20260728-v1/results/performance.json"
@@ -44,8 +46,9 @@ EXPECTED_CUTEDSL_COMMIT = "88737e9d906cf313995a092624656a89d74dd65e"
 EXCLUDED_CUTEDSL_TAG = "gdn2-sm90a-comparator-r0"
 FRESH_CLAIM_SCOPE = "fresh public-tag H20 six-row characterization"
 FRESH_EVIDENCE_KIND = "fresh-public-tag-h20-rerun"
-REPORT_TAG = "gdn-sm90a-r1"
-SUPERSEDED_REPORT_TAG = "gdn-sm90a-r0"
+REPORT_TAG = "gdn-sm90a-r2"
+PRE_RELEASE_SUPERSEDED_TAG = "gdn-sm90a-r0"
+GUIDANCE_SUPERSEDED_TAG = "gdn-sm90a-r1"
 FRESH_ROW_ORDER = (
     "single-t512-h8-mha-zero",
     "single-t1024-h8-mha-state",
@@ -62,7 +65,7 @@ FRESH_TEMPLATE_LANGUAGE = {
     "x-thread-zh.md": "zh",
     "zhihu.md": "zh",
 }
-CONTENT_SUFFIXES = {".md", ".txt"}
+CONTENT_SUFFIXES = publication_state.TEXT_SUFFIXES
 PERFORMANCE_LITERAL = re.compile(r"(?<![A-Za-z0-9_-])\d+\.\d+(?![A-Za-z0-9_-])")
 
 
@@ -423,9 +426,9 @@ def validate_link_map(
     if historical_link.get("url") != expected_historical_url:
         errors.append("link map historical evidence URL is not pinned to the report tag")
 
-    superseded_report = link_map.get("excluded_links", {}).get(SUPERSEDED_REPORT_TAG, {})
+    superseded_report = link_map.get("excluded_links", {}).get(PRE_RELEASE_SUPERSEDED_TAG, {})
     if superseded_report != {
-        "tag": SUPERSEDED_REPORT_TAG,
+        "tag": PRE_RELEASE_SUPERSEDED_TAG,
         "tag_object": "81c0ec29ebbceed192d871f8d91794d7170bba18",
         "peeled_commit": "e1fd180b12b65552183a63ea2a0b62f21c3b8634",
         "tree": "48f8e4688e5cae8c0aedef6171dc38675b9c3c84",
@@ -439,6 +442,29 @@ def validate_link_map(
     }:
         errors.append("superseded report r0 tag identity or reason drifted")
 
+    guidance_superseded = link_map.get("excluded_links", {}).get(GUIDANCE_SUPERSEDED_TAG, {})
+    if guidance_superseded != {
+        "tag": GUIDANCE_SUPERSEDED_TAG,
+        "tag_object": "fca41983444d9fdc66651034f7269ebaaba219fb",
+        "peeled_commit": "08c92c76d7c644a3caa1929d6cd8cac8bbb91595",
+        "tree": "22297bfb13c0778ab03f6b9882fff173ec89752d",
+        "release_url": (
+            "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/releases/tag/gdn-sm90a-r1"
+        ),
+        "publication_content_sha256": (
+            "0316cfb489c78520bd84815668f4e715d281d8d6ce5bb670d597d680609249f2"
+        ),
+        "status": "SUPERSEDED_FOR_PUBLICATION_GUIDANCE",
+        "superseded_by": REPORT_TAG,
+        "supersession_record": "releases/gdn-sm90a-r1-supersession.json",
+        "reason": (
+            "The r1 evidence, runtime, provenance, and performance facts remain "
+            "valid, but its publication guidance and architecture figure retained "
+            "obsolete pre-rerun state wording. Use r2 for new platform publication."
+        ),
+    }:
+        errors.append("superseded report r1 identity, boundary, or reason drifted")
+
     fresh_comparator = fresh_source_lock.get("locks", {}).get("cutedsl", {})
     if fresh_comparator.get("tag") != comparator.get("tag"):
         errors.append("link map comparator tag differs from fresh source lock")
@@ -446,6 +472,101 @@ def validate_link_map(
         errors.append("link map comparator commit differs from fresh source lock")
     if fresh_comparator.get("required_path") != "cula/gdn/prefill.py":
         errors.append("fresh source lock does not name the GDN comparator entrypoint path")
+    return errors
+
+
+def validate_guidance_supersession(root: Path) -> list[str]:
+    errors = []
+    path = root / "releases/gdn-sm90a-r1-supersession.json"
+    value = load_json(path)
+    if value.get("schema") != "gdn-sm90a.report-release-supersession.v1":
+        errors.append("r1 supersession schema drifted")
+    if value.get("status") != "SUPERSEDED_FOR_PUBLICATION_GUIDANCE":
+        errors.append("r1 supersession status drifted")
+    if value.get("severity") != "R2_INCORRECT_EVIDENCE_STATUS_GUIDANCE":
+        errors.append("r1 supersession severity drifted")
+    if value.get("reason_code") != (
+        "FRESH_CHARACTERIZATION_COMPLETE_BUT_GUIDANCE_USES_PRE_RERUN_STATE"
+    ):
+        errors.append("r1 supersession reason code drifted")
+    if value.get("affected_paths") != [
+        "assets/figures/architecture_evidence_chain.png",
+        "assets/figures/architecture_evidence_chain.svg",
+        "assets/figures/chart-map.md",
+        "contracts/claim-registry.json",
+        "releases/platform-checklist.md",
+        "releases/publishing-order.md",
+        "releases/rollback-and-corrections.md",
+    ]:
+        errors.append("r1 supersession affected-path inventory drifted")
+    superseded = value.get("superseded_release", {})
+    expected_superseded = {
+        "commit": "08c92c76d7c644a3caa1929d6cd8cac8bbb91595",
+        "published_at_utc": "2026-07-29T09:32:17Z",
+        "release_id": 361635172,
+        "release_url": (
+            "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/releases/tag/gdn-sm90a-r1"
+        ),
+        "repository": "Aharrypotter/gdn-sm90a-tirx-report",
+        "retention": "PUBLIC_UNMODIFIED_AUDIT_RECORD",
+        "tag": "gdn-sm90a-r1",
+        "tag_ci_run_id": 30439842047,
+        "tag_ci_url": (
+            "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/actions/runs/30439842047"
+        ),
+        "tag_object": "fca41983444d9fdc66651034f7269ebaaba219fb",
+        "tree": "22297bfb13c0778ab03f6b9882fff173ec89752d",
+    }
+    if superseded != expected_superseded:
+        errors.append("r1 superseded release identity drifted")
+    expected_assets = [
+        {
+            "name": "SHA256SUMS",
+            "sha256": "3894be61df219ead2f857629eb12892c28cd8985e0577bda99753e7b80da8ca8",
+            "size_bytes": 393,
+        },
+        {
+            "name": "gdn-sm90a-r1-public-evidence.tar",
+            "sha256": "a722d540fedc7eb37845fe52f1d45bf7493d0201aac81831a73903725c5874e0",
+            "size_bytes": 1740800,
+        },
+        {
+            "name": "gdn-sm90a-r1-publication-content.zip",
+            "sha256": "0316cfb489c78520bd84815668f4e715d281d8d6ce5bb670d597d680609249f2",
+            "size_bytes": 1159648,
+        },
+        {
+            "name": "gdn-sm90a-r1-release-manifest.json",
+            "sha256": "80f3cbaa27e9fa35ba4db6927593497f233e68ae2ff6a93dfdc417080f383671",
+            "size_bytes": 6641,
+        },
+        {
+            "name": "gdn-sm90a-r1-source.tar",
+            "sha256": "e26ad2906d5252d8dfaf6fcf54b08d5e615cf8234b75a56d58dc5df161537c26",
+            "size_bytes": 3092480,
+        },
+    ]
+    if value.get("asset_lock") != expected_assets:
+        errors.append("r1 supersession asset lock drifted")
+    if value.get("validity") != {
+        "evidence_integrity": "VALID_UNCHANGED",
+        "performance_facts": "VALID_UNCHANGED",
+        "publication_guidance": "SUPERSEDED",
+        "runtime_source": "VALID_UNCHANGED",
+        "source_provenance": "VALID_UNCHANGED",
+    }:
+        errors.append("r1 supersession validity boundary drifted")
+    if value.get("mutation_policy") != {
+        "edit_r1_release_body": False,
+        "move_or_delete_r1_tag": False,
+        "replace_or_delete_r1_assets": False,
+    }:
+        errors.append("r1 supersession mutation policy drifted")
+    superseding = value.get("superseding_release", {})
+    if superseding.get("tag") != REPORT_TAG or superseding.get("scope") != (
+        "PUBLICATION_GUIDANCE_ONLY"
+    ):
+        errors.append("r1 supersession does not bind the r2 guidance correction")
     return errors
 
 
@@ -820,6 +941,36 @@ def validate_fresh_publication_content(
         for marker in stale_markers:
             if marker.casefold() in text.casefold():
                 errors.append(f"{relative}: contains stale fresh-evidence marker {marker!r}")
+
+    operational_requirements = {
+        "releases/platform-checklist.md": (
+            "completed 66-receipt",
+            "`CHARACTERIZATION`",
+            "never\n      merged",
+        ),
+        "releases/publishing-order.md": (
+            "make verify-fresh-evidence",
+            "completed `CHARACTERIZATION`",
+            "aggregates are not merged",
+            "reports/historical-performance.md",
+            "reports/fresh-public-tag-performance.md",
+        ),
+        "assets/figures/chart-map.md": (
+            "completed public-tag H20",
+            "`CHARACTERIZATION`",
+            "aggregates are never merged",
+        ),
+        "assets/figures/architecture_evidence_chain.svg": (
+            "Fresh public-tag H20",
+            "CHARACTERIZATION",
+            "66 receipts",
+        ),
+    }
+    for relative, markers in operational_requirements.items():
+        text = (root / relative).read_text()
+        for marker in markers:
+            if marker not in text:
+                errors.append(f"{relative}: missing current-state marker {marker!r}")
     return errors
 
 
@@ -844,7 +995,7 @@ def find_content_files(root: Path, requested: list[Path]) -> list[Path]:
     readme = root / "README.md"
     if readme.is_file():
         candidates.append(readme)
-    for directory_name in ("content", "reports", "docs", "releases"):
+    for directory_name in ("assets/figures", "content", "reports", "docs", "releases"):
         directory = root / directory_name
         if directory.is_dir():
             candidates.extend(
@@ -902,6 +1053,7 @@ def validate(root: Path, requested_content: list[Path]) -> dict[str, Any]:
     errors.extend(validate_registry_structure(registry, caveats))
     errors.extend(validate_forbidden_phrases(caveats))
     errors.extend(validate_link_map(root, link_map, source_lock, fresh_source_lock))
+    errors.extend(validate_guidance_supersession(root))
     errors.extend(validate_public_manifest_reference(root))
     errors.extend(verifier_errors)
 
@@ -975,9 +1127,20 @@ def validate(root: Path, requested_content: list[Path]) -> dict[str, Any]:
     try:
         content_files = find_content_files(root, requested_content)
         errors.extend(scan_content(root, content_files, caveats))
+        state_payloads = {
+            path.resolve().relative_to(root.resolve()).as_posix(): path.read_bytes()
+            for path in content_files
+        }
+        state_findings = publication_state.scan_stale_fresh_state(state_payloads)
+        errors.extend(
+            "obsolete pre-rerun publication guidance: "
+            f"{finding['path']}:{finding['line']} ({finding['pattern_id']})"
+            for finding in state_findings
+        )
     except (ContractError, ValueError) as error:
         errors.append(str(error))
         content_files = []
+        state_findings = []
 
     return {
         "schema": "gdn-sm90a.public-claim-validation.v1",
@@ -989,6 +1152,10 @@ def validate(root: Path, requested_content: list[Path]) -> dict[str, Any]:
         "fresh_bundle_receipt_count": (
             verifier_result.get("receipt_count") if verifier_result is not None else None
         ),
+        "publication_state_scan": {
+            "status": "PASS" if not state_findings else "FAIL",
+            "finding_count": len(state_findings),
+        },
         "enabled_claim_count": len(rendered_claims),
         "disabled_claims": [
             claim.get("id")

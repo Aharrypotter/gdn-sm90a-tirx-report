@@ -30,6 +30,7 @@ from pathlib import Path, PurePosixPath
 from typing import Any
 
 import build_release_assets as builder
+import publication_state
 
 VERIFY_SCHEMA = "gdn-sm90a.release-asset-verification.v1"
 
@@ -183,6 +184,23 @@ def _compare_directories(left: Path, right: Path, expected_names: set[str]) -> N
             (left / name).read_bytes() == (right / name).read_bytes(),
             f"{name}: rebuilt bytes differ",
         )
+
+
+def _verify_publication_state(
+    expected_paths: list[str],
+    blobs: dict[str, builder.GitBlob],
+) -> int:
+    payloads = {relative: blobs[relative].data for relative in expected_paths}
+    findings = publication_state.scan_stale_fresh_state(payloads)
+    _require(
+        not findings,
+        "publication content contains obsolete pre-rerun guidance: "
+        + json.dumps(findings, sort_keys=True),
+    )
+    return sum(
+        PurePosixPath(relative).suffix.lower() in publication_state.TEXT_SUFFIXES
+        for relative in expected_paths
+    )
 
 
 def _safe_materialize_tar(path: Path, destination: Path) -> Path:
@@ -427,6 +445,7 @@ def verify_release_assets(
         require_contract_tag=require_contract_tag,
     )
     package_paths = {}
+    publication_state_file_count = 0
     for package_key in builder.PACKAGE_KEYS:
         specification = contract["packages"][package_key]
         expected_paths = builder.select_paths(
@@ -450,6 +469,8 @@ def verify_release_assets(
                 expected_paths=expected_paths,
                 blobs=blobs,
             )
+        if package_key == "content":
+            publication_state_file_count = _verify_publication_state(expected_paths, blobs)
 
     rebuild_digests = []
     with tempfile.TemporaryDirectory(prefix="gdn-release-rebuilds-") as temporary:
@@ -489,6 +510,10 @@ def verify_release_assets(
         "byte_identical_rebuilds": True,
         "fresh_evidence_class": manifest["evidence"]["fresh"]["evidence_class"],
         "fresh_decision_status": manifest["evidence"]["fresh"]["decision_status"],
+        "publication_state_scan": {
+            "status": "PASS",
+            "text_file_count": publication_state_file_count,
+        },
         "package_file_counts": {key: len(value) for key, value in sorted(package_paths.items())},
         "evidence_verifier_results": evidence_results,
         "asset_sha256": {

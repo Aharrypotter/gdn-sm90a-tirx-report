@@ -30,6 +30,8 @@ from pathlib import Path, PurePosixPath
 from typing import Any
 from urllib.parse import quote
 
+import publication_state
+
 SCHEMA = "gdn-sm90a.report-release-assets.v1"
 MANIFEST_SCHEMA = "gdn-sm90a.report-release-manifest.v1"
 PACKAGE_KEYS = ("source", "evidence", "content")
@@ -636,6 +638,19 @@ def build_release_assets(
     evidence = _validate_evidence(blobs, contract)
     claims = _validate_claims(blobs, contract)
     source_coordinates, source_lock_sha256 = _source_coordinates(blobs, contract)
+    content_paths = select_paths(
+        blobs,
+        contract["packages"]["content"]["include"],
+        package_key="content",
+    )
+    state_findings = publication_state.scan_stale_fresh_state(
+        {relative: blobs[relative].data for relative in content_paths}
+    )
+    if state_findings:
+        raise ReleaseAssetError(
+            "publication content contains obsolete pre-rerun guidance: "
+            + json.dumps(state_findings, sort_keys=True)
+        )
 
     output.mkdir(parents=True)
     package_summaries = []

@@ -30,6 +30,7 @@ from pathlib import Path
 from typing import Any
 
 import matplotlib
+import publication_state
 
 matplotlib.use("Agg")
 
@@ -41,6 +42,12 @@ from matplotlib.ticker import MultipleLocator  # noqa: E402
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INPUT = (
     ROOT / "evidence" / "historical" / "gdn-sm90a-h20-20260728-v1" / "results" / "performance.json"
+)
+DEFAULT_FRESH_PERFORMANCE = (
+    ROOT / "evidence" / "fresh" / "gdn-sm90a-public-tags-h20-20260729-v1" / "performance.json"
+)
+DEFAULT_FRESH_PUBLICATION = (
+    ROOT / "evidence" / "fresh" / "gdn-sm90a-public-tags-h20-20260729-v1" / "publication.json"
 )
 DEFAULT_OUTPUT = ROOT / "assets" / "figures"
 
@@ -85,10 +92,10 @@ FIGURE_NAMES = (
 )
 EXPECTED_ASSET_SHA256 = {
     "architecture_evidence_chain.png": (
-        "1bf9811e4fd7950b0b832c936b2b8c778f19998caffa930fb053c475f93e9d54"
+        "4aded256ff194465e8d2d83720a547be0554727cf2d965373ef64c439a11ab34"
     ),
     "architecture_evidence_chain.svg": (
-        "634d084e35a316c1e12b606902b5aee0d44f6f114b63fcea35cba93b505ba818"
+        "b9e89830930695e49dc9962baa611f5aabd6193df0ecf154f5fdc5bf27885ba7"
     ),
     "latency_by_row.png": "d2987d21cbf9a9f8174ecb66cf0383fdbc7ed65398fb23d5248574f02daf3894",
     "latency_by_row.svg": "ef7f958016b3b97965f46bb0b627803ed9314a06017f8def19ee5bc9e9a74ba8",
@@ -145,9 +152,16 @@ class Evidence:
     packed_status: str
     gate_decision: str
     decision_status: str
+    fresh_receipt_count: int
+    fresh_decision_status: str
+    fresh_evidence_kind: str
 
 
-def load_evidence(path: Path) -> Evidence:
+def load_evidence(
+    path: Path,
+    fresh_performance_path: Path,
+    fresh_publication_path: Path,
+) -> Evidence:
     value = json.loads(path.read_text())
     if value.get("schema") != "gdn-sm90a.public-performance-summary.v1":
         raise ValueError("unexpected performance-summary schema")
@@ -195,6 +209,33 @@ def load_evidence(path: Path) -> Evidence:
     if value.get("ratio_direction") != "tirx_latency / comparator_latency; lower is faster":
         raise ValueError("unexpected ratio direction")
 
+    fresh_performance = json.loads(fresh_performance_path.read_text())
+    fresh_publication = json.loads(fresh_publication_path.read_text())
+    if fresh_performance.get("schema") != "gdn-sm90a.public-performance.v1":
+        raise ValueError("unexpected fresh performance schema")
+    if fresh_publication.get("schema") != "gdn-sm90a.public-fresh-evidence.v1":
+        raise ValueError("unexpected fresh publication schema")
+    if fresh_performance.get("status") != "PASS" or fresh_publication.get("status") != "PASS":
+        raise ValueError("fresh public-tag evidence is not PASS")
+    if fresh_performance.get("receipt_count") != 66 or fresh_publication.get("receipt_count") != 66:
+        raise ValueError("fresh public-tag evidence must contain 66 receipts")
+    if (
+        fresh_performance.get("decision_status") != "CHARACTERIZATION"
+        or fresh_publication.get("decision_status") != "CHARACTERIZATION"
+    ):
+        raise ValueError("fresh public-tag evidence must remain CHARACTERIZATION")
+    if fresh_publication.get("evidence_kind") != "fresh-public-tag-h20-rerun":
+        raise ValueError("unexpected fresh public-tag evidence kind")
+    if fresh_publication.get("claim_scope") != "fresh public-tag H20 six-row characterization":
+        raise ValueError("unexpected fresh public-tag claim scope")
+    if (
+        fresh_publication.get("fresh_process_launch_count") != 66
+        or fresh_publication.get("physical_device_binding_verified") is not True
+        or fresh_publication.get("process_isolation_verified") is not True
+        or fresh_publication.get("upstream_merge_claim") is not False
+    ):
+        raise ValueError("fresh public-tag execution boundary is incomplete")
+
     return Evidence(
         rows=tuple(rows),
         evidence_class=value["evidence_class"],
@@ -203,6 +244,9 @@ def load_evidence(path: Path) -> Evidence:
         packed_status=packed["status"],
         gate_decision=value["gate_evaluation"]["decision"],
         decision_status=value["decision_status"],
+        fresh_receipt_count=int(fresh_publication["receipt_count"]),
+        fresh_decision_status=fresh_publication["decision_status"],
+        fresh_evidence_kind=fresh_publication["evidence_kind"],
     )
 
 
@@ -557,8 +601,8 @@ def render_architecture(evidence: Evidence) -> plt.Figure:
         fig,
         "Compiler-to-evidence architecture for the SM90a GDN release",
         (
-            "Layered source and evidence flow · solid arrows are current historical-bound assets · "
-            "dashed arrow is a required future rerun, not current evidence"
+            "Layered source and evidence flow · solid path is immutable historical evidence · "
+            "dashed container is a separate completed fresh characterization"
         ),
     )
     fig.subplots_adjust(left=0.03, right=0.97, top=0.83, bottom=0.12)
@@ -693,7 +737,7 @@ def render_architecture(evidence: Evidence) -> plt.Figure:
         0.452,
         0.236,
         0.12,
-        "Public evidence state",
+        "Historical evidence state",
         f"{evidence.evidence_class}\n{evidence.receipt_count} timing receipts",
         facecolor=WHITE,
         edgecolor=GOLD_DARK,
@@ -705,7 +749,7 @@ def render_architecture(evidence: Evidence) -> plt.Figure:
         0.302,
         0.236,
         0.12,
-        "Decision boundary",
+        "Historical decision boundary",
         f"{evidence.gate_decision}\nreport status: {evidence.decision_status}",
         facecolor=WHITE,
         edgecolor=GOLD_DARK,
@@ -729,7 +773,13 @@ def render_architecture(evidence: Evidence) -> plt.Figure:
     timeline = (
         (0.02, 0.075, 0.18, "Sealed A46-S3", "immutable historical source"),
         (0.245, 0.075, 0.22, "Public derivation", "allowlisted + privacy-safe"),
-        (0.51, 0.075, 0.19, "Current report", "historical-bound claims"),
+        (
+            0.51,
+            0.075,
+            0.19,
+            "Historical package",
+            f"{evidence.evidence_class}\n{evidence.receipt_count} receipts",
+        ),
     )
     for x, y, width, title, body in timeline:
         add_box(
@@ -751,18 +801,22 @@ def render_architecture(evidence: Evidence) -> plt.Figure:
         0.075,
         0.225,
         0.11,
-        "Fresh public-tag rerun",
-        "REQUIRED · not yet represented",
+        "Fresh public-tag H20",
+        f"{evidence.fresh_decision_status} · {evidence.fresh_receipt_count} receipts",
         facecolor=PAPER,
         edgecolor=NEUTRAL_DARK,
         linestyle="--",
     )
-    add_arrow(
-        ax,
-        (0.705, 0.13),
-        (0.748, 0.13),
+    ax.text(
+        0.727,
+        0.13,
+        "+",
+        transform=ax.transAxes,
+        ha="center",
+        va="center",
+        fontsize=14,
+        fontweight="bold",
         color=NEUTRAL_DARK,
-        linestyle="--",
     )
 
     fig.text(
@@ -770,7 +824,7 @@ def render_architecture(evidence: Evidence) -> plt.Figure:
         0.025,
         (
             "Unofficial personal-fork research release · no upstream merge or endorsement · "
-            "performance state read from public performance.json"
+            "historical and fresh evidence classes remain distinct"
         ),
         ha="left",
         va="bottom",
@@ -864,6 +918,23 @@ def validate_outputs(output_dir: Path, *, require_sealed_hashes: bool = False) -
         png_path = output_dir / f"{name}.png"
         if svg_path.is_file():
             errors.extend(validate_svg(svg_path))
+            if name == "architecture_evidence_chain":
+                payload = svg_path.read_bytes()
+                for marker in (
+                    b"HISTORICAL_EVIDENCE_BOUND",
+                    b"Fresh public-tag H20",
+                    b"CHARACTERIZATION",
+                    b"66 receipts",
+                ):
+                    if marker not in payload:
+                        errors.append(
+                            f"{svg_path.name}: missing current evidence-state marker {marker!r}"
+                        )
+                for finding in publication_state.scan_stale_fresh_state({svg_path.name: payload}):
+                    errors.append(
+                        f"{svg_path.name}: obsolete evidence state "
+                        f"{finding['pattern_id']} at line {finding['line']}"
+                    )
             hashes[svg_path.name] = hashlib.sha256(svg_path.read_bytes()).hexdigest()
         if png_path.is_file():
             payload = png_path.read_bytes()
@@ -939,6 +1010,8 @@ def check_determinism(evidence: Evidence, output_dir: Path) -> dict[str, Any]:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", type=Path, default=DEFAULT_INPUT)
+    parser.add_argument("--fresh-performance", type=Path, default=DEFAULT_FRESH_PERFORMANCE)
+    parser.add_argument("--fresh-publication", type=Path, default=DEFAULT_FRESH_PUBLICATION)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--check", action="store_true")
     return parser.parse_args()
@@ -947,8 +1020,10 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     input_path = args.input.expanduser().resolve()
+    fresh_performance_path = args.fresh_performance.expanduser().resolve()
+    fresh_publication_path = args.fresh_publication.expanduser().resolve()
     output_dir = args.output_dir.expanduser().resolve()
-    evidence = load_evidence(input_path)
+    evidence = load_evidence(input_path, fresh_performance_path, fresh_publication_path)
     if args.check:
         if not output_dir.is_dir():
             raise SystemExit("figure output directory is missing")
@@ -962,6 +1037,9 @@ def main() -> None:
             "source_schema": "gdn-sm90a.public-performance-summary.v1",
             "evidence_class": evidence.evidence_class,
             "receipt_count": evidence.receipt_count,
+            "fresh_decision_status": evidence.fresh_decision_status,
+            "fresh_evidence_kind": evidence.fresh_evidence_kind,
+            "fresh_receipt_count": evidence.fresh_receipt_count,
         }
     )
     print(json.dumps(result, indent=2, sort_keys=True))

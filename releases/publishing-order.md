@@ -14,13 +14,20 @@ materialization gate is incomplete.
    make verify-historical-evidence
    ```
 
-3. Regenerate and check the human-readable performance report:
+3. Independently verify the additive fresh public-tag bundle:
+
+   ```bash
+   make verify-fresh-evidence
+   ```
+
+4. Regenerate and check both human-readable performance reports:
 
    ```bash
    python3 scripts/render_performance_markdown.py --check
+   python3 scripts/validate_claims.py
    ```
 
-4. Validate claims and every publication template:
+5. Validate claims and every publication template:
 
    ```bash
    python3 scripts/validate_claims.py \
@@ -28,9 +35,9 @@ materialization gate is incomplete.
      --check-content releases
    ```
 
-5. Run repository static checks and inspect the complete staged scope when a
+6. Run repository static checks and inspect the complete staged scope when a
    commit is authorized.
-6. Record the report commit, release tag, evidence-manifest digest, and claim
+7. Record the report commit, release tag, both evidence-manifest digests, and claim
    registry digest in the publication ledger.
 
 Stop if any check fails. Do not repair a failed number by editing prose.
@@ -67,8 +74,10 @@ are represented by `{{claim:Cxx:language}}` tokens.
    hand-replace claim tokens.
 3. Do not edit digits, signs, ratios, percentages, row counts, or receipt
    counts in a generated payload.
-4. Compare the generated payload to
-   [`reports/historical-performance.md`](../reports/historical-performance.md).
+4. Compare the generated payload to both
+   [`reports/historical-performance.md`](../reports/historical-performance.md)
+   and
+   [`reports/fresh-public-tag-performance.md`](../reports/fresh-public-tag-performance.md).
 5. Confirm that no generated payload contains an unresolved token:
 
    ```bash
@@ -109,7 +118,9 @@ For every platform:
 2. Verify title, line breaks, code blocks, images, and all links.
 3. Confirm that packed-n10 is presented as a non-win inside the preregistered
    noise band.
-4. Confirm `HISTORICAL_EVIDENCE_BOUND` and fresh-rerun-pending language.
+4. Confirm that the historical bundle remains
+   `HISTORICAL_EVIDENCE_BOUND`, the separate fresh public-tag bundle is a
+   completed `CHARACTERIZATION`, and their aggregates are not merged.
 5. Confirm the corrected CuTeDSL r1 tag and explicit GDN2 r0 exclusion.
 6. Confirm unofficial-fork and no-upstream-merge/endorsement language.
 7. Record the public URL, publication time, payload hash, and screenshot in
@@ -122,6 +133,6 @@ For every platform:
   comparator confusion.
 - Later follow-up: consolidate questions into an FAQ or report-repository
   issue rather than changing source claims ad hoc.
-- Fresh rerun: publish as a new evidence release and a clearly labelled
-  follow-up. Never rewrite the historical article as though the new run had
-  always existed.
+- Subsequent rerun: publish any later execution as a new additive evidence
+  release and clearly labelled follow-up. Never rewrite either existing
+  evidence class as though the later run had always existed.

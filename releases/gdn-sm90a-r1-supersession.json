@@ -1,0 +1,75 @@
+{
+  "affected_paths": [
+    "assets/figures/architecture_evidence_chain.png",
+    "assets/figures/architecture_evidence_chain.svg",
+    "assets/figures/chart-map.md",
+    "contracts/claim-registry.json",
+    "releases/platform-checklist.md",
+    "releases/publishing-order.md",
+    "releases/rollback-and-corrections.md"
+  ],
+  "asset_lock": [
+    {
+      "name": "SHA256SUMS",
+      "sha256": "3894be61df219ead2f857629eb12892c28cd8985e0577bda99753e7b80da8ca8",
+      "size_bytes": 393
+    },
+    {
+      "name": "gdn-sm90a-r1-public-evidence.tar",
+      "sha256": "a722d540fedc7eb37845fe52f1d45bf7493d0201aac81831a73903725c5874e0",
+      "size_bytes": 1740800
+    },
+    {
+      "name": "gdn-sm90a-r1-publication-content.zip",
+      "sha256": "0316cfb489c78520bd84815668f4e715d281d8d6ce5bb670d597d680609249f2",
+      "size_bytes": 1159648
+    },
+    {
+      "name": "gdn-sm90a-r1-release-manifest.json",
+      "sha256": "80f3cbaa27e9fa35ba4db6927593497f233e68ae2ff6a93dfdc417080f383671",
+      "size_bytes": 6641
+    },
+    {
+      "name": "gdn-sm90a-r1-source.tar",
+      "sha256": "e26ad2906d5252d8dfaf6fcf54b08d5e615cf8234b75a56d58dc5df161537c26",
+      "size_bytes": 3092480
+    }
+  ],
+  "mutation_policy": {
+    "edit_r1_release_body": false,
+    "move_or_delete_r1_tag": false,
+    "replace_or_delete_r1_assets": false
+  },
+  "reason": "The r1 publication guidance and architecture figure retained obsolete pre-rerun state wording even though r1 includes the completed, separately sealed 66-receipt H20 CHARACTERIZATION. Runtime source, evidence seals, source identities, and performance values remain valid.",
+  "reason_code": "FRESH_CHARACTERIZATION_COMPLETE_BUT_GUIDANCE_USES_PRE_RERUN_STATE",
+  "schema": "gdn-sm90a.report-release-supersession.v1",
+  "severity": "R2_INCORRECT_EVIDENCE_STATUS_GUIDANCE",
+  "status": "SUPERSEDED_FOR_PUBLICATION_GUIDANCE",
+  "superseded_release": {
+    "commit": "08c92c76d7c644a3caa1929d6cd8cac8bbb91595",
+    "published_at_utc": "2026-07-29T09:32:17Z",
+    "release_id": 361635172,
+    "release_url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/releases/tag/gdn-sm90a-r1",
+    "repository": "Aharrypotter/gdn-sm90a-tirx-report",
+    "retention": "PUBLIC_UNMODIFIED_AUDIT_RECORD",
+    "tag": "gdn-sm90a-r1",
+    "tag_ci_run_id": 30439842047,
+    "tag_ci_url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/actions/runs/30439842047",
+    "tag_object": "fca41983444d9fdc66651034f7269ebaaba219fb",
+    "tree": "22297bfb13c0778ab03f6b9882fff173ec89752d"
+  },
+  "superseding_release": {
+    "effective_condition": "PUBLIC_RELEASE_AND_PUBLIC_AUDIT_PASS",
+    "release_url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/releases/tag/gdn-sm90a-r2",
+    "repository": "Aharrypotter/gdn-sm90a-tirx-report",
+    "scope": "PUBLICATION_GUIDANCE_ONLY",
+    "tag": "gdn-sm90a-r2"
+  },
+  "validity": {
+    "evidence_integrity": "VALID_UNCHANGED",
+    "performance_facts": "VALID_UNCHANGED",
+    "publication_guidance": "SUPERSEDED",
+    "runtime_source": "VALID_UNCHANGED",
+    "source_provenance": "VALID_UNCHANGED"
+  }
+}

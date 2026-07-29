@@ -91,7 +91,7 @@ CuTeDSL 对照实现绑定到 88737e9d906cf313995a092624656a89d74dd65e 上的 gd
 
 ## 历史与 fresh 两类证据
 
-公开包状态为 HISTORICAL_EVIDENCE_BOUND；unofficial-personal-fork 为 true，upstream-merge 为 false。
+历史证据包状态为 HISTORICAL_EVIDENCE_BOUND；unofficial-personal-fork 为 true，upstream-merge 为 false。
 
 脱敏 evidence bundle 是确定性、隐私安全的，并绑定到不可变历史 release seal。它保留数值回执和紧凑的正确性、安全性、codegen、release 摘要，同时排除原始日志、私有 host/device 标识、cache 路径、profiler artifact 与进程元数据。
 

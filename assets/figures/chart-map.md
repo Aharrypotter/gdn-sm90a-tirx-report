@@ -1,10 +1,12 @@
 # Figure chart map
 
-All quantitative values are rendered from
+The latency and ratio figures render quantitative values only from
 `evidence/historical/gdn-sm90a-h20-20260728-v1/results/performance.json`.
-The rendering surface is deterministic static SVG plus sealed PNG.  The public
-evidence class is `HISTORICAL_EVIDENCE_BOUND`; none of these figures represents
-a fresh rerun from the public tags.
+The architecture figure additionally reads the separately sealed fresh
+`performance.json` and `publication.json` to show its completed public-tag H20
+`CHARACTERIZATION`. The rendering surface is deterministic static SVG plus
+sealed PNG. Historical and fresh evidence classes remain additive and their
+aggregates are never merged.
 
 ## `latency_by_row`
 
@@ -53,26 +55,29 @@ a fresh rerun from the public tags.
 ## `architecture_evidence_chain`
 
 - **Question:** How do the compiler primitives, TIRx GDN product modules, and
-  validation/release evidence connect without promoting historical evidence
-  to a fresh rerun?
+  two separately sealed validation/release evidence classes connect without
+  promoting or merging either class?
 - **Supported takeaway:** The deliverable is a layered chain from SM90a
   compiler capability through a frozen GDN product contract and schedules to
-  a public, historical-bound evidence package.  A fresh public-tag rerun is a
-  separate future gate.
+  an immutable historical-bound evidence package. A second, additive path
+  records the completed exact-public-tag H20 `CHARACTERIZATION`.
 - **Family / variant:** Decomposition & Progression / layered architecture and
   evidence-state flow.
 - **Fields:** `evidence_class`, `receipt_count`,
-  `gate_evaluation.decision`, `decision_status`; module/capability labels are
-  release-source structure, not performance values.
+  `gate_evaluation.decision`, `decision_status`; fresh `status`,
+  `decision_status`, `evidence_kind`, and `receipt_count`; module/capability
+  labels are release-source structure, not performance values.
 - **Palette / non-color:** Blue compiler layer, open blue product layer, gold
-  hatched evidence layer, and neutral dashed future state.  Headers, borders,
-  hatches, arrow styles, and explicit state labels provide non-color
+  hatched historical evidence layer, and a neutral dashed additive fresh
+  state. Headers, borders, hatches, arrow styles, and explicit state labels
+  provide non-color
   distinction.
 - **Paths:** `assets/figures/architecture_evidence_chain.svg` and
   `assets/figures/architecture_evidence_chain.png`.
-- **QA:** Current historical path uses solid arrows; future rerun uses a
-  dashed arrow and says “required, not yet represented”; unofficial-fork and
-  no-upstream-merge caveats visible.
+- **QA:** The historical path and completed fresh `CHARACTERIZATION` are both
+  visible; the dashed container means “separate additive class,” not
+  promotion. The 66-receipt counts, unofficial-fork boundary, and
+  no-upstream-merge caveat are visible.
 
 ## Shared export QA
 
@@ -100,5 +105,6 @@ a fresh rerun from the public tags.
   chart preserves a zero baseline; hatch patterns distinguish all three
   implementations.  The ratio chart visibly anchors parity at 1.0, shows the
   ±2% band, and attaches “not a speed win” directly to packed-10.  The
-  architecture diagram keeps current historical-bound assets on solid arrows
-  and the uncompleted public-tag rerun on a dashed arrow and dashed container.
+  architecture diagram keeps the immutable historical package on the solid
+  path and the completed public-tag H20 `CHARACTERIZATION` in a separate
+  dashed container; the two aggregates are not connected or merged.

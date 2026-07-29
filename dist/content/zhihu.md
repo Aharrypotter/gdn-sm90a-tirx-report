@@ -121,7 +121,7 @@ CuTeDSL 对照实现绑定到 88737e9d906cf313995a092624656a89d74dd65e 上的 gd
 
 ## 八、historical 与 fresh 必须分开
 
-公开包状态为 HISTORICAL_EVIDENCE_BOUND；unofficial-personal-fork 为 true，upstream-merge 为 false。
+历史证据包状态为 HISTORICAL_EVIDENCE_BOUND；unofficial-personal-fork 为 true，upstream-merge 为 false。
 
 当前公开 bundle 来自一个不可变的历史 release seal。脱敏过程按字段 allowlist 重建，不复制原始日志再做正则替换；公开包保留数值样本与紧凑验证摘要，但不暴露 host、container、GPU UUID、SSH alias、文件路径、PID 或 profiler artifact。
 

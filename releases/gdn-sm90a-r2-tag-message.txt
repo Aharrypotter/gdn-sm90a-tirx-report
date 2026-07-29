@@ -1,0 +1,6 @@
+GDN SM90a / TIRx public evidence r2
+
+Publication-guidance correction for the unofficial personal-fork report,
+public evidence, reproducer, and platform-content package. Runtime source,
+evidence, performance facts, and source coordinates are unchanged. No upstream
+merge or endorsement is claimed.

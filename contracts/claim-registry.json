@@ -460,8 +460,8 @@
       "enabled": true,
       "category": "release-status",
       "statement": {
-        "en": "The public package status is {package_status}; unofficial-personal-fork is {unofficial_personal_forks} and upstream-merge is {upstream_merge}.",
-        "zh": "公开包状态为 {package_status}；unofficial-personal-fork 为 {unofficial_personal_forks}，upstream-merge 为 {upstream_merge}。"
+        "en": "The historical package status is {package_status}; unofficial-personal-fork is {unofficial_personal_forks} and upstream-merge is {upstream_merge}.",
+        "zh": "历史证据包状态为 {package_status}；unofficial-personal-fork 为 {unofficial_personal_forks}，upstream-merge 为 {upstream_merge}。"
       },
       "bindings": {
         "package_status": {

@@ -99,9 +99,10 @@ Evidence:
 [generated report or canonical repository URL from contracts/link-map.json]
 
 Scope:
-This remains HISTORICAL_EVIDENCE_BOUND evidence for the frozen H20 BF16/D128
-matrix. A fresh public-tag rerun is pending. The artifacts are unofficial
-personal forks with no upstream merge or endorsement.
+The original bundle remains HISTORICAL_EVIDENCE_BOUND for the frozen H20
+BF16/D128 matrix. A separately sealed exact-public-tag H20 bundle is published
+as CHARACTERIZATION; the two aggregates remain distinct. The artifacts are
+unofficial personal forks with no upstream merge or endorsement.
 
 Supersession:
 [old payload/release identifier] is superseded by
@@ -156,9 +157,10 @@ No result from the withdrawn payload should be cited. The withdrawal record is
 retained to preserve the audit trail.
 ```
 
-## Fresh-rerun update policy
+## Subsequent-rerun update policy
 
-A future fresh public-tag result is a new evidence class and release. It must:
+Any subsequent public-tag result is a new additive evidence class and release.
+It must:
 
 - use a new additive evidence root;
 - name exact public source tags and environment;

@@ -9,8 +9,15 @@ enough; preview the exact text that will be sent to the platform.
 - [ ] `scripts/validate_claims.py` passes for `content/` and `releases/`.
 - [ ] No `{{claim:...}}` token remains in the platform payload.
 - [ ] No performance digit was typed or edited manually after materialization.
-- [ ] The result is identified as `HISTORICAL_EVIDENCE_BOUND`.
-- [ ] A fresh public-tag rerun is described as pending, not complete.
+- [ ] The payload distinguishes the immutable historical
+      `HISTORICAL_EVIDENCE_BOUND` bundle from the separately sealed fresh
+      public-tag H20 `CHARACTERIZATION`.
+- [ ] The fresh bundle is described as a completed 66-receipt
+      characterization, not as a full release reseal.
+- [ ] Historical and fresh ratios, receipt sets, and decisions are never
+      merged into one aggregate.
+- [ ] The fresh bundle does not inherit the historical host-sync, sanitizer,
+      or full codegen/resource gates.
 - [ ] Scope is limited to H20, BF16/D128, and the frozen matrix.
 - [ ] The timing region is the final public callable, not end-to-end model
       throughput.
@@ -32,6 +39,8 @@ enough; preview the exact text that will be sent to the platform.
       [`contracts/link-map.json`](../contracts/link-map.json).
 - [ ] Every external URL appears in the link map.
 - [ ] Every relative link resolves in the report repository.
+- [ ] The fresh evidence root and source-derived fresh performance report are
+      linked explicitly.
 - [ ] Social posts link to the report repository, not to a moving local branch
       or private evidence path.
 - [ ] Links were opened from the final public post, not only from the editor.
@@ -85,7 +94,8 @@ enough; preview the exact text that will be sent to the platform.
 
 - [ ] Every figure has descriptive alt text or an adjacent prose explanation.
 - [ ] Color is not the only encoding for wins, non-wins, or evidence states.
-- [ ] The materialized payload is archived with a SHA-256 digest.
+- [ ] The materialized payload is archived with a SHA-256 digest and passes
+      the publication-state scan.
 - [ ] Publication time, public URL, platform, source commit, and operator are
       recorded.
 - [ ] A screenshot or PDF capture exists for later correction audits.

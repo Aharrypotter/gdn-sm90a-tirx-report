@@ -84,11 +84,17 @@ def _seal(root: Path, payloads: dict[str, Any]) -> None:
 
 
 class FixtureRepository:
-    def __init__(self, *, expected_public_tag: str = "gdn-sm90a-local-test") -> None:
+    def __init__(
+        self,
+        *,
+        expected_public_tag: str = "gdn-sm90a-local-test",
+        stale_publication_state: bool = False,
+    ) -> None:
         self.temporary = tempfile.TemporaryDirectory(prefix="gdn-release-fixture-")
         self.root = Path(self.temporary.name)
         self.tag = "gdn-sm90a-local-test"
         self.expected_public_tag = expected_public_tag
+        self.stale_publication_state = stale_publication_state
         self._create()
 
     def close(self) -> None:
@@ -100,7 +106,10 @@ class FixtureRepository:
         _run(self.root, "git", "config", "user.email", "fixture@example.invalid")
         (self.root / "LICENSE").write_text("fixture license\n")
         (self.root / "dist/content").mkdir(parents=True)
-        (self.root / "dist/content/post.md").write_text("# Fixture content\n")
+        publication_content = "# Fixture content\n"
+        if self.stale_publication_state:
+            publication_content += "A fresh public-tag rerun is pending, not complete.\n"
+        (self.root / "dist/content/post.md").write_text(publication_content)
         (self.root / "reports").mkdir()
         (self.root / "reports/performance.md").write_text("# Fixture report\n")
 
@@ -353,6 +362,19 @@ class ReleaseAssetsTest(unittest.TestCase):
             [entry["kind"] for entry in result["evidence_verifier_results"]],
             ["historical", "fresh"],
         )
+        self.assertEqual(result["publication_state_scan"]["status"], "PASS")
+
+    def test_stale_publication_state_is_rejected_from_content_asset(self) -> None:
+        fixture = FixtureRepository(stale_publication_state=True)
+        try:
+            with self.assertRaisesRegex(
+                builder.ReleaseAssetError,
+                "obsolete pre-rerun guidance",
+            ):
+                fixture.build("stale-assets")
+            self.assertFalse((fixture.root / "stale-assets").exists())
+        finally:
+            fixture.close()
 
     def test_lightweight_tag_is_rejected(self) -> None:
         _run(self.fixture.root, "git", "tag", "fixture-lightweight")
@@ -403,6 +425,7 @@ class ReleaseAssetsTest(unittest.TestCase):
             "tag_name": self.fixture.tag,
             "draft": mode == "draft",
             "prerelease": False,
+            "published_at": "2026-07-29T00:00:00Z",
             "name": contract["release"]["title"],
             "body": notes,
             "html_url": (f"https://github.com/fixture/report/releases/tag/{self.fixture.tag}"),
@@ -440,6 +463,7 @@ class ReleaseAssetsTest(unittest.TestCase):
             f"repos/apache/tvm/pulls?{encoded_pr_query}": [],
         }
         if mode == "public":
+            json_values["repos/fixture/report/releases/latest"] = report_release
             for keyword in ("gdn", "sm90"):
                 search = urlencode(
                     {
@@ -474,6 +498,10 @@ class ReleaseAssetsTest(unittest.TestCase):
         )
         self.assertEqual(public["status"], "PASS")
         self.assertTrue(public["anonymous_release_page"])
+        self.assertEqual(
+            public["latest_release"],
+            {"tag": self.fixture.tag, "release_id": 1, "status": "PASS"},
+        )
         self.assertTrue(all(asset["anonymous_download"] for asset in public["downloaded_assets"]))
         self.assertEqual(
             public["upstream_pr_audit"][0]["keyword_checks"],
@@ -499,6 +527,56 @@ class ReleaseAssetsTest(unittest.TestCase):
             all(not asset["anonymous_download"] for asset in draft["downloaded_assets"])
         )
         self.assertEqual(draft["upstream_pr_audit"][0]["keyword_checks"], [])
+
+    def test_superseded_release_lock_is_anonymously_reaudited(self) -> None:
+        identity = builder.load_tag_identity(self.fixture.root, self.fixture.tag)
+        notes = (self.fixture.root / "releases/notes.md").read_text()
+        asset_lock = [
+            {
+                "name": path.name,
+                "size_bytes": path.stat().st_size,
+                "sha256": builder.sha256_file(path),
+            }
+            for path in sorted(self.assets_a.iterdir())
+        ]
+        record = {
+            "schema": "gdn-sm90a.report-release-supersession.v1",
+            "status": "SUPERSEDED_FOR_PUBLICATION_GUIDANCE",
+            "superseded_release": {
+                "repository": "fixture/report",
+                "tag": self.fixture.tag,
+                "tag_object": identity.tag_object,
+                "commit": identity.commit,
+                "tree": identity.tree,
+                "release_id": 1,
+                "release_url": (
+                    f"https://github.com/fixture/report/releases/tag/{self.fixture.tag}"
+                ),
+                "published_at_utc": "2026-07-29T00:00:00Z",
+                "retention": "PUBLIC_UNMODIFIED_AUDIT_RECORD",
+            },
+            "asset_lock": asset_lock,
+            "mutation_policy": {
+                "edit_r1_release_body": False,
+                "move_or_delete_r1_tag": False,
+                "replace_or_delete_r1_assets": False,
+            },
+            "validity": {
+                "evidence_integrity": "VALID_UNCHANGED",
+                "performance_facts": "VALID_UNCHANGED",
+                "publication_guidance": "SUPERSEDED",
+                "runtime_source": "VALID_UNCHANGED",
+                "source_provenance": "VALID_UNCHANGED",
+            },
+        }
+        result = auditor._audit_superseded_release_lock(
+            self._fake_client(mode="public"),
+            record=record,
+            expected_body=notes,
+        )
+        self.assertEqual(result["status"], "PASS")
+        self.assertEqual(result["body"], "EXACT_MATCH")
+        self.assertTrue(all(asset["anonymous_download"] for asset in result["downloaded_assets"]))
 
     def test_upstream_branch_pr_is_fail_closed(self) -> None:
         query = urlencode(

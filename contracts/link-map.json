@@ -7,28 +7,28 @@
     },
     "report_tag": {
       "kind": "immutable_tag",
-      "tag": "gdn-sm90a-r1",
-      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/tree/gdn-sm90a-r1"
+      "tag": "gdn-sm90a-r2",
+      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/tree/gdn-sm90a-r2"
     },
     "report_release": {
       "kind": "release",
-      "tag": "gdn-sm90a-r1",
-      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/releases/tag/gdn-sm90a-r1"
+      "tag": "gdn-sm90a-r2",
+      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/releases/tag/gdn-sm90a-r2"
     },
     "historical_evidence": {
       "kind": "repository_path",
-      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/tree/gdn-sm90a-r1/evidence/historical/gdn-sm90a-h20-20260728-v1"
+      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/tree/gdn-sm90a-r2/evidence/historical/gdn-sm90a-h20-20260728-v1"
     },
     "fresh_evidence": {
       "kind": "repository_path",
       "evidence_kind": "fresh-public-tag-h20-rerun",
       "decision_status": "CHARACTERIZATION",
       "manifest_sha256": "d20b748ac54a3e14786d957353e3f85bee2566ceb913adc8679b8e660d2f282d",
-      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/tree/gdn-sm90a-r1/evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1"
+      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/tree/gdn-sm90a-r2/evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1"
     },
     "fresh_performance_report": {
       "kind": "repository_path",
-      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/blob/gdn-sm90a-r1/reports/fresh-public-tag-performance.md"
+      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/blob/gdn-sm90a-r2/reports/fresh-public-tag-performance.md"
     },
     "tvm_compiler": {
       "kind": "immutable_tag",
@@ -71,6 +71,18 @@
       "tree": "48f8e4688e5cae8c0aedef6171dc38675b9c3c84",
       "status": "SUPERSEDED_BEFORE_RELEASE",
       "reason": "The tag-event checkout dereferenced the annotated tag object, so the required tag-object-only asset CI correctly failed. The tag remains immutable and has no GitHub release; r1 restores the exact tag object before building."
+    },
+    "gdn-sm90a-r1": {
+      "tag": "gdn-sm90a-r1",
+      "tag_object": "fca41983444d9fdc66651034f7269ebaaba219fb",
+      "peeled_commit": "08c92c76d7c644a3caa1929d6cd8cac8bbb91595",
+      "tree": "22297bfb13c0778ab03f6b9882fff173ec89752d",
+      "release_url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/releases/tag/gdn-sm90a-r1",
+      "publication_content_sha256": "0316cfb489c78520bd84815668f4e715d281d8d6ce5bb670d597d680609249f2",
+      "status": "SUPERSEDED_FOR_PUBLICATION_GUIDANCE",
+      "superseded_by": "gdn-sm90a-r2",
+      "supersession_record": "releases/gdn-sm90a-r1-supersession.json",
+      "reason": "The r1 evidence, runtime, provenance, and performance facts remain valid, but its publication guidance and architecture figure retained obsolete pre-rerun state wording. Use r2 for new platform publication."
     },
     "gdn2-sm90a-comparator-r0": {
       "tag": "gdn2-sm90a-comparator-r0",

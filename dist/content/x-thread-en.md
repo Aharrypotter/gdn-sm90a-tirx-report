@@ -94,7 +94,7 @@ The CuTeDSL comparator is gdn-sm90a-comparator-r1 at 88737e9d906cf313995a0926246
 Corrected CuTeDSL source:
 https://github.com/Aharrypotter/cuLA/tree/gdn-sm90a-comparator-r1
 
-The public package status is HISTORICAL_EVIDENCE_BOUND; unofficial-personal-fork is true and upstream-merge is false.
+The historical package status is HISTORICAL_EVIDENCE_BOUND; unofficial-personal-fork is true and upstream-merge is false.
 
 ## 16
 
@@ -103,4 +103,4 @@ Exact public tags, H20 6 rows: 66 bundle-derived receipts; CHARACTERIZATION; TIR
 ## 17
 
 Fresh source-derived report:
-https://github.com/Aharrypotter/gdn-sm90a-tirx-report/blob/gdn-sm90a-r1/reports/fresh-public-tag-performance.md
+https://github.com/Aharrypotter/gdn-sm90a-tirx-report/blob/gdn-sm90a-r2/reports/fresh-public-tag-performance.md
