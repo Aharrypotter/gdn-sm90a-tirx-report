@@ -502,8 +502,10 @@ def validate_guidance_supersession(root: Path) -> list[str]:
     superseded = value.get("superseded_release", {})
     expected_superseded = {
         "commit": "08c92c76d7c644a3caa1929d6cd8cac8bbb91595",
+        "created_at_utc": "2026-07-29T09:28:56Z",
         "published_at_utc": "2026-07-29T09:32:17Z",
         "release_id": 361635172,
+        "release_name": "GDN SM90a / TIRx public evidence r1",
         "release_url": (
             "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/releases/tag/gdn-sm90a-r1"
         ),
@@ -516,38 +518,120 @@ def validate_guidance_supersession(root: Path) -> list[str]:
         ),
         "tag_object": "fca41983444d9fdc66651034f7269ebaaba219fb",
         "tree": "22297bfb13c0778ab03f6b9882fff173ec89752d",
+        "updated_at_utc": "2026-07-29T09:32:17Z",
     }
     if superseded != expected_superseded:
         errors.append("r1 superseded release identity drifted")
     expected_assets = [
         {
+            "asset_id": 493857116,
+            "browser_download_url": (
+                "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/releases/"
+                "download/gdn-sm90a-r1/SHA256SUMS"
+            ),
+            "content_type": "application/octet-stream",
+            "created_at_utc": "2026-07-29T09:30:35Z",
+            "label": "SHA256SUMS",
             "name": "SHA256SUMS",
             "sha256": "3894be61df219ead2f857629eb12892c28cd8985e0577bda99753e7b80da8ca8",
             "size_bytes": 393,
+            "state": "uploaded",
+            "updated_at_utc": "2026-07-29T09:30:35Z",
+            "uploader": "Aharrypotter",
         },
         {
+            "asset_id": 493857115,
+            "browser_download_url": (
+                "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/releases/"
+                "download/gdn-sm90a-r1/gdn-sm90a-r1-public-evidence.tar"
+            ),
+            "content_type": "application/x-tar",
+            "created_at_utc": "2026-07-29T09:30:35Z",
+            "label": "gdn-sm90a-r1-public-evidence.tar",
             "name": "gdn-sm90a-r1-public-evidence.tar",
             "sha256": "a722d540fedc7eb37845fe52f1d45bf7493d0201aac81831a73903725c5874e0",
             "size_bytes": 1740800,
+            "state": "uploaded",
+            "updated_at_utc": "2026-07-29T09:30:36Z",
+            "uploader": "Aharrypotter",
         },
         {
+            "asset_id": 493857118,
+            "browser_download_url": (
+                "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/releases/"
+                "download/gdn-sm90a-r1/gdn-sm90a-r1-publication-content.zip"
+            ),
+            "content_type": "application/zip",
+            "created_at_utc": "2026-07-29T09:30:35Z",
+            "label": "gdn-sm90a-r1-publication-content.zip",
             "name": "gdn-sm90a-r1-publication-content.zip",
             "sha256": "0316cfb489c78520bd84815668f4e715d281d8d6ce5bb670d597d680609249f2",
             "size_bytes": 1159648,
+            "state": "uploaded",
+            "updated_at_utc": "2026-07-29T09:30:36Z",
+            "uploader": "Aharrypotter",
         },
         {
+            "asset_id": 493857114,
+            "browser_download_url": (
+                "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/releases/"
+                "download/gdn-sm90a-r1/gdn-sm90a-r1-release-manifest.json"
+            ),
+            "content_type": "application/json",
+            "created_at_utc": "2026-07-29T09:30:35Z",
+            "label": "gdn-sm90a-r1-release-manifest.json",
             "name": "gdn-sm90a-r1-release-manifest.json",
             "sha256": "80f3cbaa27e9fa35ba4db6927593497f233e68ae2ff6a93dfdc417080f383671",
             "size_bytes": 6641,
+            "state": "uploaded",
+            "updated_at_utc": "2026-07-29T09:30:35Z",
+            "uploader": "Aharrypotter",
         },
         {
+            "asset_id": 493857112,
+            "browser_download_url": (
+                "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/releases/"
+                "download/gdn-sm90a-r1/gdn-sm90a-r1-source.tar"
+            ),
+            "content_type": "application/x-tar",
+            "created_at_utc": "2026-07-29T09:30:35Z",
+            "label": "gdn-sm90a-r1-source.tar",
             "name": "gdn-sm90a-r1-source.tar",
             "sha256": "e26ad2906d5252d8dfaf6fcf54b08d5e615cf8234b75a56d58dc5df161537c26",
             "size_bytes": 3092480,
+            "state": "uploaded",
+            "updated_at_utc": "2026-07-29T09:30:37Z",
+            "uploader": "Aharrypotter",
         },
     ]
     if value.get("asset_lock") != expected_assets:
         errors.append("r1 supersession asset lock drifted")
+    if value.get("body_lock") != {
+        "canonical_sha256": ("0d17b42eb621ab062164c3dab42ce65c5a731daab6fb86006b8db16a22250683"),
+        "canonical_size_bytes": 3048,
+        "source_path_at_r1": "releases/gdn-sm90a-r1.md",
+    }:
+        errors.append("r1 supersession release body lock drifted")
+    r1_body = (root / "releases/gdn-sm90a-r1.md").read_bytes()
+    if len(r1_body) != 3048 or hashlib.sha256(r1_body).hexdigest() != (
+        "0d17b42eb621ab062164c3dab42ce65c5a731daab6fb86006b8db16a22250683"
+    ):
+        errors.append("embedded r1 release body differs from its frozen digest")
+    if value.get("tag_ci_lock") != {
+        "conclusion": "success",
+        "created_at_utc": "2026-07-29T09:29:29Z",
+        "event": "push",
+        "head_branch": "gdn-sm90a-r1",
+        "head_sha": "08c92c76d7c644a3caa1929d6cd8cac8bbb91595",
+        "name": "Verify public report",
+        "run_id": 30439842047,
+        "run_started_at_utc": "2026-07-29T09:29:29Z",
+        "status": "completed",
+        "updated_at_utc": "2026-07-29T09:30:06Z",
+        "url": ("https://github.com/Aharrypotter/gdn-sm90a-tirx-report/actions/runs/30439842047"),
+        "workflow_id": 322751509,
+    }:
+        errors.append("r1 supersession tag CI lock drifted")
     if value.get("validity") != {
         "evidence_integrity": "VALID_UNCHANGED",
         "performance_facts": "VALID_UNCHANGED",
