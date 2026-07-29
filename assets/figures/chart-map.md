@@ -2,7 +2,7 @@
 
 All quantitative values are rendered from
 `evidence/historical/gdn-sm90a-h20-20260728-v1/results/performance.json`.
-The rendering surface is deterministic static SVG plus PNG.  The public
+The rendering surface is deterministic static SVG plus sealed PNG.  The public
 evidence class is `HISTORICAL_EVIDENCE_BOUND`; none of these figures represents
 a fresh rerun from the public tags.
 
@@ -77,8 +77,9 @@ a fresh rerun from the public tags.
 ## Shared export QA
 
 - Renderer fixes figure size, DPI, fonts, palette, SVG hash salt, and metadata.
-- `scripts/render_figures.py --check` regenerates in a temporary directory and
-  byte-compares all six assets.
+- `scripts/render_figures.py --check` regenerates in a temporary directory,
+  byte-compares the three SVGs, verifies frozen SHA256 seals for all six
+  checked-in assets, and structurally validates the regenerated PNGs.
 - PNG dimensions are 2240×1360.  SVG view boxes are at least 1000×600 points.
 - SVGs contain no external image/font/script references; internal fragment
   references are allowed.
@@ -89,8 +90,11 @@ a fresh rerun from the public tags.
 
 ## Final QA status
 
-- **Automated render and byte-for-byte regeneration:** PASS.
-- **PNG size and SVG reference/privacy scan:** PASS.
+- **Automated SVG byte-for-byte regeneration:** PASS.
+- **Checked-in SVG/PNG SHA256 seals:** PASS.
+- **Cross-platform PNG signature, dimensions, privacy, and structural
+  regeneration:** PASS. PNG raster bytes are not compared across operating
+  systems because the native font/raster stack is platform-dependent.
 - **Local visual inspection (2026-07-29):** PASS.  Titles, subtitles, legends,
   long row labels, direct values, and footnotes are not clipped.  The latency
   chart preserves a zero baseline; hatch patterns distinguish all three

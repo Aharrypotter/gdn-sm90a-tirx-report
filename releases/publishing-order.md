@@ -76,7 +76,7 @@ are represented by `{{claim:Cxx:language}}` tokens.
    ```
 
 The source templates remain tokenized in Git. The materialized payloads are
-checked in as deterministic release artifacts and must remain byte-identical
+checked in as sealed release artifacts and must remain byte-identical
 to the materializer output.
 
 ## Gate 3 — Publish discovery and long-form channels
