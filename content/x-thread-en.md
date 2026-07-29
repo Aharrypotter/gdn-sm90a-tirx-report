@@ -103,18 +103,9 @@ https://github.com/Aharrypotter/cuLA/tree/gdn-sm90a-comparator-r1
 
 ## 16
 
-A fresh public-tag rerun is still pending. The historical bundle is immutable
-and will not be relabeled as fresh reproduction.
-
-TVM:
-https://github.com/Aharrypotter/tvm/tree/gdn-sm90a-compiler-r0
+{{claim:C12:en}}
 
 ## 17
 
-TIRx kernel:
-https://github.com/Aharrypotter/tirx-kernels/tree/gdn-sm90a-kernel-r0
-
-Report:
-https://github.com/Aharrypotter/gdn-sm90a-tirx-report
-
-No upstream merge or endorsement is claimed.
+Fresh source-derived report:
+https://github.com/Aharrypotter/gdn-sm90a-tirx-report/blob/gdn-sm90a-r0/reports/fresh-public-tag-performance.md

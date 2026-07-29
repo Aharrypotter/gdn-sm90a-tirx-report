@@ -98,18 +98,9 @@ The public package status is HISTORICAL_EVIDENCE_BOUND; unofficial-personal-fork
 
 ## 16
 
-A fresh public-tag rerun is still pending. The historical bundle is immutable
-and will not be relabeled as fresh reproduction.
-
-TVM:
-https://github.com/Aharrypotter/tvm/tree/gdn-sm90a-compiler-r0
+Exact public tags, H20 6 rows: 66 bundle-derived receipts; CHARACTERIZATION; TIRx/CuTeDSL 0.834812, TIRx/FLA 0.453700, packed-n10 base-three-process 1.017445. Does not reproduce historical host-sync/sanitizer/full codegen/resource reseals. Unofficial forks; no upstream merge.
 
 ## 17
 
-TIRx kernel:
-https://github.com/Aharrypotter/tirx-kernels/tree/gdn-sm90a-kernel-r0
-
-Report:
-https://github.com/Aharrypotter/gdn-sm90a-tirx-report
-
-No upstream merge or endorsement is claimed.
+Fresh source-derived report:
+https://github.com/Aharrypotter/gdn-sm90a-tirx-report/blob/gdn-sm90a-r0/reports/fresh-public-tag-performance.md

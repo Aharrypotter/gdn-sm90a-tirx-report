@@ -119,13 +119,17 @@ CuTeDSL 对照实现绑定到 88737e9d906cf313995a092624656a89d74dd65e 上的 gd
 
 这是一个典型的 evidence lesson：名字看起来接近，不等于 source identity 相同。Benchmark 的对照身份必须从 receipt 回溯到 callable 与 commit，不能凭目录名或开发历史猜测。
 
-## 八、为什么现在仍然标记为 historical
+## 八、historical 与 fresh 必须分开
 
 公开包状态为 HISTORICAL_EVIDENCE_BOUND；unofficial-personal-fork 为 true，upstream-merge 为 false。
 
 当前公开 bundle 来自一个不可变的历史 release seal。脱敏过程按字段 allowlist 重建，不复制原始日志再做正则替换；公开包保留数值样本与紧凑验证摘要，但不暴露 host、container、GPU UUID、SSH alias、文件路径、PID 或 profiler artifact。
 
-公开 compiler/kernel/comparator tags 是在历史 seal 之后发布的。因此，它们与历史 source 做了明确映射，但还不能称为“从 public tags 独立复现”。下一步必须从这些 tags 构建，在 H20 上重跑同一冻结矩阵和验证门禁，并发布一个新的、独立封存的 fresh evidence root。
+这份历史证据不会被改名或覆盖。精确 public tags/commit 的执行已作为另一份加性 evidence root 单独封存：
+
+精确 public tags 的 H20 6 行表征：bundle 派生 66 receipts，CHARACTERIZATION；TIRx/CuTeDSL 0.834812、TIRx/FLA 0.453700、packed-n10 基础三进程 1.017445。未复现历史 host-sync/sanitizer/完整 codegen/resource reseal；非官方 fork，无 upstream merge。
+
+[Fresh performance report](../../reports/fresh-public-tag-performance.md)只把 fresh 结论绑定到 source/build/runtime identity、独立进程、物理 H20、receipt correctness 与六行 timing。历史 host-sync、sanitizer 和完整 codegen/resource gate 没有被挪用为 fresh 证据。
 
 ## 九、代码与证据
 
@@ -134,5 +138,6 @@ CuTeDSL 对照实现绑定到 88737e9d906cf313995a092624656a89d74dd65e 上的 gd
 - [TIRx GDN kernel tag](https://github.com/Aharrypotter/tirx-kernels/tree/gdn-sm90a-kernel-r0)
 - [修正后的 CuTeDSL comparator tag](https://github.com/Aharrypotter/cuLA/tree/gdn-sm90a-comparator-r1)
 - [FLA comparator commit](https://github.com/fla-org/flash-linear-attention/commit/d1ce07369d581813553f30a750af3b6b5f9af6a9)
+- [Fresh public-tag evidence](../../evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1)
 
 这些都是非官方个人 fork 产物，没有 upstream merge 或 endorsement。对我来说，这项工作的价值也不在于提前宣称上游状态，而在于把编译器能力、kernel 产品路径与可审计证据真正闭环。

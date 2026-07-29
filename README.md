@@ -13,8 +13,16 @@ unofficial personal-fork experiment:
 The first evidence bundle is deliberately labelled
 `HISTORICAL_EVIDENCE_BOUND`.  It is a deterministic, privacy-safe derivation
 from an immutable 380-file release seal, but it is **not** represented as an
-independent rerun from the newly published Git tags.  A fresh public-tag rerun
-has its own gate and will be published separately.
+independent rerun from the newly published Git tags. It remains immutable.
+
+A second, additive bundle now records the separately sealed public-tag run:
+
+Exact public tags, H20 6 rows: 66 bundle-derived receipts; CHARACTERIZATION; TIRx/CuTeDSL 0.834812, TIRx/FLA 0.453700, packed-n10 base-three-process 1.017445. Does not reproduce historical host-sync/sanitizer/full codegen/resource reseals. Unofficial forks; no upstream merge.
+
+See the
+[fresh evidence root](evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1/)
+and its
+[source-derived performance report](reports/fresh-public-tag-performance.md).
 
 ## Frozen source coordinates
 
@@ -31,7 +39,7 @@ evidence for this report: every historical CuTeDSL receipt names
 `cula.gdn.prefill.chunk_gated_delta_rule`, which is exactly bound by the
 corrected `gdn-sm90a-comparator-r1` tag.
 
-## Claim boundary
+## Historical claim boundary
 
 The measured scope is six BF16, head-dimension-128 GDN prefill rows on one
 NVIDIA H20 target.  Five rows are faster than the frozen CuTeDSL comparator;
@@ -41,6 +49,10 @@ end-to-end model throughput.
 
 Repository navigation, exact commands, reports, figures, and publication
 drafts are available below.
+
+The fresh public-tag result is a separate `CHARACTERIZATION`. Its receipt
+count and ratios are derived only from the fresh bundle and are never merged
+with the historical aggregate.
 
 ## Read the release
 
@@ -54,6 +66,7 @@ drafts are available below.
 - [Limitations](docs/limitations.md)
 - [Reproduction guide](reproduce/README.md)
 - [Generated historical performance report](reports/historical-performance.md)
+- [Fresh public-tag performance report](reports/fresh-public-tag-performance.md)
 
 ![Median operator latency across six frozen GDN rows](assets/figures/latency_by_row.png)
 
@@ -77,9 +90,16 @@ python3 reproduce/checkout_public_sources.py --help
 python3 -m reproduce.benchmark.contract --help
 ```
 
-The fresh H20 run is deliberately a separate evidence root. Until that run is
-complete and sealed, the performance package in this commit remains
-`HISTORICAL_EVIDENCE_BOUND`.
+The fresh H20 run is deliberately a separate evidence root. Verify it without
+trusting the producer:
+
+```bash
+python3 -m reproduce.fresh_evidence.verify \
+  --bundle evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1
+```
+
+This does not promote or relabel the historical
+`HISTORICAL_EVIDENCE_BOUND` package.
 
 ## Publication package
 

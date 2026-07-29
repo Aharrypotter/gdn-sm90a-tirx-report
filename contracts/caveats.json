@@ -20,8 +20,8 @@
         "performance"
       ],
       "text": {
-        "en": "Every latency and ratio is resolved from results/performance.json; TIRx latency divided by comparator latency is reported, so lower is faster.",
-        "zh": "所有延迟和比值均从 results/performance.json 解析；报告的是 TIRx 延迟除以对照实现延迟，因此数值越低越快。"
+        "en": "Every latency and ratio is resolved from its evidence class's canonical performance.json; TIRx latency divided by comparator latency is reported, so lower is faster.",
+        "zh": "所有延迟和比值均从各自证据类别的 canonical performance.json 解析；报告的是 TIRx 延迟除以对照实现延迟，因此数值越低越快。"
       }
     },
     {

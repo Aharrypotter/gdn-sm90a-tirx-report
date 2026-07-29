@@ -27,6 +27,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -45,3 +47,20 @@ jobs:
         run: pre-commit run --all-files
       - name: Run deterministic verification
         run: make verify-all
+
+  release-assets:
+    if: startsWith(github.ref, 'refs/tags/gdn-sm90a-r')
+    needs: verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Build and independently verify deterministic release assets
+        run: >-
+          make release-assets verify-release-assets
+          RELEASE_TAG="${GITHUB_REF_NAME}"

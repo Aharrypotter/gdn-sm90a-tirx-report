@@ -1,0 +1,96 @@
+{
+  "contract_sha256": "6d6f93b4cfcd29b1a5cc9d7830306bfdec01606d550e252ce3b76ef748a6b130",
+  "locks": {
+    "cutedsl": {
+      "commit": "88737e9d906cf313995a092624656a89d74dd65e",
+      "repository": "https://github.com/Aharrypotter/cuLA",
+      "required_path": "cula/gdn/prefill.py",
+      "tag": "gdn-sm90a-comparator-r1",
+      "tag_object": "0e2c50a4f39b58811e234466682a62f8926998c4",
+      "tree": "aa01d1a169b72dedd582f86fc9b257e9e2776344"
+    },
+    "fla": {
+      "commit": "d1ce07369d581813553f30a750af3b6b5f9af6a9",
+      "repository": "https://github.com/fla-org/flash-linear-attention",
+      "required_path": "fla/ops/gated_delta_rule/chunk.py",
+      "tree": "e5ea97e3041c3e4dd0bf6974c2259f7ed104ddc2"
+    },
+    "tirx": {
+      "commit": "12ce3721f7c62c5fbd911103ae373de689e58385",
+      "repository": "https://github.com/Aharrypotter/tirx-kernels",
+      "required_path": "tirx_kernels/attention/gdn_sm90.py",
+      "runtime_commit": "90c9c62c84ecc452dd86602f0ea49a625845045c",
+      "tag": "gdn-sm90a-kernel-r0",
+      "tag_object": "f233dcbfc314415b9af496e3fd855554d81d662c",
+      "tree": "cc04daa65ff52014348c8e078721e9afb017467a"
+    },
+    "tvm": {
+      "commit": "acb1312de80b39340e09b0aaad818ff029e745d6",
+      "repository": "https://github.com/Aharrypotter/tvm",
+      "required_path": "python/tvm/__init__.py",
+      "tag": "gdn-sm90a-compiler-r0",
+      "tag_object": "18e2172e54aefcba7e11f3e62fa8bfa137b480d4",
+      "tree": "d7989ef4a8621448755da21bd1dec8b5d6c18a1b"
+    }
+  },
+  "observed": {
+    "cutedsl": {
+      "clean_checkout": true,
+      "head": "88737e9d906cf313995a092624656a89d74dd65e",
+      "peeled_commit": "88737e9d906cf313995a092624656a89d74dd65e",
+      "required_path": "cula/gdn/prefill.py",
+      "runtime_commit": null,
+      "source": "cutedsl",
+      "tag": "gdn-sm90a-comparator-r1",
+      "tag_object": "0e2c50a4f39b58811e234466682a62f8926998c4",
+      "tracked_clean": true,
+      "tree": "aa01d1a169b72dedd582f86fc9b257e9e2776344"
+    },
+    "fla": {
+      "clean_checkout": true,
+      "head": "d1ce07369d581813553f30a750af3b6b5f9af6a9",
+      "peeled_commit": null,
+      "required_path": "fla/ops/gated_delta_rule/chunk.py",
+      "runtime_commit": null,
+      "source": "fla",
+      "tag": null,
+      "tag_object": null,
+      "tracked_clean": true,
+      "tree": "e5ea97e3041c3e4dd0bf6974c2259f7ed104ddc2"
+    },
+    "tirx": {
+      "clean_checkout": true,
+      "head": "12ce3721f7c62c5fbd911103ae373de689e58385",
+      "peeled_commit": "12ce3721f7c62c5fbd911103ae373de689e58385",
+      "required_path": "tirx_kernels/attention/gdn_sm90.py",
+      "runtime_commit": "90c9c62c84ecc452dd86602f0ea49a625845045c",
+      "source": "tirx",
+      "tag": "gdn-sm90a-kernel-r0",
+      "tag_object": "f233dcbfc314415b9af496e3fd855554d81d662c",
+      "tracked_clean": true,
+      "tree": "cc04daa65ff52014348c8e078721e9afb017467a"
+    },
+    "tvm": {
+      "clean_checkout": true,
+      "head": "acb1312de80b39340e09b0aaad818ff029e745d6",
+      "peeled_commit": "acb1312de80b39340e09b0aaad818ff029e745d6",
+      "required_path": "python/tvm/__init__.py",
+      "runtime_commit": null,
+      "source": "tvm",
+      "tag": "gdn-sm90a-compiler-r0",
+      "tag_object": "18e2172e54aefcba7e11f3e62fa8bfa137b480d4",
+      "tracked_clean": true,
+      "tree": "d7989ef4a8621448755da21bd1dec8b5d6c18a1b"
+    }
+  },
+  "report": {
+    "clean_checkout": true,
+    "head": "d2f24f1503109463a941e7ead1f5fecb93c31fc4",
+    "repository": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report",
+    "tree": "f2484634af648b94bc55d0e180c45543686fc15c"
+  },
+  "report_attestation_sha256": "c7ffd7619eb2daf12e28a1a0c90d02425470b8d0dabf3181c58e4cd2dd56033f",
+  "report_repository": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report",
+  "schema": "gdn-sm90a.public-source-lock.v1",
+  "source_attestation_sha256": "62c394e8bc9a5bf3636091386e12628ee133c2ce2a6b3093023632ef55d2c699"
+}

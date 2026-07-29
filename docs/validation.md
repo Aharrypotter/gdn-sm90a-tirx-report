@@ -10,9 +10,10 @@ Two uses of “fresh” must not be conflated:
 - The historical A46-S3 release ran a fresh full canonical timing matrix for
   its sealed final source.  It did not inherit its full performance conclusion
   from an older codegen baseline.
-- The public tags were created after that seal.  The current public bundle is
-  therefore `HISTORICAL_EVIDENCE_BOUND` and still requires a fresh 66-receipt
-  rerun from the public tags.
+- The public tags were created after that seal. The original public bundle
+  therefore remains `HISTORICAL_EVIDENCE_BOUND`.
+- A separate public-tag H20 bundle now carries a six-row
+  `CHARACTERIZATION`; it does not retroactively change the historical class.
 
 The machine decision is
 [`results/release-decision.json`](../evidence/historical/gdn-sm90a-h20-20260728-v1/results/release-decision.json).
@@ -83,16 +84,16 @@ Consequently timing inheritance was ineligible and the historical campaign ran
 the full canonical matrix.  This distinction is recorded in
 [`results/codegen-resources.json`](../evidence/historical/gdn-sm90a-h20-20260728-v1/results/codegen-resources.json).
 
-## What is not yet validated
+## Fresh public-tag validation boundary
 
-The current repository does not yet contain a fresh public-tag execution
-bundle.  Until that rerun is published, historical results must not be
-described as independently reproduced from:
+The additive
+[`fresh bundle`](../evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1/)
+verifies exact source/build/runtime identities, physical H20 binding,
+fresh-process launch identity, receipt correctness, and six-row public-call
+timing. Its receipt count is derived from the bundle's observed process
+membership and escalation policy.
 
-- TVM `gdn-sm90a-compiler-r0`;
-- tirx-kernels `gdn-sm90a-kernel-r0`;
-- corrected CuTeDSL comparator `gdn-sm90a-comparator-r1`;
-- FLA commit `d1ce07369d581813553f30a750af3b6b5f9af6a9`.
-
-The historical bundle remains valid evidence for the sealed run, and its
-source mapping is explicit, but its provenance class must not be promoted.
+It does not reproduce the historical dispatcher-visible host-sync audit,
+Compute Sanitizer attempts, or complete codegen/resource reseal. Those gates
+remain historical-only. The fresh decision is `CHARACTERIZATION`, not a new
+`RELEASE_READY` decision, upstream merge, or official release.

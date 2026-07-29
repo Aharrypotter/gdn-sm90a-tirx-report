@@ -1,8 +1,9 @@
 # Evidence provenance
 
-The public evidence is a deterministic, privacy-safe projection of an
-immutable historical release seal.  It is not a copied-and-regex-scrubbed log
-directory.
+The historical public evidence is a deterministic, privacy-safe projection of
+an immutable release seal. It is not a copied-and-regex-scrubbed log
+directory. A separately sealed fresh evidence root records the exact
+public-tag H20 timing characterization without changing the historical bundle.
 
 ## Provenance chain
 
@@ -99,10 +100,16 @@ tags does not retroactively turn it into a public-tag rerun.
 
 Accordingly:
 
-- current package status: `HISTORICAL_EVIDENCE_BOUND`;
-- fresh public-tag rerun status: `REQUIRED`;
-- required new evidence: a separately sealed 66-receipt run from the exact
-  public tags and FLA commit;
+- historical package status: `HISTORICAL_EVIDENCE_BOUND`;
+- fresh public-tag bundle status: `PASS`, decision `CHARACTERIZATION`;
+- fresh evidence:
+  [`gdn-sm90a-public-tags-h20-20260729-v1`](../evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1/);
+- fresh receipt count: derived from the sealed bundle and its escalation
+  policy, never copied from the historical result;
+- fresh scope: exact public source/build/runtime identity, physical H20
+  binding, fresh-process launches, receipt correctness, and six-row timing;
+- excluded from the fresh scope: the historical host-sync audit, Compute
+  Sanitizer gates, and full codegen/resource reseals;
 - immutable rule: never edit or relabel the historical bundle to represent
   fresh evidence.
 
@@ -118,3 +125,10 @@ python3 scripts/verify_public_evidence.py \
 The verifier checks manifest membership and hashes, receipt uniqueness and
 sample counts, summary and ratio re-derivation, forbidden private fields and
 patterns, comparator qualification, and the evidence-status boundary.
+
+Verify the independently sealed fresh bundle with:
+
+```bash
+python3 -m reproduce.fresh_evidence.verify \
+  --bundle evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1
+```

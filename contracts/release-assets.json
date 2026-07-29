@@ -1,0 +1,116 @@
+{
+  "checksum_filename": "SHA256SUMS",
+  "evidence": {
+    "fresh": {
+      "decision_status": "CHARACTERIZATION",
+      "evidence_class": "fresh-public-tag-h20-characterization",
+      "evidence_kind": "fresh-public-tag-h20-rerun",
+      "manifest_path": "evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1/manifest.json",
+      "path": "evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1",
+      "publication_path": "evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1/publication.json",
+      "required_status": "PASS",
+      "seal_path": "evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1/MANIFEST.sha256"
+    },
+    "historical": {
+      "evidence_class": "HISTORICAL_EVIDENCE_BOUND",
+      "manifest_path": "evidence/historical/gdn-sm90a-h20-20260728-v1/manifest.json",
+      "path": "evidence/historical/gdn-sm90a-h20-20260728-v1",
+      "publication_path": "evidence/historical/gdn-sm90a-h20-20260728-v1/PUBLICATION.json",
+      "required_status": "HISTORICAL_EVIDENCE_BOUND",
+      "seal_path": "evidence/historical/gdn-sm90a-h20-20260728-v1/MANIFEST.sha256"
+    }
+  },
+  "packages": {
+    "content": {
+      "filename": "gdn-sm90a-r0-publication-content.zip",
+      "format": "zip",
+      "include": [
+        "CITATION.cff",
+        "LICENSE",
+        "NOTICE",
+        "README.md",
+        "assets/figures",
+        "contracts/caveats.json",
+        "contracts/claim-registry.json",
+        "contracts/link-map.json",
+        "dist/content",
+        "docs/limitations.md",
+        "releases",
+        "reports"
+      ],
+      "prefix": "gdn-sm90a-r0-publication-content"
+    },
+    "evidence": {
+      "filename": "gdn-sm90a-r0-public-evidence.tar",
+      "format": "tar",
+      "include": [
+        "LICENSE",
+        "Makefile",
+        "NOTICE",
+        "README.md",
+        "config/public-source-lock.json",
+        "contracts",
+        "docs",
+        "evidence",
+        "pyproject.toml",
+        "reports",
+        "reproduce",
+        "scripts/build_release_assets.py",
+        "scripts/verify_public_evidence.py",
+        "scripts/verify_release_assets.py"
+      ],
+      "prefix": "gdn-sm90a-r0-public-evidence"
+    },
+    "source": {
+      "filename": "gdn-sm90a-r0-source.tar",
+      "format": "tar",
+      "include": [
+        "**"
+      ],
+      "prefix": "gdn-sm90a-r0-source"
+    }
+  },
+  "release": {
+    "expected_public_tag": "gdn-sm90a-r0",
+    "notes_path": "releases/gdn-sm90a-r0.md",
+    "repository": "Aharrypotter/gdn-sm90a-tirx-report",
+    "tag_message_path": "releases/gdn-sm90a-r0-tag-message.txt",
+    "title": "GDN SM90a / TIRx public evidence r0"
+  },
+  "release_manifest_filename": "gdn-sm90a-r0-release-manifest.json",
+  "claim_registry_path": "contracts/claim-registry.json",
+  "required_claims": {
+    "C12": true
+  },
+  "schema": "gdn-sm90a.report-release-assets.v1",
+  "source_lock_path": "config/public-source-lock.json",
+  "source_links": [
+    {
+      "id": "tvm",
+      "kind": "annotated_tag_release",
+      "release_url": "https://github.com/Aharrypotter/tvm/releases/tag/gdn-sm90a-compiler-r0",
+      "repository": "Aharrypotter/tvm",
+      "url": "https://github.com/Aharrypotter/tvm/tree/gdn-sm90a-compiler-r0"
+    },
+    {
+      "id": "tirx_kernels",
+      "kind": "annotated_tag_release",
+      "release_url": "https://github.com/Aharrypotter/tirx-kernels/releases/tag/gdn-sm90a-kernel-r0",
+      "repository": "Aharrypotter/tirx-kernels",
+      "url": "https://github.com/Aharrypotter/tirx-kernels/tree/gdn-sm90a-kernel-r0"
+    },
+    {
+      "id": "cutedsl_comparator",
+      "kind": "annotated_tag_release",
+      "release_url": "https://github.com/Aharrypotter/cuLA/releases/tag/gdn-sm90a-comparator-r1",
+      "repository": "Aharrypotter/cuLA",
+      "url": "https://github.com/Aharrypotter/cuLA/tree/gdn-sm90a-comparator-r1"
+    },
+    {
+      "id": "fla",
+      "kind": "commit",
+      "repository": "fla-org/flash-linear-attention",
+      "url": "https://github.com/fla-org/flash-linear-attention/commit/d1ce07369d581813553f30a750af3b6b5f9af6a9"
+    }
+  ]
+}

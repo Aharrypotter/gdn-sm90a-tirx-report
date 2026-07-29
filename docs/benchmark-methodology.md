@@ -1,8 +1,8 @@
 # Benchmark methodology
 
-This document describes the frozen historical benchmark contract.  The
-current result is `HISTORICAL_EVIDENCE_BOUND`; it is not a fresh run from the
-public tags.
+This document describes the frozen benchmark contract shared by two distinct
+evidence classes: the original `HISTORICAL_EVIDENCE_BOUND` package and the
+separately sealed public-tag H20 `CHARACTERIZATION`.
 
 ## Implementations
 
@@ -84,6 +84,16 @@ The human-readable table is generated, never transcribed:
 Its sole numerical source is
 [`results/performance.json`](../evidence/historical/gdn-sm90a-h20-20260728-v1/results/performance.json);
 `scripts/render_performance_markdown.py --check` rejects a stale table.
+
+## Fresh public-tag characterization
+
+The additive
+[`fresh report`](../reports/fresh-public-tag-performance.md) is rendered from
+[`performance.json`](../evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1/performance.json).
+Its receipt count is derived from observed process membership: the base matrix
+has three processes per implementation and row, and the preregistered
+packed-n10 trigger may add four processes per implementation. Historical and
+fresh ratios are never combined into one aggregate.
 
 ## Claim boundary
 

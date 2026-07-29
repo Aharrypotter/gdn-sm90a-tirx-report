@@ -1,0 +1,56 @@
+{
+  "file_count": 10,
+  "files": [
+    {
+      "path": "publication.json",
+      "sha256": "f3b3d6e91ea40ba07e1e456af28cc6134eb4874b0fe4780629bf5d4209b86133",
+      "size_bytes": 1905
+    },
+    {
+      "path": "contract.json",
+      "sha256": "2a1348b9a64cde47427660ee5531bc28ac86a7ee4fc4fab45ce19b3d851507a4",
+      "size_bytes": 124728
+    },
+    {
+      "path": "source-lock.json",
+      "sha256": "02cebc12392c76bf1e854f017585b42a7843388403e696020a7ee7e549a55919",
+      "size_bytes": 3923
+    },
+    {
+      "path": "build-lock.json",
+      "sha256": "1fdacb60f6c4a5ae762002b97cefed174d715fb8d2234bdd32161b157e04d1f7",
+      "size_bytes": 116011
+    },
+    {
+      "path": "environment.json",
+      "sha256": "665eb3d39b4483c880f960c86cb5ab40a9c2232daaa6c42d317e1a245e385406",
+      "size_bytes": 439
+    },
+    {
+      "path": "oracle-manifest.json",
+      "sha256": "ec508676bc3a1ae8842df7302d6f41281e3847bc88a446b5692b4647365f0723",
+      "size_bytes": 2029
+    },
+    {
+      "path": "launches.jsonl",
+      "sha256": "8355ec2eb35fe5ff0e6917099c42a19f89fa660d4cbd1c44e118570ddcd2fd30",
+      "size_bytes": 43730
+    },
+    {
+      "path": "timing-receipts.jsonl",
+      "sha256": "b0570072c6a8ea5cc7c5172b5adb0b5138f556e24b2659a88dcfcd47b891e393",
+      "size_bytes": 449240
+    },
+    {
+      "path": "run-summary.json",
+      "sha256": "b4737319f2c10b5c57c0f79ac011fb48c133556e70d7bfd7dd583271b9849a71",
+      "size_bytes": 1090
+    },
+    {
+      "path": "performance.json",
+      "sha256": "fe4ddf215c43cd38457999b3899628b244010f7e6f07df5026a7ce4a440210dc",
+      "size_bytes": 7453
+    }
+  ],
+  "schema": "gdn-sm90a.public-evidence-manifest.v1"
+}

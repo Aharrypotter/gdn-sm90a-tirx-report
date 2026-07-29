@@ -101,13 +101,17 @@ Dispatch 不读取 device 侧 sequence boundary，不靠运行时试错，也没
 
 历史回执绑定的是 `cula.gdn` 的 callable。较早的 GDN2 标签指向不同实现，因此不能作为本报告 comparator。这个修正也提醒我：性能证据必须一路绑定到 commit、entrypoint、backend 和依赖版本，不能只记录一个模糊的库名。
 
-## 为什么现在还不能写“公开标签已复现”
+## 公开标签的 fresh characterization
 
 {{claim:C14:zh}}
 
-当前 evidence bundle 是从不可变历史 release seal 按字段 allowlist 派生的。它是可验证的历史证据，但新公开 tags 还没有作为一组 source coordinates 被独立重跑并重新封存。
+当前 historical evidence bundle 仍是从不可变历史 release seal 按字段 allowlist 派生的，不会被改名或覆盖。
 
-下一阶段会从公开 compiler、kernel、修正后的 comparator 和精确 FLA commit 构建，重跑冻结 workload、correctness、安全、codegen 与 timing，然后发布一个新的 fresh evidence root。历史 evidence 不会被覆盖，也不会被改名。
+另一份加性 evidence root 已从精确 public tags/commit 单独封存：
+
+{{claim:C12:zh}}
+
+它的[来源派生报告](../reports/fresh-public-tag-performance.md)只覆盖 source/build/runtime identity、独立进程、物理 H20、receipt correctness 和六行 timing。历史 host-sync、sanitizer 与完整 codegen/resource 证据没有被复制为 fresh 结论。
 
 ## 公开链接
 
@@ -116,6 +120,7 @@ Dispatch 不读取 device 侧 sequence boundary，不靠运行时试错，也没
 - [TIRx GDN kernel](https://github.com/Aharrypotter/tirx-kernels/tree/gdn-sm90a-kernel-r0)
 - [CuTeDSL GDN comparator](https://github.com/Aharrypotter/cuLA/tree/gdn-sm90a-comparator-r1)
 - [FLA comparator](https://github.com/fla-org/flash-linear-attention/commit/d1ce07369d581813553f30a750af3b6b5f9af6a9)
+- [Fresh public-tag evidence](../evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1/)
 
 这些代码和标签都是非官方个人 fork 产物，没有 upstream merge 或 endorsement。
 

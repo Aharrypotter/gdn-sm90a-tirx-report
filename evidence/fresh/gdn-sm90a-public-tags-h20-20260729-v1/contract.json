@@ -1,0 +1,3137 @@
+{
+  "claim_scope": "fresh public-tag H20 six-row characterization",
+  "contract_sha256": "6d6f93b4cfcd29b1a5cc9d7830306bfdec01606d550e252ce3b76ef748a6b130",
+  "correctness": {
+    "oracle": "CuTeDSL tensors generated from the same frozen seeded inputs",
+    "output_atol": 0.01,
+    "output_max_abs": 0.075,
+    "output_relative_rms": 0.15,
+    "output_rtol": 0.01,
+    "state_atol": 0.005,
+    "state_max_abs": 0.075,
+    "state_relative_rms": 0.15,
+    "state_rtol": 0.001
+  },
+  "cutedsl_dependency_attestation": {
+    "aggregate_sha256": "41bc70784cde0774308db6883d52e61cdeefe90bedd95631f9da64cee32c5506",
+    "entries": [
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl-4.5.1.dist-info/INSTALLER",
+        "sha256": "ceebae7b8927a3227e5303cf5e0f1f7b34bb542ad7250ac03fbcde36ec2f1508",
+        "size_bytes": 4,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl-4.5.1.dist-info/METADATA",
+        "sha256": "eb878c462595c8fb9c91f9b3cb360dc58d1f07abb109183e15677274de95c96c",
+        "size_bytes": 2764,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl-4.5.1.dist-info/RECORD",
+        "sha256": "42361fe04088db56e6046ea3e1c93393f5f2d9a9d9dab2c6836a3daba9cba26c",
+        "size_bytes": 653,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl-4.5.1.dist-info/REQUESTED",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl-4.5.1.dist-info/WHEEL",
+        "sha256": "69e6228a0d35958183cc1812f07c565ce837b95eb51bd8a33acba9fa4f68d6c9",
+        "size_bytes": 91,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl-4.5.1.dist-info/licenses/LICENSE",
+        "sha256": "9ed3a0344d6bf9f08420f268d8aa70f7e3930d248edc2cf1a8107a560b483433",
+        "size_bytes": 21683,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl-4.5.1.dist-info/top_level.txt",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "size_bytes": 1,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl.pth",
+        "sha256": "ca9b44371adda32f6ee6e3bf090becc1b87f1c4a5602f1db535e616bf3fdf4fb",
+        "size_bytes": 34,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/LICENSE",
+        "sha256": "9ed3a0344d6bf9f08420f268d8aa70f7e3930d248edc2cf1a8107a560b483433",
+        "size_bytes": 21683,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/include/CuteDSLRuntime.h",
+        "sha256": "ac8597baf0fb075e0769e06092879167cb58461e6dedbbacca040a12cc167cc3",
+        "size_bytes": 6524,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/lib/libcuda_dialect_runtime_static.a",
+        "sha256": "eac630e5735b62ccbdb264237d499172633d0c7e99240db149b88bccfb54b3e3",
+        "size_bytes": 15718,
+        "type": "file"
+      },
+      {
+        "executable": true,
+        "path": "nvidia_cutlass_dsl/lib/libcute_dsl_runtime.so",
+        "sha256": "7b50763f72b058d348885b40b9b2e99d1b7181b7df51ec65c90fd07387ecebf4",
+        "size_bytes": 37288696,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/__init__.py",
+        "sha256": "1d11f5300b8ff4ffe516c47b93940e46c6572515a0d45035375c1c47441abdd3",
+        "size_bytes": 2097,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/_mlir_libs/__init__.py",
+        "sha256": "0ba77c327f1d0002c6c536f2b83e8521f6f4bfea7995713d21d7d4d047d8df1d",
+        "size_bytes": 6170,
+        "type": "file"
+      },
+      {
+        "executable": true,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/_mlir_libs/_cutlass_ir.cpython-312-x86_64-linux-gnu.so",
+        "sha256": "c3fbb0537a1783d53529c3f5601cfc06a6301c66131289762cb65d612cc4f951",
+        "size_bytes": 144097608,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/_mlir_libs/_cutlass_ir/_mlir/__init__.pyi",
+        "sha256": "1343d3b59aaba14eb2815e104daf57305dc42407fda251bc235142672f810882",
+        "size_bytes": 557,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/_mlir_libs/_cutlass_ir/_mlir/ir.pyi",
+        "sha256": "84c75b16a141ab52368b46a5593a094ffe289edf6a11006a419c2f6aa66ccad4",
+        "size_bytes": 87438,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/_mlir_libs/_cutlass_ir/_mlir/passmanager.pyi",
+        "sha256": "aa2b2db01a4ac6d4ffb27be217690fc8f1ff0b22774d7689186a2db9fb8bea29",
+        "size_bytes": 1133,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/_mlir_libs/_cutlass_ir/_mlirExecutionEngine.pyi",
+        "sha256": "32f120b888db15153589c5e11dd836e3cdf6eaa649781b8e61c3aebf21609ca3",
+        "size_bytes": 747,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_arith_enum_gen.py",
+        "sha256": "b1791a20b34bbf2fe050e92b4b347f623c8a4dc9215b3e841060f298818548ce",
+        "size_bytes": 8005,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_arith_ops_gen.py",
+        "sha256": "23eb0911d6c09eec442ed74b64618ecca8f71ec9d83473154215d58601e49621",
+        "size_bytes": 61189,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_builtin_ops_gen.py",
+        "sha256": "39ad2b629533ee0e306bbf85ac9bc884cc7963d99fd152c9ec463e8fe1e8c16a",
+        "size_bytes": 4228,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_cf_ops_gen.py",
+        "sha256": "9fb78facfa6bab57f1d213013a3476093e09bea443d8a2d79b0d8917c1fa1428",
+        "size_bytes": 8071,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_core_enum_gen.py",
+        "sha256": "1d06eff3776e1de8fac84cd455b133441b9d383b3f688e17b4c6dbd892a92e42",
+        "size_bytes": 16477,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_core_ops_gen.py",
+        "sha256": "c4d37839c295bb393ec16219f660d1fb1f8b3cfc5ccf094be89e87b5d0718892",
+        "size_bytes": 133555,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_cuda_enum_gen.py",
+        "sha256": "e48c9ab07f5a18c189cbd17aeab276e90686be3f63bd0c65250178b8e3ac4c0a",
+        "size_bytes": 33913,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_cuda_ops_gen.py",
+        "sha256": "d8cf71546586d4d6e0551f6dbef9a05abff176609fc5e51f8ca94f77c241dd32",
+        "size_bytes": 94060,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_cute_enum_gen.py",
+        "sha256": "e2b01007c8d5165655a3d8c1c66aadfe75033057e40ba9d8626d0f158cc1e6b7",
+        "size_bytes": 3594,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_cute_nvgpu_enum_gen.py",
+        "sha256": "d839676ca1352ae38a7e7326e3666c0cc84d4f04780ac92a476cc5c914b218dd",
+        "size_bytes": 41900,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_cute_nvgpu_ops_gen.py",
+        "sha256": "4868b64fc010b1abb4df66f930d91f978bc6e6fa704184bbe3e55b3f76990e07",
+        "size_bytes": 150353,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_cute_ops_gen.py",
+        "sha256": "2ac36da3cdf4d0030825dcc5c5e78108391fd962c9bba4429348b6063b12f3e5",
+        "size_bytes": 143287,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_func_ops_gen.py",
+        "sha256": "0d4fe57dd71a5e1ee59e8f03025d51f8094ab805abd49e7b05671247d650b82c",
+        "size_bytes": 11141,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_gpu_enum_gen.py",
+        "sha256": "09bb30e0e8a8067a7ae437462a55d8fe2fdc29135359b2b4eb21e8a2de95324a",
+        "size_bytes": 11698,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_gpu_ops_gen.py",
+        "sha256": "c606212f0a3010d447c96e99eef5f7ecbdcc13b31c2d7a0bf79cb84c45233267",
+        "size_bytes": 148023,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_lir_enum_gen.py",
+        "sha256": "da8b6182b1ca71ea411952749a353341ddd2945cd4d05ce8241097a9a55483ab",
+        "size_bytes": 925,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_lir_ops_gen.py",
+        "sha256": "635d464571e8356586082d1a073e484a5621c85ed501f4395d6332f61fd9045a",
+        "size_bytes": 92760,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_llvm_enum_gen.py",
+        "sha256": "57b83c2e0a2d23c48886f32070d22d8706d87e595b61f379e6c9758e74b49e8e",
+        "size_bytes": 26842,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_llvm_ops_gen.py",
+        "sha256": "ecf2926a6d3b9a912991256d1ac5ca684b81b19d811426dfdeeb7fe199cdab40",
+        "size_bytes": 467353,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_math_ops_gen.py",
+        "sha256": "ac89559bd2977a8af5ed8d59254862c9e54ed35f50a7b35f4837473c05a041eb",
+        "size_bytes": 55971,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_nvgpu_enum_gen.py",
+        "sha256": "91c5d0b06882722f9290cc5a1b3bb5d5b39ce3c658c3f27fd371291e0fbf4af4",
+        "size_bytes": 6409,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_nvgpu_ops_gen.py",
+        "sha256": "b297dd5aac4357696f7d6f5c13b2986740ca065a744e5afd809654dd43d080a3",
+        "size_bytes": 47471,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_nvvm_enum_gen.py",
+        "sha256": "4828da30ad38b2e83679519b9dbd17fedb97157453cce792dc4742ca4e0a2acc",
+        "size_bytes": 51520,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_nvvm_ops_gen.py",
+        "sha256": "cc60d11d6f51d20e56e55c10485e8489a42065d9324ba728e2620800c9e1e519",
+        "size_bytes": 348034,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_ods_common.py",
+        "sha256": "3b612ac92e86c786a58dd1cdf3bc9db964805c6b4cea13b338a2cf03be6428c1",
+        "size_bytes": 9300,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_scf_ops_gen.py",
+        "sha256": "3f74be7778c04a6e11b1784bc1260aef8e1231b268c4e58e34e69889dcd6ac2b",
+        "size_bytes": 19065,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_vector_enum_gen.py",
+        "sha256": "21d664d059fc46b5df4de735709c7ebf736990fe30ea5f9319dce7e1d14ea056",
+        "size_bytes": 3505,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/_vector_ops_gen.py",
+        "sha256": "00d6f9eddbd707a56ed5908d99bf066547f25c828debae28b7d55f5ecae8deb5",
+        "size_bytes": 71797,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/arith.py",
+        "sha256": "680f1ba86c533562d21fda386bb75a0145d9a548c2906fc1b71da2dacf05cebd",
+        "size_bytes": 3578,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/builtin.py",
+        "sha256": "72643bf8e49fcaab7d1871f7af81af427e3fa8811e4950d09fb8d4750cafe882",
+        "size_bytes": 1277,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/cf.py",
+        "sha256": "43f87e99a5f3cd54b56c22be6069cf2219fe13d58f0859c4df82e77d43862da6",
+        "size_bytes": 228,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/core.py",
+        "sha256": "f81205aa322c1eafa7203b67e230fcce6562295b2cb1882e880369251d58a3ff",
+        "size_bytes": 866,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/cuda.py",
+        "sha256": "6cb15f8f0eb65a9a92daa09f9b50c24f6d04a7094d2b07eb7cbd822b6c922625",
+        "size_bytes": 7137,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/cute.py",
+        "sha256": "86fa836c636fcdbb86e26665a3a3abc5c0aaf92cc67a980782e9e9520ec17d32",
+        "size_bytes": 645,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/cute_nvgpu.py",
+        "sha256": "d8a2457fae2b8e2f079a7165fc3d89d8a3726ff8d6e7b5b7577e48a4700ceda5",
+        "size_bytes": 657,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/func.py",
+        "sha256": "63f9b5ea915cbbcb63535e3775d6fd9a62db0788676d7ab2de6865885c2de824",
+        "size_bytes": 12211,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/gpu/__init__.py",
+        "sha256": "016fe576eeda5f1e8e85f01250e8c1e4d7c633da8fe2c14917bb5355a4a9e951",
+        "size_bytes": 317,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/gpu/passes/__init__.py",
+        "sha256": "e0da20f687280bf74bf13974b0630ba3c7bbc364a415d256b52b72e9713be0a3",
+        "size_bytes": 261,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/lir.py",
+        "sha256": "755d503ef695a8c1e438dcc850d5cb122f27140ecc8ba9c30b278b6cb4a003b1",
+        "size_bytes": 658,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/llvm.py",
+        "sha256": "b67d6810d17b8ad0730638360f9e4ef25db803631f9de4f605a3953053e9837d",
+        "size_bytes": 594,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/math.py",
+        "sha256": "a2f699cafc7b07d788cd1ab0fd56f55bd18728fb0608b6c7d0d6f77425d61c2d",
+        "size_bytes": 230,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/nvgpu.py",
+        "sha256": "a384d7fdf7de0e303546b9a5c05e304fa72159d324ffbb969f2b043091b62558",
+        "size_bytes": 320,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/nvvm.py",
+        "sha256": "4dc3afbf516c3d914b829ff76af83de5acf021843c3bd743b19090b2c3e0edd9",
+        "size_bytes": 260,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/scf.py",
+        "sha256": "d6bad617821cd163dcbb053c1fa9924662bc3388d1663730fb9b5f14909e8bf8",
+        "size_bytes": 4181,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/dialects/vector.py",
+        "sha256": "64e9181189d1493cdeeb3c23eaf62bb53625d2effa2a66dec54463881c7e4a61",
+        "size_bytes": 264,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/execution_engine.py",
+        "sha256": "fe2e3e720607e1222faf51447bffb7ed613cd3468b46ccf95f713ae8d4ff019b",
+        "size_bytes": 1692,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/extras/meta.py",
+        "sha256": "99325378c36a59e2152b3c1d9b1b173024fda2e5be9d69dbb80e56c70f89edb0",
+        "size_bytes": 3168,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/extras/types.py",
+        "sha256": "24b58d2ae4048a1ea41d60aee8d8f7487469e2a837279d427ca13ad9edc365c7",
+        "size_bytes": 4578,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/ir.py",
+        "sha256": "ee135fe0b819d354a0c76766ee7cdbb25468cf92ca5eeaca199e59d02238ecad",
+        "size_bytes": 8741,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/passmanager.py",
+        "sha256": "8aedb4c6c6b1d55091cb2ac81ea434156566605c9baf295085e7d48da6e566c9",
+        "size_bytes": 257,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/rewrite.py",
+        "sha256": "ac9c8c9d29bda9fe91584eabda80c85550169234e08689e7a9b27daf6f3a5d76",
+        "size_bytes": 253,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/runtime/__init__.py",
+        "sha256": "bfda5f3075f1f78fa853510d9835b730f4c315fe186ed4b1ce1698c6b1c5f7c3",
+        "size_bytes": 27,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/_mlir/runtime/np_to_memref.py",
+        "sha256": "f19b550ef8b9580b4fd3334e5db2a809f6778a16741d677b7189534216576e2d",
+        "size_bytes": 5836,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/__init__.py",
+        "sha256": "6df3e6dc224ece3f958b94e4d52465cc168ec0422a8af951b5da78306d221b2f",
+        "size_bytes": 924,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/_mlir_helpers/__init__.py",
+        "sha256": "872795d4fbcbab488ccaa629d0dc9d7902ab8674dd48032801c7f6dd1330e0a7",
+        "size_bytes": 897,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/_mlir_helpers/arith.py",
+        "sha256": "6d429a629f89e3f24337eed1594ace0997c14a1002bd5c9153bab147317de4c5",
+        "size_bytes": 55379,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/_mlir_helpers/dialect_proxy.py",
+        "sha256": "286d06b141646cfb5e95a54244104b9e13fffe35f6533589f9302c30302891f9",
+        "size_bytes": 3883,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/_mlir_helpers/gpu.py",
+        "sha256": "b3b9c5d09a7f46ffc523f1085d4748b6a230cbf977fff62b2797e097fbee327f",
+        "size_bytes": 2269,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/_mlir_helpers/lru_cache_ir.py",
+        "sha256": "af564f75d0639d5ad8e6d2f07f01f4ee3f1ad41b0a9964cfceca366180d0100f",
+        "size_bytes": 2636,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/_mlir_helpers/op.py",
+        "sha256": "1d5e5e183fa7772adf31cf5bb2683df43bf60f1da8b258607e3c9bd79ab25969",
+        "size_bytes": 6019,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/arch.py",
+        "sha256": "28e07351fea5909baeddd740304fc947670d5bfc5e2d189a31cdca4e00a727d6",
+        "size_bytes": 6342,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/ast_helpers.py",
+        "sha256": "b75aa28caf857a33cc664d37b32716081d4da3ed9298633073765e87b4d0b154",
+        "size_bytes": 25718,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/ast_preprocessor.py",
+        "sha256": "ca24e5d64e12fd50c7c2efd9c46c3c817b4b394b10d10637c26c9e8ff94c0d71",
+        "size_bytes": 112367,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/cache_helpers.py",
+        "sha256": "31fdc00890a62925fc59ca33e22771b08af9a38b174e4634c11a48451806323f",
+        "size_bytes": 17424,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/common.py",
+        "sha256": "7906e3203de7d711b053a585feb61acf47e2ce1cf9fc87389a90127ce1952d0c",
+        "size_bytes": 29286,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/compiler.py",
+        "sha256": "f29739d1ca39a0c4b43163c94bc13fee6c0b8a8f55275d7741601fb6874d453e",
+        "size_bytes": 22131,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/dsl.py",
+        "sha256": "8a46ca01d0e2b960b5be37b4e0b6a0186cdcd5825d7b02f0e6e13654e832de5a",
+        "size_bytes": 99647,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/env_manager.py",
+        "sha256": "76774e3a8857d2f691db416401bd7ff12f7147d944172bcd257e2387c72bb44b",
+        "size_bytes": 20090,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/export/__init__.py",
+        "sha256": "6a77888af69a74a3ec495f0bfe93fadeaeee3567ce68088453388f9b18b1e5bc",
+        "size_bytes": 1083,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/export/c_header_generator.py",
+        "sha256": "ce2a9926468f986a27302a9e688745f370a1a2aff2d60025a98e2df20dd677c1",
+        "size_bytes": 14953,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/export/export.py",
+        "sha256": "5aa9fd4141c4c4ca7af30454c9068c99ffaf73098ec00c6a9266115e5ffcc366",
+        "size_bytes": 11126,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/export/external_binary_module.py",
+        "sha256": "85244f75ee4be695616878ba7d7f28321d40c5cd8deec6f00347529c858fca6f",
+        "size_bytes": 6618,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/ffi.py",
+        "sha256": "fab825f872545cc32bbba10806b42ed7b69c0b0070426b20ca789e94138a5c19",
+        "size_bytes": 25457,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/jit_executor.py",
+        "sha256": "3a269aa13806cf4af257c2c99254e2e57606870b1dc5d1b5fd3b3c187224b40d",
+        "size_bytes": 46998,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/leaf_utils.py",
+        "sha256": "d7581699f7cb81c4ec514997614fb6949be48a8a644e8664c3be7e3b95aedaf7",
+        "size_bytes": 22632,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/native_struct.py",
+        "sha256": "3754117c9bc1ac34a67849f9e474cf08d39d212df53a63981afa04fff5510b48",
+        "size_bytes": 17484,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/py.typed",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/runtime/__init__.py",
+        "sha256": "3f2e7ac0cde8507b1d8ee9ea6175eba5a36bc65133d39bcb22fe5a8469f6637b",
+        "size_bytes": 769,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/runtime/cuda.py",
+        "sha256": "89c17468b2edc95b53ae5c1adf3acc021b2164eaa574dbf48f9bae055a20222c",
+        "size_bytes": 30818,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/runtime/dlpack_types.py",
+        "sha256": "be1c0d9b105b7871f359fe8c0143fe03ebe5704bbbc81bb97144c72aa2aa4f5e",
+        "size_bytes": 2345,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/runtime/jit_arg_adapters.py",
+        "sha256": "de6fa9729a7ec782003c51032f47bc06603f1465505012888aabfe2913f98e3e",
+        "size_bytes": 10310,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/runtime/stream_adapter.py",
+        "sha256": "5a5d1eff237ecd91ab85437cb4c146d39539664bcb87c132220d1ea3e1fed77e",
+        "size_bytes": 1337,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/tvm_ffi_builder/__init__.py",
+        "sha256": "6629b6db87a6728593c9a1df33750f7827f9df8247e1eaee264a996bf8f7a0f6",
+        "size_bytes": 1003,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/tvm_ffi_builder/call_provider.py",
+        "sha256": "43b7a85eb9625e7bf69dd5b1c92261840c95574110389df74b616b11822af58b",
+        "size_bytes": 10986,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/tvm_ffi_builder/mlir_builder.py",
+        "sha256": "4066a437f34aac021a762ac8cd1752bf7dcb6df10f6d78a75958bd25bfeb1bc3",
+        "size_bytes": 18535,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/tvm_ffi_builder/spec.py",
+        "sha256": "da3997644cc90f2861895dee2ac823a001fd96c92eac8c6981892334b6b2f21d",
+        "size_bytes": 14757,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/tvm_ffi_builder/tvm_ffi_builder.py",
+        "sha256": "f71e67057661bd22332fda96c198c759fa4d2ab4eb79806f33f4db28be41ee56",
+        "size_bytes": 79750,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/typing.py",
+        "sha256": "127b8e9715a51763cc97676b1aad45f5a8b9f6955b73ba818bbcf698b745fa1e",
+        "size_bytes": 78378,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/utils/__init__.py",
+        "sha256": "98a1326d78c37c65dcc4fa36e2b91ff65cc2a564b8952bbc761c1ac0e94cbe8d",
+        "size_bytes": 659,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/utils/logger.py",
+        "sha256": "d69e1d9e71fb55fe7ac9132225fbf4504fad6fc004912df665739a4636440dd0",
+        "size_bytes": 3231,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/utils/numpy.py",
+        "sha256": "266b2de72b38eec0b0c469a68dfa64f3b7763ee973ad144677dfa90cf6f9c9f8",
+        "size_bytes": 2433,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/utils/stacktrace.py",
+        "sha256": "2130842a7fcb7352704361b7b55501315a144caf83338c4463c2028f5f4e4662",
+        "size_bytes": 6573,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/utils/timer.py",
+        "sha256": "da1b98ab2bd561861e43a2d340e72ef2540239a86a4b02a3e9e686895784b123",
+        "size_bytes": 1988,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/utils/tree_utils.py",
+        "sha256": "a0e36e263ed35ab6fd53ea443acaefa2a1c94b1865b2a4677672dc9e6c5fc534",
+        "size_bytes": 31039,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/base_dsl/version_info.py",
+        "sha256": "3abd511bb0e5b8f1b93b2535aadc49d5437ea012fb25514036fc8f4ef8d37886",
+        "size_bytes": 897,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/__init__.py",
+        "sha256": "1d82a858ce50d51a1d804ec5a62c0409483b17574c70c6db6f127386519ea32a",
+        "size_bytes": 8585,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/_tvm_ffi_args_spec_converter.py",
+        "sha256": "3a7b70f8d45c4e9af109284df2ea9e840610a90ce8b87ab26c6dec847bd9eed7",
+        "size_bytes": 16618,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/algorithm.py",
+        "sha256": "74b028a37df3aecda64cff404d3a8806ef981b38af3b1fd966e0dc74dcfe5833",
+        "size_bytes": 24590,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/arch/__init__.py",
+        "sha256": "12b99b00d18c9dd9426c1f69b95599f42c528d6ced615db67d4af89e2fcd80d1",
+        "size_bytes": 3330,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/arch/clc.py",
+        "sha256": "dff8c710754c330e2075ed2f77799341d9f7767d74db23faaf369ff013bb9feb",
+        "size_bytes": 4144,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/arch/elect.py",
+        "sha256": "899e054c98dfa1ff8e41841d91b1c8b248acf8e9f8db3929a9e3e3e7c52ff326",
+        "size_bytes": 2923,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/arch/mbar.py",
+        "sha256": "fff8718a92854577487c133204abe2cb0026916dfe60bbafed524afddbbf99c7",
+        "size_bytes": 10023,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/arch/numeric_conversion.py",
+        "sha256": "420985368e46191bda6d119364b2990961ce3642f26c1cde41bab6da33ca03ce",
+        "size_bytes": 11856,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/arch/nvvm_wrappers.py",
+        "sha256": "c997baac42d2c1a5149c700e5de3d58564f19e9e653131998b17b2287000cabe",
+        "size_bytes": 89929,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/arch/smem.py",
+        "sha256": "51f57b7b1ee55ecb85caca4d6fd3f9aae73d050c40e9f83dd042da2dd6935c95",
+        "size_bytes": 5309,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/arch/tmem.py",
+        "sha256": "3a82d98540158a40ab986de40bf0a89be9e5adc8fa805aa986f1aa73ae325b31",
+        "size_bytes": 7245,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/atom.py",
+        "sha256": "3660e5e67a248bcdc029985e001725e90efe255f5ee6e07635d66b07b749fdff",
+        "size_bytes": 49901,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/core.py",
+        "sha256": "db681b266c098b0b3eb4d1673d57dcc524182d15b7c314a88c136159d1c8d61f",
+        "size_bytes": 193897,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/experimental/__init__.py",
+        "sha256": "3db0e06e64268d15a95e5367920f7e946a94a64384ab879776bf6b05de709439",
+        "size_bytes": 637,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/experimental/algorithm.py",
+        "sha256": "fb23d207394b9a8378d47319e73eaf1ab9eb8e707c25bb5c3e46a3b6698cde95",
+        "size_bytes": 4234,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/experimental/core.py",
+        "sha256": "596004a2dcf700e62e10e68a33e83eba9e3d3118c5c8cb0dca651121712960bc",
+        "size_bytes": 18676,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/experimental/host_runtime.py",
+        "sha256": "17b285106de9aa54ea64850c5e54be6ddf46b8d7959baa6342a01f8ead177cfb",
+        "size_bytes": 3650,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/experimental/math.py",
+        "sha256": "eeeab10f708000fc1bd7aaab8055052c72b061f50b2369063ac98f5a0dbcb6cb",
+        "size_bytes": 1515,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/experimental/memory.py",
+        "sha256": "3485bec14ffa60afc2ff6744b514fd83f39d4008cdb9aec316282ff37d953d7b",
+        "size_bytes": 7950,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/experimental/pipeline.py",
+        "sha256": "44c9b597fbc2ed6f7a5e7dc5de33d997324aec468e56f0bd808bb3a14994bd80",
+        "size_bytes": 37840,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/experimental/utils.py",
+        "sha256": "768c0f48edc548b2623adde47b35a587f2f4b7221e1525c2bb6af87d20703e6e",
+        "size_bytes": 14718,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/export/__init__.py",
+        "sha256": "46fe9928fe7350fec6aaa92cf6b01ead884a495a0f959b0b4def675cc7e44396",
+        "size_bytes": 2003,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/export/aot_config.py",
+        "sha256": "c0b9dcd5aacf9785b4c3b1474f5841300d703f454dcec965ac2984ece1caeb7b",
+        "size_bytes": 5194,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/export/c_header_generator.py",
+        "sha256": "fd6304176f7565adbb408ac8863c5b73b0001907bae63028699290925f97ec65",
+        "size_bytes": 10757,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/export/export.py",
+        "sha256": "de24abf5e0d85485f1e004964b0a281da58ffd9054a3203395ed8bd0e218ce3c",
+        "size_bytes": 2189,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/export/load.py",
+        "sha256": "5b7eef1d468a4a4568fb11a7a199b9f60db390bc2cef1fa20b8a481f0fb5203e",
+        "size_bytes": 849,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/ffi.py",
+        "sha256": "c7b8f9a5986af888e86bcc40fb277c1afff36cca8ebdadd734bec9a3d3e82b12",
+        "size_bytes": 2025,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/math.py",
+        "sha256": "aa57f376c2c5d18b6da8205b4652e58c6f4edff001bb5ff2fa179d3e0b055366",
+        "size_bytes": 22203,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/nvgpu/__init__.py",
+        "sha256": "662862781b9722d15ef2cc35054ea3166f3c83032779879eb66aa5153f5cfa2a",
+        "size_bytes": 917,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/nvgpu/common.py",
+        "sha256": "2c58dbcf0e02ecd0b873266ae9bd93b081b84d83c365f346146cdf4bee0572ab",
+        "size_bytes": 22334,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/nvgpu/cpasync/__init__.py",
+        "sha256": "29b1bb57a55800b2a1a67ca0769fbcc71d26e0f894b6fba119d9c5f541925565",
+        "size_bytes": 1201,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/nvgpu/cpasync/copy.py",
+        "sha256": "e928b77e55db6f36213a767f3cb9d1a68c21c466b4571cde0980f54f5fa716bb",
+        "size_bytes": 39903,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/nvgpu/cpasync/helpers.py",
+        "sha256": "d1ea068f63fd2fce5617df9d3cad524100f7fad28c0152b775d29bbdf5f8ee1a",
+        "size_bytes": 17327,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/nvgpu/helpers.py",
+        "sha256": "4def4f040ca0751f39fc3fa672b4cab9c40342a7eff9a6e12ff84d1debd4c6c7",
+        "size_bytes": 13170,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/nvgpu/tcgen05/__init__.py",
+        "sha256": "32d963a2c22b0b82ebd43ee2ae7388c3d4d92fb0e77612378de0ed1c12285b56",
+        "size_bytes": 2061,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/nvgpu/tcgen05/copy.py",
+        "sha256": "791d252963b40be4adc0d9e5ec4e604ec7f858bdccfec605b3b4b4c3b44c7d85",
+        "size_bytes": 33025,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/nvgpu/tcgen05/helpers.py",
+        "sha256": "7e2c36079a4e97c5886e1cf96d5f5cc493a1d91dd1e6b365efa036a1598a955d",
+        "size_bytes": 13079,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/nvgpu/tcgen05/mma.py",
+        "sha256": "dd59a25ae5ba5facd6f6a73fd3dab7039a6963d78b86bb7ff8654be945a2d428",
+        "size_bytes": 56480,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/nvgpu/warp/__init__.py",
+        "sha256": "7b1572913206ac0c7ce17cf9e7d4ff149238090cac3aad803d6acd53d22b2eec",
+        "size_bytes": 869,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/nvgpu/warp/copy.py",
+        "sha256": "165671fd3c818f118d68052f44c1d085c0267310049f2d4bb7da545543b82ecd",
+        "size_bytes": 11215,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/nvgpu/warp/mma.py",
+        "sha256": "3febd26c2c40ff41149c02ea205c83fcc1e0c7dab4d4bdbbbf6104beb7756179",
+        "size_bytes": 15051,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/nvgpu/warpgroup/__init__.py",
+        "sha256": "a0b88580e4b1b9dfd695bec22d01a5079e3d21539f9e8c30341b3362a2f06d16",
+        "size_bytes": 1398,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/nvgpu/warpgroup/helpers.py",
+        "sha256": "d401958faa24fa31171b260cb86c8982de25aa8225df741a92568bd912308e1c",
+        "size_bytes": 4172,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/nvgpu/warpgroup/mma.py",
+        "sha256": "e3e4e9530eea2d160e56d6da7b16941be9f3525e4ddb6b1290ce6621b406b572",
+        "size_bytes": 20578,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/py.typed",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/runtime.py",
+        "sha256": "d829d47763c0d7608eabed98167597de3fb2877d3e877e0840ca76c134157d07",
+        "size_bytes": 38043,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/tensor.py",
+        "sha256": "960513e7be7f9e624a8d873c2991782c97f444295bc425548f1ecc359be052a6",
+        "size_bytes": 90692,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/testing.py",
+        "sha256": "021c0c49ef77d05079d6af64430a6f92c839f3b6db4239ab2be3a3d14833de10",
+        "size_bytes": 66990,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/tuple.py",
+        "sha256": "7d54a6b5bbbe5e424232f8eb1b310e8e25aecd21c4342032da81c1c74ca61a4b",
+        "size_bytes": 17663,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cute/typing.py",
+        "sha256": "1a24f1acce0fa46e8b91c2b4d9328b86358ebae2ce8fcf535c3b271929120d6b",
+        "size_bytes": 20702,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cutlass_dsl/__init__.py",
+        "sha256": "4a5fc4a4a7fa7b43c0d97084d9aba165a51ec7783ef658ba61856284fecec511",
+        "size_bytes": 1837,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cutlass_dsl/cuda_jit_executor.py",
+        "sha256": "ff4d5039dbb273d06730737a7e87919069e313c6c84529f94314bedb007c6345",
+        "size_bytes": 11280,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cutlass_dsl/cuda_stream_adapter.py",
+        "sha256": "f0d810b82f3d82835fc6fedb25713bb6ce2e48e58feef1fdb18999dd2b4d0bf6",
+        "size_bytes": 1616,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cutlass_dsl/cutlass.py",
+        "sha256": "5337a0dcc1dc64cb668bf73537c41c38c3e57d8f39360fbd0d20735cefe1d241",
+        "size_bytes": 95369,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cutlass_dsl/cutlass_ast_decorators.py",
+        "sha256": "faf4b2b13dc9f241c2bdcb912c9a12d5e9184135572faa411d26db8fd31a2cbf",
+        "size_bytes": 29002,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/cutlass_dsl/tvm_ffi_provider.py",
+        "sha256": "e1efce7bd84358415f61149ae78e33bf87d2ebeaea445644654a7fa4bd0c4d8f",
+        "size_bytes": 26138,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/impl_utils.py",
+        "sha256": "ae26685b9fdd87aa7513715ab4c07f34d1d5b22a8fc312d4b550fb3593ca730d",
+        "size_bytes": 1325,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/jax/__init__.py",
+        "sha256": "1b33be4b01d2bf6599854969268a088fe85e1dd7973d49a9dd7598289d9a0fb1",
+        "size_bytes": 3028,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/jax/compile.py",
+        "sha256": "fbe1a35efbac00e7dc68fdd29eea63fc65d0aa3d813dd66b7a1f536ff765dd5a",
+        "size_bytes": 8790,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/jax/ffi.py",
+        "sha256": "e4f5daec44eb66facde65c66bc9bec6a55a896be2adc250bf2c73451963f0aa0",
+        "size_bytes": 6651,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/jax/primitive.py",
+        "sha256": "345ed072371f4d40f9e44c4a1d4557a08a262e554d5441fbb51b99e0db2e07ca",
+        "size_bytes": 13581,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/jax/testing.py",
+        "sha256": "b1ff7cf49709dfa9757422849eeca6e4ef37de1fefad82e6f278bf2cb8ba4338",
+        "size_bytes": 8518,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/jax/types.py",
+        "sha256": "d8ef8751b789df29a785b5445512db8a3669f8d746e658724f5615c61c72e955",
+        "size_bytes": 25972,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/pipeline/__init__.py",
+        "sha256": "5e7f60ddb4e0ee7217a565cdf90299388c9b0fcd236de1fc67fc7984d7d4265f",
+        "size_bytes": 1933,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/pipeline/helpers.py",
+        "sha256": "ae47f7a8751a0793038721455f87c2554eb4c259c530f1b52bc83ac623e39ca4",
+        "size_bytes": 31485,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/pipeline/sm100.py",
+        "sha256": "ca7e243429e21a533513a6d2872f95556d3bb6ee12afb26463b1e6f3ab070d9e",
+        "size_bytes": 39585,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/pipeline/sm90.py",
+        "sha256": "ae2cdf916930560c65c40a3bd9f3f17a189afb4e3d2285ccbd4cc44caef4831d",
+        "size_bytes": 55426,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/torch.py",
+        "sha256": "47bf13741a477bbf0b41a2ea7764c88ab5fb3129e9819128d96a7476baf7a413",
+        "size_bytes": 11770,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/utils/__init__.py",
+        "sha256": "01d3c7134fc26fde2020a90ce1d3d8c37ab91ea3ba7d760ceda16e73bbd233b5",
+        "size_bytes": 4620,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/utils/blackwell_helpers.py",
+        "sha256": "c9af83026dfcff4dd5840539166ae78b42eac4e5c3ad5b27902e17e8115d3705",
+        "size_bytes": 50614,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/utils/block.py",
+        "sha256": "e094080ed741fbf0e2df0efe081a6db26993cf5f85026547f0b99ae5e7263510",
+        "size_bytes": 8755,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/utils/blockscaled_layout.py",
+        "sha256": "634abea3df99a319ee737c76b8fcd2b31adc00597a33a2d6943b1026d4abc816",
+        "size_bytes": 15534,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/utils/distributed.py",
+        "sha256": "df37e5cf3ab4b3454ffed07bba9893c6cae49742028c3c166ad4eaa69cd7be95",
+        "size_bytes": 18106,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/utils/dynamic_persistent_tile_scheduler.py",
+        "sha256": "7cf521bdd9ffc9370e77701d64948050bc68f3ca6f8b76ab286fefd3a6ccb6b4",
+        "size_bytes": 20124,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/utils/gemm/__init__.py",
+        "sha256": "66ae04a8450f4b13ba6fcbd64776850fc1b156bd4dfac05a8a56c7fac5108f64",
+        "size_bytes": 574,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/utils/gemm/sm100.py",
+        "sha256": "784dd2e6d284be89a8e59be81e244b3439ca2f75cdc7026d6279c27f26dcfee8",
+        "size_bytes": 32299,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/utils/gemm/tensor_utils.py",
+        "sha256": "bbf85327b1fc44b2fd02b6879a3496c197378730572339b70875e497ec60cc63",
+        "size_bytes": 13619,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/utils/grouped_gemm_persistent_tile_scheduler.py",
+        "sha256": "db30947407d4932570b82233c64d7913888f9244b53d6786aad5a8cc19dadf20",
+        "size_bytes": 41778,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/utils/hardware_info.py",
+        "sha256": "436e76ab9fa93fe827e65e0d6c1048633a4ea8d17fbfa1f0b9ef8a8507f9e724",
+        "size_bytes": 8505,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/utils/hopper_helpers.py",
+        "sha256": "8a71f5db5cc0c1c36fae7006d712cac2b0191580b17ca8104090d92c46e5e697",
+        "size_bytes": 15110,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/utils/layout.py",
+        "sha256": "012f579e70ab1aafd6857bc558fa6528d8766781c0dbbd9e1a81c04925d298ac",
+        "size_bytes": 2257,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/utils/mixed_input_helpers.py",
+        "sha256": "a4077689dcd9781b579aed73b24c18a680633c6a562c3d47dcf40582facb79aa",
+        "size_bytes": 37822,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/utils/print_latex.py",
+        "sha256": "d3bac0b21f159a584fc14120dee4281c90672b12a7954b0d34b7a6a28b1d7413",
+        "size_bytes": 5221,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/utils/smem_allocator.py",
+        "sha256": "6b5419dd3b16bfea3aaa969ba71911b98761350a29aa8b9bab47758140bfb203",
+        "size_bytes": 13634,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/utils/static_persistent_tile_scheduler.py",
+        "sha256": "464571c04fed25f283063d49c334f075ffb78479571b5029515e82a8a1727f58",
+        "size_bytes": 31426,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/utils/tensor_helpers.py",
+        "sha256": "6c88858327da0d6cca55cf0196d0b464b9c92ae6b7bd311b7581060ddf30de09",
+        "size_bytes": 2604,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/utils/tensormap_manager.py",
+        "sha256": "878bce45cda19014815d8d69e4451614d018b6e21b51f3903c889ecf0ea6f11e",
+        "size_bytes": 6693,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl/python_packages/cutlass/utils/tmem_allocator.py",
+        "sha256": "c697ab20d08f193d18e0a22b0d0915f47477ef7f4a549cebba238b5e3b7cb51b",
+        "size_bytes": 26277,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl_libs_base-4.5.1.dist-info/INSTALLER",
+        "sha256": "ceebae7b8927a3227e5303cf5e0f1f7b34bb542ad7250ac03fbcde36ec2f1508",
+        "size_bytes": 4,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl_libs_base-4.5.1.dist-info/METADATA",
+        "sha256": "46a64ead2747ae4e20cca1882776ecbe71370528cd211be872abfe45ebdef126",
+        "size_bytes": 2667,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl_libs_base-4.5.1.dist-info/RECORD",
+        "sha256": "5ed694828e0e5baa4c1326f2f3125bcabc706c2b4d628ea881c4f43c5fb4e949",
+        "size_bytes": 40082,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl_libs_base-4.5.1.dist-info/REQUESTED",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl_libs_base-4.5.1.dist-info/WHEEL",
+        "sha256": "a1480a2dc12a7f86f750de7133b0492aeecb253448c1098ffde146e52cc119a4",
+        "size_bytes": 113,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl_libs_base-4.5.1.dist-info/direct_url.json",
+        "sha256": "68f05b5340347174e2b693adb652cd4e06f45045c39b9650a79a8c137c6f403c",
+        "size_bytes": 361,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl_libs_base-4.5.1.dist-info/licenses/LICENSE",
+        "sha256": "9ed3a0344d6bf9f08420f268d8aa70f7e3930d248edc2cf1a8107a560b483433",
+        "size_bytes": 21683,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl_libs_base-4.5.1.dist-info/top_level.txt",
+        "sha256": "583e0263ef2958f4f3568a841b12df9eb6d028ce72ff72d4e3f08fd8b4ca6bf0",
+        "size_bytes": 19,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl_libs_cu13-4.5.1.dist-info/INSTALLER",
+        "sha256": "ceebae7b8927a3227e5303cf5e0f1f7b34bb542ad7250ac03fbcde36ec2f1508",
+        "size_bytes": 4,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl_libs_cu13-4.5.1.dist-info/METADATA",
+        "sha256": "ea5a2e39c451bf1d86e322a9cfcf28681963d451e7fff0379b5413b52244d262",
+        "size_bytes": 2720,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl_libs_cu13-4.5.1.dist-info/RECORD",
+        "sha256": "37ba0c54ade08cd3ec5bb9a0e932c519803504a179626aee14f26b2f735bfbe1",
+        "size_bytes": 43089,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl_libs_cu13-4.5.1.dist-info/REQUESTED",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_bytes": 0,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl_libs_cu13-4.5.1.dist-info/WHEEL",
+        "sha256": "a1480a2dc12a7f86f750de7133b0492aeecb253448c1098ffde146e52cc119a4",
+        "size_bytes": 113,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl_libs_cu13-4.5.1.dist-info/direct_url.json",
+        "sha256": "a38bf2a5e9f088d9f709da1f90ad10d9a4c8db92e87e964d613613a4661e6341",
+        "size_bytes": 361,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl_libs_cu13-4.5.1.dist-info/licenses/LICENSE",
+        "sha256": "9ed3a0344d6bf9f08420f268d8aa70f7e3930d248edc2cf1a8107a560b483433",
+        "size_bytes": 21683,
+        "type": "file"
+      },
+      {
+        "executable": false,
+        "path": "nvidia_cutlass_dsl_libs_cu13-4.5.1.dist-info/top_level.txt",
+        "sha256": "583e0263ef2958f4f3568a841b12df9eb6d028ce72ff72d4e3f08fd8b4ca6bf0",
+        "size_bytes": 19,
+        "type": "file"
+      }
+    ],
+    "entry_count": 218,
+    "file_count": 218,
+    "root_label": "nvidia-cutlass-dsl-4.5.1",
+    "schema": "gdn-sm90a.transferred-source-tree.v1",
+    "symlink_count": 0,
+    "total_file_bytes": 186440910
+  },
+  "cutedsl_dependency_attestation_sha256": "563645e7381812dcf29777b3beb3fba97ff92a26911f2b9d16a23e4be9e8f811",
+  "implementations": {
+    "cutedsl": {
+      "backend_identity": "sm90_cutedsl_gdn",
+      "entrypoint": "cula.gdn.prefill.chunk_gated_delta_rule",
+      "require_fallback_false": true,
+      "required_dsl_version": "4.5.1",
+      "source_identity": "git:88737e9d906cf313995a092624656a89d74dd65e;tag:gdn-sm90a-comparator-r1;dsl:4.5.1"
+    },
+    "fla": {
+      "backend_dispatch_policy": "FLA_DISABLE_BACKEND_DISPATCH=1",
+      "backend_identity": "fla.gdn.chunk.triton.d1ce07369d58",
+      "entrypoint": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "require_fallback_false": true,
+      "source_identity": "git:d1ce07369d581813553f30a750af3b6b5f9af6a9;op:fla.ops.gated_delta_rule.chunk"
+    },
+    "tirx": {
+      "backend_identity": "tirx.gdn.sm90a.wgmma.product-dispatch.packed.v3",
+      "entrypoint": "tirx_kernels.attention.gdn_sm90.chunk_gated_delta_rule",
+      "require_fallback_false": true,
+      "source_identity": "tvm-git:acb1312de80b39340e09b0aaad818ff029e745d6;tirx-git:12ce3721f7c62c5fbd911103ae373de689e58385;tirx-runtime:90c9c62c84ecc452dd86602f0ea49a625845045c"
+    }
+  },
+  "original_schema": "gdn-sm90a.public-fresh-benchmark-contract.v1",
+  "ratio": {
+    "denominator": "cutedsl",
+    "numerator": "tirx"
+  },
+  "report_attestation": {
+    "clean_checkout": true,
+    "head": "d2f24f1503109463a941e7ead1f5fecb93c31fc4",
+    "repository": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report",
+    "tree": "f2484634af648b94bc55d0e180c45543686fc15c"
+  },
+  "report_attestation_sha256": "c7ffd7619eb2daf12e28a1a0c90d02425470b8d0dabf3181c58e4cd2dd56033f",
+  "report_repository": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report",
+  "rows": [
+    {
+      "critical": false,
+      "expected_backends": {
+        "cutedsl": "sm90_cutedsl_gdn",
+        "fla": "fla.gdn.chunk.triton.d1ce07369d58",
+        "tirx": "tirx.gdn.sm90a.wgmma.product-dispatch.packed.v3"
+      },
+      "primary": true,
+      "q_heads": 8,
+      "row_id": "single-t512-h8-mha-zero",
+      "scale": 0.73,
+      "seed": 240801,
+      "sequence_lengths": [
+        512
+      ],
+      "stateful": false,
+      "v_heads": 8
+    },
+    {
+      "critical": false,
+      "expected_backends": {
+        "cutedsl": "sm90_cutedsl_gdn",
+        "fla": "fla.gdn.chunk.triton.d1ce07369d58",
+        "tirx": "tirx.gdn.sm90a.wgmma.product-dispatch.packed.v3"
+      },
+      "primary": true,
+      "q_heads": 8,
+      "row_id": "single-t1024-h8-mha-state",
+      "scale": 0.73,
+      "seed": 240802,
+      "sequence_lengths": [
+        1024
+      ],
+      "stateful": true,
+      "v_heads": 8
+    },
+    {
+      "critical": false,
+      "expected_backends": {
+        "cutedsl": "sm90_cutedsl_gdn",
+        "fla": "fla.gdn.chunk.triton.d1ce07369d58",
+        "tirx": "tirx.gdn.sm90a.wgmma.product-dispatch.packed.v3"
+      },
+      "primary": true,
+      "q_heads": 8,
+      "row_id": "single-t1024-h8-hv16-gva-state",
+      "scale": 0.73,
+      "seed": 240803,
+      "sequence_lengths": [
+        1024
+      ],
+      "stateful": true,
+      "v_heads": 16
+    },
+    {
+      "critical": true,
+      "expected_backends": {
+        "cutedsl": "sm90_cutedsl_gdn",
+        "fla": "fla.gdn.chunk.triton.d1ce07369d58",
+        "tirx": "tirx.gdn.sm90a.wgmma.product-dispatch.packed.v3"
+      },
+      "primary": true,
+      "q_heads": 16,
+      "row_id": "single-t4096-h16-mha-zero",
+      "scale": 0.73,
+      "seed": 240804,
+      "sequence_lengths": [
+        4096
+      ],
+      "stateful": false,
+      "v_heads": 16
+    },
+    {
+      "critical": false,
+      "expected_backends": {
+        "cutedsl": "sm90_cutedsl_gdn",
+        "fla": "fla.gdn.chunk.triton.d1ce07369d58",
+        "tirx": "tirx.gdn.sm90a.wgmma.product-dispatch.packed.v3"
+      },
+      "primary": true,
+      "q_heads": 8,
+      "row_id": "packed-n10-t4096-h8-mha-state",
+      "scale": 0.73,
+      "seed": 240805,
+      "sequence_lengths": [
+        410,
+        410,
+        410,
+        410,
+        410,
+        410,
+        409,
+        409,
+        409,
+        409
+      ],
+      "stateful": true,
+      "v_heads": 8
+    },
+    {
+      "critical": true,
+      "expected_backends": {
+        "cutedsl": "sm90_cutedsl_gdn",
+        "fla": "fla.gdn.chunk.triton.d1ce07369d58",
+        "tirx": "tirx.gdn.sm90a.wgmma.product-dispatch.packed.v3"
+      },
+      "primary": true,
+      "q_heads": 8,
+      "row_id": "packed-n20-t8192-h8-hv16-gva-state",
+      "scale": 0.73,
+      "seed": 240806,
+      "sequence_lengths": [
+        5000,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        132
+      ],
+      "stateful": true,
+      "v_heads": 16
+    }
+  ],
+  "run_id": "gdn-sm90a-public-tags-h20-r0-a5",
+  "runtime_identity": {
+    "distributions": {
+      "nvidia_cutlass_dsl": {
+        "distribution": "nvidia-cutlass-dsl",
+        "identity_source": "distribution",
+        "version": "4.5.1"
+      },
+      "nvidia_cutlass_dsl_libs_base": {
+        "distribution": "nvidia-cutlass-dsl-libs-base",
+        "identity_source": "distribution",
+        "version": "4.5.1"
+      },
+      "nvidia_cutlass_dsl_libs_cu13": {
+        "distribution": "nvidia-cutlass-dsl-libs-cu13",
+        "identity_source": "distribution",
+        "version": "4.5.1"
+      },
+      "torch": {
+        "distribution": "torch",
+        "identity_source": "distribution",
+        "version": "2.11.0a0+eb65b36914.nv26.2"
+      },
+      "triton": {
+        "distribution": null,
+        "identity_source": "module",
+        "version": "3.6.0"
+      },
+      "tvm_ffi": {
+        "distribution": "apache-tvm-ffi",
+        "identity_source": "distribution",
+        "installed_files": {
+          "aggregate_sha256": "0d3cc3b3a323baba7946e3177a302a6af5acc76ebd5c6662288fe7b11bb57304",
+          "entries": [
+            {
+              "path": "../../../bin/tvm-ffi-config",
+              "sha256": "2afe16040abe072983aead80c7e90425d7414ac7c35061f1b5c1cedf74c709e9",
+              "size_bytes": 277
+            },
+            {
+              "path": "../../../bin/tvm-ffi-stubgen",
+              "sha256": "8abe14db8e19189e3243b5557c5a7bc5272e67a882f17415c36d9ebccb609a60",
+              "size_bytes": 279
+            },
+            {
+              "path": "apache_tvm_ffi-0.1.13rc2.dev2+g3e8b2a860.dist-info/INSTALLER",
+              "sha256": "ceebae7b8927a3227e5303cf5e0f1f7b34bb542ad7250ac03fbcde36ec2f1508",
+              "size_bytes": 4
+            },
+            {
+              "path": "apache_tvm_ffi-0.1.13rc2.dev2+g3e8b2a860.dist-info/METADATA",
+              "sha256": "9e4ceb6399316945c0a7d601f86c343f0e20e7ea657865ede76c45d450ee241c",
+              "size_bytes": 6184
+            },
+            {
+              "path": "apache_tvm_ffi-0.1.13rc2.dev2+g3e8b2a860.dist-info/RECORD",
+              "sha256": "82d98fbda02a6eda77a7cc0683e986cfaa97f8e98761ea6e8de972244812053f",
+              "size_bytes": 23748
+            },
+            {
+              "path": "apache_tvm_ffi-0.1.13rc2.dev2+g3e8b2a860.dist-info/REQUESTED",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "size_bytes": 0
+            },
+            {
+              "path": "apache_tvm_ffi-0.1.13rc2.dev2+g3e8b2a860.dist-info/WHEEL",
+              "sha256": "013c2f9f651d4fdd90dfc1d49b1dbd4083033dcc791270ce479bb88e11cb33e2",
+              "size_bytes": 108
+            },
+            {
+              "path": "apache_tvm_ffi-0.1.13rc2.dev2+g3e8b2a860.dist-info/direct_url.json",
+              "sha256": "07d5e4fc8cd00001863c65f19905f04079abda2dcbe4e43d63bb0c2e7ca21a23",
+              "size_bytes": 119
+            },
+            {
+              "path": "apache_tvm_ffi-0.1.13rc2.dev2+g3e8b2a860.dist-info/entry_points.txt",
+              "sha256": "218a5e175ae1465820f97c0c040cce78003f4c624f039de7a03d4348e239cc07",
+              "size_bytes": 104
+            },
+            {
+              "path": "apache_tvm_ffi-0.1.13rc2.dev2+g3e8b2a860.dist-info/licenses/LICENSE",
+              "sha256": "bb354d8b94589ad8817f2dff029d39a1133d217407f73679d0b0311c980e511f",
+              "size_bytes": 11833
+            },
+            {
+              "path": "apache_tvm_ffi-0.1.13rc2.dev2+g3e8b2a860.dist-info/licenses/NOTICE",
+              "sha256": "5181189219b74687e08884d813b8f98c874d0e4ba84eb7afc4bb350d22502c24",
+              "size_bytes": 171
+            },
+            {
+              "path": "tvm_ffi/.gitignore",
+              "sha256": "701e69f50d3563f06a6d0bc020cf84b999dc822a89dedfca1c776061966ec42a",
+              "size_bytes": 23
+            },
+            {
+              "path": "tvm_ffi/3rdparty/dlpack/include/dlpack/dlpack.h",
+              "sha256": "62052bef24bd69bb7b52e95428f9e99bd7951783850c36c5f2a41e71fd63c2fc",
+              "size_bytes": 23463
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/Isaac.Newton-Opticks.txt",
+              "sha256": "d4a9ac22462b35e7821a4f2706c211093da678620a8f9997989ee7cf8d507bbd",
+              "size_bytes": 567198
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/LICENSE",
+              "sha256": "ef8a9b3247488f8901ca60de9b17b745d7bd67e5ec1e622f80d62364572200d8",
+              "size_bytes": 1478
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/Makefile.am",
+              "sha256": "91b27e99c9c5540bb6646509faaad0eba6103964862baf774565bbfd52eb9178",
+              "size_bytes": 19806
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/Makefile.in",
+              "sha256": "087627a77f8843f66fa7233eb2de014fceb18c1cd22d4eb6fd689d18a6648c5b",
+              "size_bytes": 144246
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/README.md",
+              "sha256": "2d8d758b74a0e6deed01dbc3e97fdaa460f046ecc87a1f9e97071bf3ce300984",
+              "size_bytes": 2081
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/aclocal.m4",
+              "sha256": "4ced8f9f06af1ea63d41bddf2ca7bf7aba3276e3ae96ad9bae0d2801d1e5f6b7",
+              "size_bytes": 32034
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/alloc.c",
+              "sha256": "40fa7aaa389370da6d8533855198a48b5ce8c457dac708f3fa59f07356b9d765",
+              "size_bytes": 4445
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/allocfail.c",
+              "sha256": "c98c880a89f17a06931cb2dbb4993bc11411e3c8ddcaadfd44062101952f0b37",
+              "size_bytes": 3486
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/allocfail.sh",
+              "sha256": "08d334bba15253ab70e823a7a8fc1dcae19f94ef903a970095e1f3612dc71f68",
+              "size_bytes": 3135
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/atomic.c",
+              "sha256": "8d62c6408ed5f5fa0891b22b3b0eddde52cc6282bdde0aa8ff7a6aab20d92bdb",
+              "size_bytes": 2956
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/backtrace-supported.h.in",
+              "sha256": "cb17b6860aa68cb66ebe6a5e3378f14e36abb5a14c6bba3171d4b60866be9e47",
+              "size_bytes": 3075
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/backtrace.c",
+              "sha256": "3e9f9ee28fc150b913bdca1a6e1d7fab83b3b1797c399bc39da006e56f080c2c",
+              "size_bytes": 3748
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/backtrace.h",
+              "sha256": "d2ac7d5c6910c011f860d04a04a4a6a6fbea2882f23878f1f5f6721831a28acd",
+              "size_bytes": 8782
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/btest.c",
+              "sha256": "1c2194dabcfa22f8241612926d4adf244966e05db913d9b98f83c73e72de1497",
+              "size_bytes": 11785
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/compile",
+              "sha256": "2dd0914838c05c6094e2d2348607f5d8fcdce7dafed37d19344adcc4aaca7a5b",
+              "size_bytes": 7382
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/config.guess",
+              "sha256": "7d1e3c79b86de601c3a0457855ab854dffd15163f53c91edac54a7be2e9c931b",
+              "size_bytes": 49446
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/config.h.in",
+              "sha256": "566c3ff2b407b69fa437431ea358c7023af6590dd621265e3e6d870b6ae6700c",
+              "size_bytes": 4771
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/config.sub",
+              "sha256": "71b8d73e46e0c31b1dc91ba5306f5ef0af009273b3bb283f31d8dad69666fa9e",
+              "size_bytes": 35295
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/config/enable.m4",
+              "sha256": "6d99e0306be2f7101dbaa6cb21ccc870e907f98f3d01958597f1f76b44065984",
+              "size_bytes": 1143
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/config/lead-dot.m4",
+              "sha256": "c1b02810fe08debd1fba018ae1007a3f95c329e6c6c87d636ede51911b61806d",
+              "size_bytes": 1106
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/config/libtool.m4",
+              "sha256": "9856249a67677bc4555e1035e2b52bdf53f962ac07ce1e978a772c632bc78de6",
+              "size_bytes": 268291
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/config/ltoptions.m4",
+              "sha256": "214e24410efc76fa5f6f73c949ef6b81bf00ead1bc71862f9ec1578ff6aaedcd",
+              "size_bytes": 11950
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/config/ltsugar.m4",
+              "sha256": "e8bfa437be7af72bf41b86e7e714bc8b8545046c339f80cfb5e69681bc97f90d",
+              "size_bytes": 4372
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/config/ltversion.m4",
+              "sha256": "a7f4bcbc1dbb5e825929298678597f4d6f8f58483834264d84d9993645aea7e4",
+              "size_bytes": 703
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/config/lt~obsolete.m4",
+              "sha256": "2b6632aa3faa4e11c383560d505a37d001859f4c62b01edf03176c4907876b04",
+              "size_bytes": 6126
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/config/multi.m4",
+              "sha256": "537b58af1589e7ba46ae953c25a7141a37b404c28188b4afa3ac533058646a8f",
+              "size_bytes": 2103
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/config/override.m4",
+              "sha256": "f394613eebfe460b80922b98f7a824c1a2501b6bfb401b3634b3dbfd6fdcd124",
+              "size_bytes": 4185
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/config/unwind_ipinfo.m4",
+              "sha256": "86eb2594d5a422199b374a88bafcb2feff334c37d2ac3de9b35bf923b3ee7256",
+              "size_bytes": 1258
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/config/warnings.m4",
+              "sha256": "510f48e6f491fdcbf7112d3a1180f675a07d159ed7cd852af838e415bdf89d41",
+              "size_bytes": 8636
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/configure",
+              "sha256": "a0b54e6bb2f3a1e8f141c2a4848b742e4f67611dcb0388a86ce242b5e37c7d68",
+              "size_bytes": 464955
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/configure.ac",
+              "sha256": "9520bb5b398cb599e802a4bc9f9bf3251802537bd44097b906d3df957003e1ac",
+              "size_bytes": 21353
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/dwarf.c",
+              "sha256": "439170986c4ed3e0ee609011645c2b181e94b88b2d5ae35d4334956994fd2bd7",
+              "size_bytes": 122251
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/edtest.c",
+              "sha256": "732b0a1e23e41212a468ab5d273e790081beb4d0e458641d9669f88a952a2bd3",
+              "size_bytes": 3766
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/edtest2.c",
+              "sha256": "0bb1c382faeb9829a352613eb77ef9d3a99676a08ca8cd59f86971e8b9fc27aa",
+              "size_bytes": 1770
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/elf.c",
+              "sha256": "5acab1e8823335c82e84877f502f887f61eae8b6f63ca74c714992a602213f13",
+              "size_bytes": 193096
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/fileline.c",
+              "sha256": "639d8d581e93eaf18e1578e3b287b7f945260f001bb3c23eef48b250744b3bef",
+              "size_bytes": 10902
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/filenames.h",
+              "sha256": "8d2c2d284c3f071a8b418c2ce71e42e48b48caa0c4485b7319a4afe82b236c36",
+              "size_bytes": 2149
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/filetype.awk",
+              "sha256": "0fbccc188059c4b769d281dc7dbdba43956913317f0aeb64c823c1811278e1f1",
+              "size_bytes": 787
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/install-debuginfo-for-buildid.sh.in",
+              "sha256": "c89aa66b6d2067a675cdc680924f10e5c2c611f0e11f9e3b8d87addea79fb045",
+              "size_bytes": 2104
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/install-sh",
+              "sha256": "d7c113e5484fce8b48f9a34a7a91e385ec279247d415b0b7d749bd56ad8ee8a2",
+              "size_bytes": 14675
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/instrumented_alloc.c",
+              "sha256": "87cd6395c5161bec253cba42d814b4e5438a91b9bb293a14ece23ba8466f93c3",
+              "size_bytes": 3065
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/internal.h",
+              "sha256": "0ccc73f08659683269cd5db058f5629a7b62c8bffc45f2fee5919d053aa18d8e",
+              "size_bytes": 13831
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/ltmain.sh",
+              "sha256": "534395fb3426702fc2f3eec94f031edcb02712a6a1430bd7161eb903d492bc12",
+              "size_bytes": 249764
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/macho.c",
+              "sha256": "7e5b72ee26d404477c172a2511213074d8ef82f8d01a66c196289ec20fae76c2",
+              "size_bytes": 36514
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/missing",
+              "sha256": "b1a337b731bbb58846d31ca2f5143c293a455fa41b481e236e89a9016d96b034",
+              "size_bytes": 6872
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/mmap.c",
+              "sha256": "c6f638ca5629e0aebe63f578f9e3659b8fa22ebb2f0be20bf15f3bc5ef007055",
+              "size_bytes": 8584
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/mmapio.c",
+              "sha256": "ebfa5fa59c292124510d6555d17f0872709b70c0ee0c6034e50d27aeb216cfe5",
+              "size_bytes": 3183
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/move-if-change",
+              "sha256": "689762b92d23003926ba729acf98b9a109abf46de0698c09ddfa0d20490d8af5",
+              "size_bytes": 2636
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/mtest.c",
+              "sha256": "403be04a960c0c861404e7e1602866c028e8e2eae50c1b36b81290da05c85fa2",
+              "size_bytes": 9831
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/nounwind.c",
+              "sha256": "c188891f00b1fa568698512ee76e199c74ee81a4a6daf592413b10c20d8b6b0f",
+              "size_bytes": 2337
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/pecoff.c",
+              "sha256": "43bf474a5eebc984641838e38a8e74d7f4f95236cba6f3936c86b7d84147013d",
+              "size_bytes": 28552
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/posix.c",
+              "sha256": "23d84b2eee48b645defc6e81b3a5b8dda1b1a7fe661f85591d93b21cdc8eb54e",
+              "size_bytes": 3143
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/print.c",
+              "sha256": "3fb9dfe3a7e5c34026e271f0e95f657726502c895b54e79c78cddbfada926790",
+              "size_bytes": 3541
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/read.c",
+              "sha256": "6903cbbe0f9f11a1d60fb89c0e8db5ae1bd31d721c857646d1efbe8b29c425dd",
+              "size_bytes": 3130
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/simple.c",
+              "sha256": "95bca9ca4fea480e131bb3869d950a36a9b41b1fa673b75438f19150cc6bbaeb",
+              "size_bytes": 3213
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/sort.c",
+              "sha256": "e372764bcf6a906daf82a4090530e42952d687b6aff9beebd51347224d901ce3",
+              "size_bytes": 3175
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/state.c",
+              "sha256": "e88f2985847c9514a5d61b6dce0d062dc90be57a50a151f9da73cfd601ea8b0b",
+              "size_bytes": 2433
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/stest.c",
+              "sha256": "b5b8d380237b244610127569a5755c78034f9a911ac22b056ae79f9bd7d4deec",
+              "size_bytes": 3434
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/test-driver",
+              "sha256": "06dc38fdcd3064975a9025d4372c3cab37505055ef343313934b8e5a705ebc3d",
+              "size_bytes": 4641
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/test_format.c",
+              "sha256": "7d59dee7a45a5bf28532f0303a3f5bf4e0082d1c9a6286c036fe0a387c8e706c",
+              "size_bytes": 1988
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/testlib.c",
+              "sha256": "df3819b03cb0773f8298e01d91e453dc5922d6f8a282d08c63d0768bdc253a22",
+              "size_bytes": 5867
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/testlib.h",
+              "sha256": "e1c7714f3aba0900df66e913b52d617530a08074b413d3f6b0f01b25b957b543",
+              "size_bytes": 3280
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/ttest.c",
+              "sha256": "df428a9cbfa314b32607a5b9ba02deeca994b7f5523280aaf6f5682edb600025",
+              "size_bytes": 4276
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/unittest.c",
+              "sha256": "74136e820ef980220af5eef80dd0536ee6f54c1a7a6d678b0dcef3669705268d",
+              "size_bytes": 2599
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/unknown.c",
+              "sha256": "7b57e16d0d4e64f81b7276d48e00089641f56b10b0793b5447c3d5961ff13724",
+              "size_bytes": 2418
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/xcoff.c",
+              "sha256": "ff30acc0050487b4af76695e5662794792fb7b9d72e5d0bd41521f0b0c2e673f",
+              "size_bytes": 41946
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/xztest.c",
+              "sha256": "5301fa31d53c24ba8391104597c3b1eaaa973f86974d184e5e52b732f2a67e29",
+              "size_bytes": 11938
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/zstdtest.c",
+              "sha256": "415fb8ac60bdccc3f18daadd0e30b4eb112459fdcf012d5a54f26d04ff17e671",
+              "size_bytes": 14478
+            },
+            {
+              "path": "tvm_ffi/3rdparty/libbacktrace/ztest.c",
+              "sha256": "618a6cc4f9e33d450acb6e108563923e192a6b49916392ff0cca4794aa68f4fc",
+              "size_bytes": 15022
+            },
+            {
+              "path": "tvm_ffi/CMakeLists.txt",
+              "sha256": "4fda592b0375df10fd7afb45b846a86863631cbcf6f991d3704b8cb4f07ad78f",
+              "size_bytes": 14958
+            },
+            {
+              "path": "tvm_ffi/__init__.py",
+              "sha256": "9284b5659f79406502c9fb6fee9d5df2714f457e610a3a37c76d37226eda46d2",
+              "size_bytes": 5443
+            },
+            {
+              "path": "tvm_ffi/_convert.py",
+              "sha256": "df6d4dcaf7ff26a942a6af6df9f59e9f9f5e992d9bde719e4c401ba996905664",
+              "size_bytes": 7115
+            },
+            {
+              "path": "tvm_ffi/_dtype.py",
+              "sha256": "7ed66f9dbbf8eefb4bbaadb935bdc4c2939f1f213f9926ccff4d73a4349bd66d",
+              "size_bytes": 12632
+            },
+            {
+              "path": "tvm_ffi/_dunder.py",
+              "sha256": "778950a19f549cbd133b387c60aedf69c56a7a7c874c7a64f40ea9b2e18ad0d4",
+              "size_bytes": 19635
+            },
+            {
+              "path": "tvm_ffi/_ffi_api.py",
+              "sha256": "a9c127a10f6c43bc6cbc697fded030a73421a62af342aeaf1995baf435567516",
+              "size_bytes": 9111
+            },
+            {
+              "path": "tvm_ffi/_optional_torch_c_dlpack.py",
+              "sha256": "7c3b39b5392056009507f94128284275f38158ada64c1ce309e8694054c2f630",
+              "size_bytes": 8523
+            },
+            {
+              "path": "tvm_ffi/_tensor.py",
+              "sha256": "e42f060374251466017761a1d41cca24d6532290044ad12a4649cfa4bc5308ad",
+              "size_bytes": 3425
+            },
+            {
+              "path": "tvm_ffi/_version.py",
+              "sha256": "3414754e579097aaa81118bb6b290666e3aceb2833adc1cbaace607a0953d9b8",
+              "size_bytes": 570
+            },
+            {
+              "path": "tvm_ffi/access_path.py",
+              "sha256": "86f4938374ab51b00c9f69bbdd431093ad16300f5bfefb335c1d8720ee96d611",
+              "size_bytes": 7272
+            },
+            {
+              "path": "tvm_ffi/config.py",
+              "sha256": "76f2900952097f30214a3d8e8439c5ca2646f8b8b6215bc6b9ee20a26340cad6",
+              "size_bytes": 3791
+            },
+            {
+              "path": "tvm_ffi/container.py",
+              "sha256": "2b0c20e6d33ee034fc2967c6a3b3fb85745e1bacd5312ccde71651be14053357",
+              "size_bytes": 23647
+            },
+            {
+              "path": "tvm_ffi/core.cpython-312-x86_64-linux-gnu.so",
+              "sha256": "630b307d16da637575d08d9e328fff61dc55ce37608ae03d801b0bd2bb167924",
+              "size_bytes": 986688
+            },
+            {
+              "path": "tvm_ffi/core.pyi",
+              "sha256": "7aea19193c8862b9393792543d535d0e17d853972847e1de62a39d55889e68ca",
+              "size_bytes": 11640
+            },
+            {
+              "path": "tvm_ffi/cpp/__init__.py",
+              "sha256": "e39c99d377c0909378be4b97bf92891cd3c6befaf967d0d8248639daed55c9a3",
+              "size_bytes": 1050
+            },
+            {
+              "path": "tvm_ffi/cpp/dtype.py",
+              "sha256": "56f17b3972df5e6bd9880dcda2c6b9c397063d25557b8b3332c26aa580585a00",
+              "size_bytes": 3199
+            },
+            {
+              "path": "tvm_ffi/cpp/extension.py",
+              "sha256": "e18cc1aff83d58e43e297763042110549fe0e7e4c3a908d320db870b498da921",
+              "size_bytes": 61999
+            },
+            {
+              "path": "tvm_ffi/cpp/nvrtc.py",
+              "sha256": "7d158a39738f915fb237ba83ea745695b515b68eddbd89c0c3b5142d6046acf5",
+              "size_bytes": 6176
+            },
+            {
+              "path": "tvm_ffi/cython/base.pxi",
+              "sha256": "c59b7e6e85ab8dac5d6cc3927be9742a98e48d8357ba03aa8f46eadddda85ddc",
+              "size_bytes": 21401
+            },
+            {
+              "path": "tvm_ffi/cython/core.pyx",
+              "sha256": "79fb563b726885902491eea53a182ee41ba9f4b6848ec32fbc2fdde73e938490",
+              "size_bytes": 2287
+            },
+            {
+              "path": "tvm_ffi/cython/device.pxi",
+              "sha256": "305935cf36bed8c1cfc017be37a4f291f610d18d528693be7cacf1e8eb96da80",
+              "size_bytes": 7083
+            },
+            {
+              "path": "tvm_ffi/cython/dtype.pxi",
+              "sha256": "c354a1af5b7c2e73fe63f61c05f89d245e3ef050b00a3231bb563f7ffd7354ea",
+              "size_bytes": 9214
+            },
+            {
+              "path": "tvm_ffi/cython/error.pxi",
+              "sha256": "5e8ccd2bb6c981411da689a166b6b279e1427f3734dd6b111bc9fc11ebc538d8",
+              "size_bytes": 7109
+            },
+            {
+              "path": "tvm_ffi/cython/function.pxi",
+              "sha256": "258330bb95815fbbeb15a3190cba8999b24b57aed8211a50821d4d2e2b53a450",
+              "size_bytes": 44024
+            },
+            {
+              "path": "tvm_ffi/cython/object.pxi",
+              "sha256": "fd15046e1cd85c42dd2f6b8c35cd1913cf5d30c171aa620f76c540fe0c620cef",
+              "size_bytes": 36000
+            },
+            {
+              "path": "tvm_ffi/cython/pycallback.pxi",
+              "sha256": "5fd2785f158d9cca0de7a12fc2783659aab26bd05df5fa12d381bc9abf104d8e",
+              "size_bytes": 13008
+            },
+            {
+              "path": "tvm_ffi/cython/pyclass_type_converter.pxi",
+              "sha256": "2fa5d6ae7572dbb85b4e6c24dde241f8f281eecd0f71feb82fafe04be8720f50",
+              "size_bytes": 35285
+            },
+            {
+              "path": "tvm_ffi/cython/string.pxi",
+              "sha256": "4f0664dcadfa95469cc21d0ceb43a402bb3b95eb4a4c5cdaa9c964a1ba30ae39",
+              "size_bytes": 3302
+            },
+            {
+              "path": "tvm_ffi/cython/tensor.pxi",
+              "sha256": "5f6807588f6fd37cc0ff231b6ea4404e72c8b6691451e4622efa3c8760d648af",
+              "size_bytes": 21383
+            },
+            {
+              "path": "tvm_ffi/cython/tvm_ffi_python_helpers.h",
+              "sha256": "663869afb23c886145c40d5ecadb7445a7c77d71826c0b29696c3f2e9a81ca6e",
+              "size_bytes": 48477
+            },
+            {
+              "path": "tvm_ffi/cython/tvm_ffi_python_object.h",
+              "sha256": "9f2accbf157a2a607c8c95adb6f18c13ad118ac3cc63b0a3c44b19d235a9d3ff",
+              "size_bytes": 58455
+            },
+            {
+              "path": "tvm_ffi/cython/type_info.pxi",
+              "sha256": "b837c0d08e517c44e5a72f30134a690ab12af5ffb52d3890014e37894fa498e1",
+              "size_bytes": 50956
+            },
+            {
+              "path": "tvm_ffi/dataclasses/__init__.py",
+              "sha256": "5760953e6ea16bb3b5957ab93923fbe0c898e32ce28ece67cb4e8cb22e0e93b1",
+              "size_bytes": 1568
+            },
+            {
+              "path": "tvm_ffi/dataclasses/_resolve_fields.py",
+              "sha256": "e92c4954c050c310aaff640d206b892f3fe9177535450ea3eae6a399c320373b",
+              "size_bytes": 19009
+            },
+            {
+              "path": "tvm_ffi/dataclasses/c_class.py",
+              "sha256": "c23840f706d9cb2db988fe3c7d8d40b03ee1287ae97d9013963f1402bb7b9f5d",
+              "size_bytes": 7960
+            },
+            {
+              "path": "tvm_ffi/dataclasses/common.py",
+              "sha256": "d69886851e648257220c46d7da72918d75fc1aa97504b28c66c64170372667d2",
+              "size_bytes": 9909
+            },
+            {
+              "path": "tvm_ffi/dataclasses/enum.py",
+              "sha256": "7fedfe05a316ff99d5dc77b9424985db49f867d32448b145a93ab39d2db5bceb",
+              "size_bytes": 17070
+            },
+            {
+              "path": "tvm_ffi/dataclasses/field.py",
+              "sha256": "3046da90aa31fd5dd2b8da2d4004e4982971937dd4217c416ccae9bbabe824b0",
+              "size_bytes": 13924
+            },
+            {
+              "path": "tvm_ffi/dataclasses/gen_abi_cpp.py",
+              "sha256": "d25a4c6f44803b10b8597ac5799ea8bae5b3ee4f5766ec6c0e883754d927b157",
+              "size_bytes": 27695
+            },
+            {
+              "path": "tvm_ffi/dataclasses/py_class.py",
+              "sha256": "ad6e9c98c897d963771a2afdf6f56e26ac01052777f2aeb3e16302d8bf466c4e",
+              "size_bytes": 24883
+            },
+            {
+              "path": "tvm_ffi/error.py",
+              "sha256": "9bd62269a21c063e408c2f3014e54fd0402fd2e9709624116c5b695c73d4089a",
+              "size_bytes": 9658
+            },
+            {
+              "path": "tvm_ffi/include/dlpack/dlpack.h",
+              "sha256": "62052bef24bd69bb7b52e95428f9e99bd7951783850c36c5f2a41e71fd63c2fc",
+              "size_bytes": 23463
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/any.h",
+              "sha256": "5f74a95c699c9c16bfbed2618b7baeedae04d0c069899cf1da45a80cd4de87f9",
+              "size_bytes": 36327
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/base_details.h",
+              "sha256": "896a42efe4b8fb5cf3cf5bf6d81fac0169824ba8480cd8fd225bab568147d3c5",
+              "size_bytes": 12507
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/c_api.h",
+              "sha256": "083ec3675aa6e2fd7b236aef49af39c920717cdcfc2e6453d9900d93fe336b40",
+              "size_bytes": 61120
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/cast.h",
+              "sha256": "c3f2681cf95cbe977bbc7081d7b35f4ca995e36ab0f7142a2df6de985c4064d1",
+              "size_bytes": 2993
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/container/array.h",
+              "sha256": "bb2dd9631d6e65906756750c5c803ffde2d29a8c74b7f10cc8dabbdd7c5687e5",
+              "size_bytes": 30047
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/container/container_details.h",
+              "sha256": "d34572e253b137559bc2dc6ae00a8dbdc7e30cc22682b87c472ecaf44e370e83",
+              "size_bytes": 6544
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/container/dict.h",
+              "sha256": "adcefe7e2f8af104f7026599e8c4eccbf560c1022df4bcf572b914b8a7c3e50c",
+              "size_bytes": 11641
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/container/list.h",
+              "sha256": "8d8bf4eeda1e0a1114f3cdd65baf532958fe48f358fb85379201a2154e71e3e9",
+              "size_bytes": 16868
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/container/map.h",
+              "sha256": "12e24f44a75c838b36f901dd55f76776c817bdfafc2d2a60f8ad6d14d9767ea9",
+              "size_bytes": 12159
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/container/map_base.h",
+              "sha256": "63d70b6a7c33795c2060aee6487a4a1ccb3a573ded4858bd3c11e8de79c2f37d",
+              "size_bytes": 64916
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/container/seq_base.h",
+              "sha256": "a21dab0e87b93bcb45e6a7c93373ca95aff9a87fa8470720b39c65401b6cb44f",
+              "size_bytes": 11371
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/container/shape.h",
+              "sha256": "fffc4d3f6f8150ff1208efbebeb5b866b004b442adcecdcee844bc04e7b36718",
+              "size_bytes": 10193
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/container/tensor.h",
+              "sha256": "053602b9f3abf8a0fc4e963d750d73430b40f8afa090b8183d6c790576c11389",
+              "size_bytes": 36611
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/container/tuple.h",
+              "sha256": "a8322b274699e1f966f6bac0c361094c006a06748114a9c875cdc53d5026bb68",
+              "size_bytes": 13655
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/container/variant.h",
+              "sha256": "6cdfd312ba988459a6732b5e42a8fe3aa6d259201c5babc54ac7dacb12fde357",
+              "size_bytes": 9069
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/device.h",
+              "sha256": "e7e9fe9521bac79669caee6dcdcaffa8bd887485ea8b0cfe8a8c4a749e87bdc4",
+              "size_bytes": 4904
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/dtype.h",
+              "sha256": "dba955f1594d41da15998efd7930e97ec7d6b991378893177e68f8066fc8b6dd",
+              "size_bytes": 9706
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/endian.h",
+              "sha256": "1d20ae0a24a6dd558e0b8877631aeb8ad2f4eda31860a8a3ddeccbe63abcb115",
+              "size_bytes": 2992
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/enum.h",
+              "sha256": "3ad1893f392650d36d9a965bf42c48dd8785b3173c4d13e6d66fd65fb57da068",
+              "size_bytes": 7221
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/error.h",
+              "sha256": "579333cf85356895a802d1270a400b26cb6c85e70982e4a2a4a9c962ed8e5bb1",
+              "size_bytes": 19170
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/expected.h",
+              "sha256": "d9d0b12cca4947ff6f44b050c8dc6e11c6168f91c430d81af774164a0af8f8b9",
+              "size_bytes": 16448
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/extra/base.h",
+              "sha256": "621cb527eb301cafbab0a674caf78ddd9b6e106658b5f572f694d48bbfd4f40f",
+              "size_bytes": 1749
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/extra/base64.h",
+              "sha256": "16fe03281d8dc109f275383ae2adf63368e9001874098848550e12b5ee742207",
+              "size_bytes": 5802
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/extra/c_env_api.h",
+              "sha256": "afca6fcd61cc385772c7bd0aef1d75b41195e40ed50075be9f7166dbeed6b0c9",
+              "size_bytes": 6158
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/extra/cuda/base.h",
+              "sha256": "36267b0c8d604e944500c1fba163d398736bb389c1415bae9b6849957619115d",
+              "size_bytes": 3267
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/extra/cuda/cubin_launcher.h",
+              "sha256": "3eb6641d665ee9f2de4f6626970f3820724cf9f29548aa872c45ce08b0823383",
+              "size_bytes": 23013
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/extra/cuda/device_guard.h",
+              "sha256": "97376eb35a262a3f87c40663b1900ea712e6864d51af8e0d5d672af2371e59da",
+              "size_bytes": 2384
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/extra/cuda/internal/unified_api.h",
+              "sha256": "113c519059f02027585e9c289ac3919a126d096238b6018b55a1740cb025778a",
+              "size_bytes": 10375
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/extra/dataclass.h",
+              "sha256": "83deae35dce433a592157e181cc2a993cc90b0b6b0143ad08bc7bc0cb6d379d5",
+              "size_bytes": 4893
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/extra/dtype.h",
+              "sha256": "0ba5202d60ed98822b06402189bba6585d99b3a13cb1b33e1f2ba12baf532bcf",
+              "size_bytes": 5454
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/extra/json.h",
+              "sha256": "492c7e8f992c8484659dd693a5e91f38289daa1c6bf87faa91e0963458dc8679",
+              "size_bytes": 2730
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/extra/module.h",
+              "sha256": "1a22f6ba9c3e8d9b97c323e692454755b2070c1f39c7a2e00dc7980e9cf0716c",
+              "size_bytes": 10965
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/extra/serialization.h",
+              "sha256": "8afcdd33a3d37819b0c46c8875b3527569d491a040fc5e918aad7c9ec4630065",
+              "size_bytes": 2567
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/extra/stl.h",
+              "sha256": "5e7ff0671b1402a0272d23fdd722341a2c09e81e299119902e1bb4bd0a730f22",
+              "size_bytes": 22120
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/extra/structural_equal.h",
+              "sha256": "c7a253eb416d6a174989ba7c2ae6748664d7f12f533e059ff818e7274810260b",
+              "size_bytes": 3161
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/extra/structural_hash.h",
+              "sha256": "414c1e41f78964d98d8e3e0d1df9c76ea52887fc616707cf1b0a385b325c62e0",
+              "size_bytes": 1926
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/extra/structural_key.h",
+              "sha256": "608e336dd248e67c830e893b5c67a395fb59aa9d774ade4e3ec4462a319c62fb",
+              "size_bytes": 3183
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/extra/structural_visit.h",
+              "sha256": "d79f92c2a371e937ab570fcf190db6a4a41cec82e9be06ecf97e8e9ae8b57989",
+              "size_bytes": 29813
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/extra/visit_error_context.h",
+              "sha256": "e562d61124e764f4367934ddd3d174e76f6743ef736476f83f9997ea840fbe98",
+              "size_bytes": 11255
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/function.h",
+              "sha256": "85b5b11507cee001e7655f6a97f44e43757cff70dd1dbec004ae8e0cbadf6071",
+              "size_bytes": 42070
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/function_details.h",
+              "sha256": "fb7f741036bb278bbad760b9e81340d2e9ffef32387ac716dc021f9e4aba694f",
+              "size_bytes": 10467
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/memory.h",
+              "sha256": "134365fe12c21f9117b77320a5128202f50e990afc96fb1aee3976b5fe3393fc",
+              "size_bytes": 12537
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/object.h",
+              "sha256": "2ce8ccf94b3698b9e8112372a1faaf42cd82ae0a44854759dfae847726266385",
+              "size_bytes": 66420
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/optional.h",
+              "sha256": "e416f7bd90eb0885681a590a4d24986affc518014f37ac64fd3c7e2a53ef502c",
+              "size_bytes": 15922
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/reflection/access_path.h",
+              "sha256": "d367e8a7ced0786c6d899da52f703e6a75f377d5b217ef1e45b39a3fe68ffca2",
+              "size_bytes": 13514
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/reflection/accessor.h",
+              "sha256": "cbb38a126f16fba22aee46dce7b0d614231d73a622518108ae060f951a1ad849",
+              "size_bytes": 20604
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/reflection/creator.h",
+              "sha256": "7b5e0eca13ed54b989e86885f85f1ac4ac1b0a90e1d8bf068a608fbdc990cbf8",
+              "size_bytes": 7581
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/reflection/enum_def.h",
+              "sha256": "b2bff050e6d640705616cf1cd6206f937f5e1907b07eb4da9cd7d0d9b3746e9d",
+              "size_bytes": 5878
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/reflection/overload.h",
+              "sha256": "a335b0f6c6620c998d47d63b567f8f9ad847bf11c9da7ab09ef2c60fce1fa764",
+              "size_bytes": 20146
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/reflection/registry.h",
+              "sha256": "f22d175446f93e4423440f38532a47e7dfb3169781888abef57b783b971a8824",
+              "size_bytes": 44967
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/rvalue_ref.h",
+              "sha256": "1a9d6b976a546a14cb2dc7536b0395b5090288d31240d9ed968c4be558f95dec",
+              "size_bytes": 6201
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/string.h",
+              "sha256": "1661c3d6fe73891a80aed865bbbf85e90278ea037e029ba117560259d142fbab",
+              "size_bytes": 44664
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/tvm_ffi.h",
+              "sha256": "7d50bcbc7bc8da802d102ffa82f42b2db0ba8dacd3fa2133745ee0ceac6a503e",
+              "size_bytes": 2155
+            },
+            {
+              "path": "tvm_ffi/include/tvm/ffi/type_traits.h",
+              "sha256": "0734d243681fa820bf8e66ea587cd4a82bd6f28e17a84d1d5793c4f0594b31ab",
+              "size_bytes": 23094
+            },
+            {
+              "path": "tvm_ffi/include/tvm_ffi_python_helpers.h",
+              "sha256": "663869afb23c886145c40d5ecadb7445a7c77d71826c0b29696c3f2e9a81ca6e",
+              "size_bytes": 48477
+            },
+            {
+              "path": "tvm_ffi/include/tvm_ffi_python_object.h",
+              "sha256": "9f2accbf157a2a607c8c95adb6f18c13ad118ac3cc63b0a3c44b19d235a9d3ff",
+              "size_bytes": 58455
+            },
+            {
+              "path": "tvm_ffi/lib/libtvm_ffi.so",
+              "sha256": "131337ca3047ffb058545505a997239c9e2108b57bd107793c9a35aeab163b7a",
+              "size_bytes": 2113120
+            },
+            {
+              "path": "tvm_ffi/lib/libtvm_ffi_testing.so",
+              "sha256": "30c718e85063cd2a2727f71b6b20696fc07572abfa85133fee87881c49840b34",
+              "size_bytes": 1710680
+            },
+            {
+              "path": "tvm_ffi/libinfo.py",
+              "sha256": "0e8056920a353044fb226ef316629f27241be7c11131bafbc30cb5d9a78e1f22",
+              "size_bytes": 13587
+            },
+            {
+              "path": "tvm_ffi/module.py",
+              "sha256": "19650f41717c6957754f1cf1418a54935e7ae53024da744ff3e91e6babca3d71",
+              "size_bytes": 14632
+            },
+            {
+              "path": "tvm_ffi/py.typed",
+              "sha256": "ec6daa1aed7c7f716b69bf2b8365b891325e474b52524511fe7aa11fc585853a",
+              "size_bytes": 49
+            },
+            {
+              "path": "tvm_ffi/registry.py",
+              "sha256": "dfcbff4effa5f193a2273d4989d94979864c64c881982dcd597688e38353ec26",
+              "size_bytes": 15944
+            },
+            {
+              "path": "tvm_ffi/serialization.py",
+              "sha256": "6263ff08dec66fa975eb3eba77b1777e28e8a10c25c2f01b9e6c1e31d99f4f56",
+              "size_bytes": 2462
+            },
+            {
+              "path": "tvm_ffi/share/cmake/tvm_ffi/Utils/AddGoogleTest.cmake",
+              "sha256": "ebb361a520925d41c85d8b43cf2260200236f4213a0647101584156fb879ad26",
+              "size_bytes": 2835
+            },
+            {
+              "path": "tvm_ffi/share/cmake/tvm_ffi/Utils/AddLibbacktrace.cmake",
+              "sha256": "1cbd3f9443abb3ea55a621c7460bfbe6612a40623ce5d56de1476d75263368ed",
+              "size_bytes": 3420
+            },
+            {
+              "path": "tvm_ffi/share/cmake/tvm_ffi/Utils/CxxWarning.cmake",
+              "sha256": "ca46dc223a244809b734d24fe11f18454dd3ebdfe66790837cfcd2a1b6a4c52f",
+              "size_bytes": 1478
+            },
+            {
+              "path": "tvm_ffi/share/cmake/tvm_ffi/Utils/DetectTargetTriple.cmake",
+              "sha256": "0b0c657f32094aa49c978f6bb23f6af08df1a44878870995ca7ac8bc640033c7",
+              "size_bytes": 8580
+            },
+            {
+              "path": "tvm_ffi/share/cmake/tvm_ffi/Utils/EmbedCubin.cmake",
+              "sha256": "f9db1f2045825dce91b5a92a16def73ff5d138b138a6b48d361f331290088039",
+              "size_bytes": 5288
+            },
+            {
+              "path": "tvm_ffi/share/cmake/tvm_ffi/Utils/Library.cmake",
+              "sha256": "c67dfc85294157ef99f969e710ea307823f55da5445b66d8cf1448c9c556c5ff",
+              "size_bytes": 16448
+            },
+            {
+              "path": "tvm_ffi/share/cmake/tvm_ffi/Utils/ObjectCopyUtil.cmake",
+              "sha256": "328df3f0433adefceeba5b692d9284af4f0f961f93b89fa82b9b610b09c47158",
+              "size_bytes": 2067
+            },
+            {
+              "path": "tvm_ffi/share/cmake/tvm_ffi/Utils/Sanitizer.cmake",
+              "sha256": "1943646236a8dfb643962e0974ff86c53c882761f6bf48311219eadafd816dc1",
+              "size_bytes": 1881
+            },
+            {
+              "path": "tvm_ffi/share/cmake/tvm_ffi/tvm_ffi-config.cmake",
+              "sha256": "b62f1fae03d01390d2b211936f25a24c65e2584de6ac1fd4f440443933eafc9d",
+              "size_bytes": 2340
+            },
+            {
+              "path": "tvm_ffi/src/ffi/backtrace.cc",
+              "sha256": "037af8a2bcc1805015e3e9b35c38517e7134f9b1c80af2dca7cd83d5d83d50ff",
+              "size_bytes": 6515
+            },
+            {
+              "path": "tvm_ffi/src/ffi/backtrace_utils.h",
+              "sha256": "fadb86aa26b502570fef96231b30082e5f42f95a294e6ce76fbc5d7f71bae320",
+              "size_bytes": 5334
+            },
+            {
+              "path": "tvm_ffi/src/ffi/backtrace_win.cc",
+              "sha256": "313d0fee90b393adf7061896d955bc78a3d3a5f52b52df921d9930199a1cd840",
+              "size_bytes": 5106
+            },
+            {
+              "path": "tvm_ffi/src/ffi/container.cc",
+              "sha256": "4af5034cc636f6844cc9278086986fbecd83247321d8df08d243002c78dc3fa4",
+              "size_bytes": 9605
+            },
+            {
+              "path": "tvm_ffi/src/ffi/custom_allocator.cc",
+              "sha256": "a33758b5ce4adc8bbe3728c18fd71b291f11657824ef6dfb9d8f6fce742d4cd9",
+              "size_bytes": 3340
+            },
+            {
+              "path": "tvm_ffi/src/ffi/dtype.cc",
+              "sha256": "2777d26e35fef13a7a441d6c6d99dbdd37fb1b9bb08ef116bdad2b204b79db20",
+              "size_bytes": 15637
+            },
+            {
+              "path": "tvm_ffi/src/ffi/error.cc",
+              "sha256": "48cc9e7b961ccdb9767ad594a7363fcbbf51a455ac607a51b563ea75d02a7878",
+              "size_bytes": 5607
+            },
+            {
+              "path": "tvm_ffi/src/ffi/extra/buffer_stream.h",
+              "sha256": "011e4a1a809d063f740ffc296a04db32f304a242efff8ddd199204d22a9a94a5",
+              "size_bytes": 4048
+            },
+            {
+              "path": "tvm_ffi/src/ffi/extra/dataclass.cc",
+              "sha256": "4ad9e4ccfa1311eb055f9bc679129bd2db819f63379ab032172da5a9dda44d80",
+              "size_bytes": 78519
+            },
+            {
+              "path": "tvm_ffi/src/ffi/extra/env_c_api.cc",
+              "sha256": "5e9322023efca42e75c80466146f331b4c899b27a4b73b56b7109069752eafd2",
+              "size_bytes": 4843
+            },
+            {
+              "path": "tvm_ffi/src/ffi/extra/env_context.cc",
+              "sha256": "941edd8415cca875c010f456f1f06f2f336b8978c64531f4953c1c4d848d490c",
+              "size_bytes": 6232
+            },
+            {
+              "path": "tvm_ffi/src/ffi/extra/json_parser.cc",
+              "sha256": "3f8e8bce2d5f906c681a38216da7f7fbfc0969f565034e4f13c6449d188e8284",
+              "size_bytes": 24559
+            },
+            {
+              "path": "tvm_ffi/src/ffi/extra/json_writer.cc",
+              "sha256": "c6d2b98dc2ea0011633350a53bd75b6528e4e8e253e9b88e31a65631a3f5b95d",
+              "size_bytes": 8735
+            },
+            {
+              "path": "tvm_ffi/src/ffi/extra/library_module.cc",
+              "sha256": "4974db098b6ddb87d93934f46d1237e29ecb20a20e8303315ec1c472632a7865",
+              "size_bytes": 8741
+            },
+            {
+              "path": "tvm_ffi/src/ffi/extra/library_module_dynamic_lib.cc",
+              "sha256": "34c51130a3d1c76356b1a5bcf9e89ba57566a04a477ad27f2abffec141d1f01f",
+              "size_bytes": 3341
+            },
+            {
+              "path": "tvm_ffi/src/ffi/extra/library_module_system_lib.cc",
+              "sha256": "e6e811fd83f7da5a28015594572e36df807ffb82b3fd5b7b98aba02d937f88fd",
+              "size_bytes": 4500
+            },
+            {
+              "path": "tvm_ffi/src/ffi/extra/module.cc",
+              "sha256": "591955ecbfd59dd6d133e92bc9b3340dff6d78a11394e1f8a1ae57e32d1bdf4e",
+              "size_bytes": 7200
+            },
+            {
+              "path": "tvm_ffi/src/ffi/extra/module_internal.h",
+              "sha256": "7273bcaa800ff5a20f2529c63db61bca16a2e8cfee93d5de495e1a6e3f412ff0",
+              "size_bytes": 3782
+            },
+            {
+              "path": "tvm_ffi/src/ffi/extra/reflection_extra.cc",
+              "sha256": "ad630734adaac50e7e659383e14b35cec7457bf7dd3832b67614d74eac2f4ae1",
+              "size_bytes": 8667
+            },
+            {
+              "path": "tvm_ffi/src/ffi/extra/serialization.cc",
+              "sha256": "5fa133716a10c9fd9165a0f39624e8708c1ba44460bbd7a6a821838af5de817d",
+              "size_bytes": 19353
+            },
+            {
+              "path": "tvm_ffi/src/ffi/extra/structural_equal.cc",
+              "sha256": "df7b0cfc8f9888feecf20e4df31943b7aed4efd5d477a8d08efc59e725789e0d",
+              "size_bytes": 22075
+            },
+            {
+              "path": "tvm_ffi/src/ffi/extra/structural_hash.cc",
+              "sha256": "35eb4cff747d20bd34c381888802a437a3982318f9ab3c3e36b0fefc15bb84ad",
+              "size_bytes": 17476
+            },
+            {
+              "path": "tvm_ffi/src/ffi/extra/structural_visit.cc",
+              "sha256": "ec0c7d4804c84536e510e37226ae64c0c9dcdd251ca6a870579cac72dd200ffb",
+              "size_bytes": 7432
+            },
+            {
+              "path": "tvm_ffi/src/ffi/extra/visit_error_context.cc",
+              "sha256": "2e49697dc1a3f366b000dda37bdd9b31bfe3421755a2feeaefef71a8814df1f7",
+              "size_bytes": 14374
+            },
+            {
+              "path": "tvm_ffi/src/ffi/function.cc",
+              "sha256": "29d2d97393dad5e41413b267999bd62317afe7b2df699ca47a2ae5319a342f54",
+              "size_bytes": 9407
+            },
+            {
+              "path": "tvm_ffi/src/ffi/init_once.cc",
+              "sha256": "2d972c3afd16d8e0958d8f4b292224cd2bcd2d334a847a0b4a91208774026f8b",
+              "size_bytes": 3287
+            },
+            {
+              "path": "tvm_ffi/src/ffi/object.cc",
+              "sha256": "64a2e1a02e791871a3aadbb6e74c6573cf60ccdef269b6e8693783b0f6317c10",
+              "size_bytes": 28855
+            },
+            {
+              "path": "tvm_ffi/src/ffi/object_internal.h",
+              "sha256": "ebd8fe11552127235400be87ce52da837f0dc101191fa99cdd3de751b68fcb22",
+              "size_bytes": 1298
+            },
+            {
+              "path": "tvm_ffi/src/ffi/tensor.cc",
+              "sha256": "58c40f36ec981d9d7f58ccb53fe92b25c169b860bcc85eb19f2a99f1ea7f1b59",
+              "size_bytes": 4486
+            },
+            {
+              "path": "tvm_ffi/src/ffi/testing/testing.cc",
+              "sha256": "44f0a7f5bdbbc32209abf8e645df3c0fb5e1b29a92b3c04f51311dd80013aaa5",
+              "size_bytes": 40692
+            },
+            {
+              "path": "tvm_ffi/stream.py",
+              "sha256": "586413f5558bd8682f31280743cf7fe6581a17b7e2eb270e19ffcceba12c2f0c",
+              "size_bytes": 6575
+            },
+            {
+              "path": "tvm_ffi/structural.py",
+              "sha256": "4a8d0bed8d72084b31adb69d7fabaaf9b324b9f6e0017a4df0c2a05bfdaff93b",
+              "size_bytes": 16556
+            },
+            {
+              "path": "tvm_ffi/stub/__init__.py",
+              "sha256": "76189338252f4e3fcb40d34da59126d1879e248d0e4e12ced4999d8067395e3c",
+              "size_bytes": 825
+            },
+            {
+              "path": "tvm_ffi/stub/cli.py",
+              "sha256": "5b1236d24c4a82956b06c8e543c7974f67998adade548a630af645ae77721455",
+              "size_bytes": 14755
+            },
+            {
+              "path": "tvm_ffi/stub/consts.py",
+              "sha256": "42a2e5f75f0e3deec9172830ba461fcaf4a974754139b1cbade3e239fedaf0af",
+              "size_bytes": 3581
+            },
+            {
+              "path": "tvm_ffi/stub/file_utils.py",
+              "sha256": "0a894baee7738d67cbc1f4d179c99a5b3f31a1425e35fe0dea3577a159edcf0e",
+              "size_bytes": 11634
+            },
+            {
+              "path": "tvm_ffi/stub/generator.py",
+              "sha256": "d5ffb9d4d3a9a1a33066882c6f156080ba368cd753ad4b454e6b0a0712e91938",
+              "size_bytes": 7118
+            },
+            {
+              "path": "tvm_ffi/stub/lib_state.py",
+              "sha256": "86a61f8b337c0e32d8783503a664b2b80bb6fd105630c8e6a7ec1edd33f472ee",
+              "size_bytes": 4583
+            },
+            {
+              "path": "tvm_ffi/stub/python_generator/__init__.py",
+              "sha256": "27196e51f675edded57c7410af3bafdef22a57c908e815083585c993ff4f78ff",
+              "size_bytes": 945
+            },
+            {
+              "path": "tvm_ffi/stub/python_generator/codegen.py",
+              "sha256": "714f4168b49c0ad6b75292fc3071378af18f46078cc69c4e74281b30510abc91",
+              "size_bytes": 13033
+            },
+            {
+              "path": "tvm_ffi/stub/python_generator/consts.py",
+              "sha256": "23e3947ba7e65657ead81ccf04413d466cee0b2154bbcea4d75f7aaf6509a86a",
+              "size_bytes": 2003
+            },
+            {
+              "path": "tvm_ffi/stub/python_generator/generator.py",
+              "sha256": "31d645a6eea537f86d0f48faf8ce9b461811591fa9e0a4cf052b80d54596dccd",
+              "size_bytes": 5995
+            },
+            {
+              "path": "tvm_ffi/stub/python_generator/utils.py",
+              "sha256": "869736cfd6e602c837fbe42f4df0a8da7976d1d7b66a980b358bfd9525fc40b1",
+              "size_bytes": 10762
+            },
+            {
+              "path": "tvm_ffi/stub/utils.py",
+              "sha256": "78c49e9fc7d69d1fd74ae125eefc359083e94dcf71e04fa05275a1db363d0187",
+              "size_bytes": 7168
+            },
+            {
+              "path": "tvm_ffi/testing/__init__.py",
+              "sha256": "c44d40e81aeca9c79277822c8d0951b5051226d79252d2c367f0cf2f671f4818",
+              "size_bytes": 1608
+            },
+            {
+              "path": "tvm_ffi/testing/_ffi_api.py",
+              "sha256": "4911f3cd2b7d46824fed836b116460fd46904cf86b87f2be106293ad49de06a6",
+              "size_bytes": 6910
+            },
+            {
+              "path": "tvm_ffi/testing/_locking.py",
+              "sha256": "3ff562f1ba20b1470551faee54b0b3486b902e50a2a591618b8ac940babca46f",
+              "size_bytes": 4697
+            },
+            {
+              "path": "tvm_ffi/testing/testing.py",
+              "sha256": "c588e6a093e89d217a3c3160f1b99faa59b732dc6815934fea55491b3d13ad47",
+              "size_bytes": 18115
+            },
+            {
+              "path": "tvm_ffi/utils/__init__.py",
+              "sha256": "7f36dc8f2e9773c566c83a56301a829460846d907486194f04e3e91fe09e08d2",
+              "size_bytes": 898
+            },
+            {
+              "path": "tvm_ffi/utils/_build_optional_torch_c_dlpack.py",
+              "sha256": "00642488be9a3bdc9560f14fa5d5b73172e096e89b09ffc35a7f18225feae9ce",
+              "size_bytes": 30608
+            },
+            {
+              "path": "tvm_ffi/utils/embed_cubin.py",
+              "sha256": "7957512acf353376f3ea12e7478784febe8368cfd30cbc0b231f5994adc2da1b",
+              "size_bytes": 14689
+            },
+            {
+              "path": "tvm_ffi/utils/kwargs_wrapper.py",
+              "sha256": "a476d0d41d4c805e721ee37b3153cd75387286aafb1768ffe186be97594faaf5",
+              "size_bytes": 15775
+            },
+            {
+              "path": "tvm_ffi/utils/lockfile.py",
+              "sha256": "5e5b941036979eb44566e64e351e7fddadd27360a9efe56c52493313be15f100",
+              "size_bytes": 5606
+            },
+            {
+              "path": "tvm_ffi/utils/unpack_dataclass.py",
+              "sha256": "f38f2b85c25d06452c97993c480bc64afc16993155bea5d4a4502edf2e543439",
+              "size_bytes": 10897
+            }
+          ],
+          "entry_count": 250,
+          "schema": "gdn-sm90a.installed-distribution-files.v1",
+          "total_file_bytes": 9818453
+        },
+        "version": "0.1.13rc2.dev2+g3e8b2a860"
+      }
+    },
+    "python_full_version": "3.12.3 (main, Jan 22 2026, 20:57:42) [GCC 13.3.0]",
+    "python_implementation": "CPython",
+    "python_version": "3.12.3",
+    "torch_cuda_build": "13.1",
+    "torch_module_version": "2.11.0a0+eb65b36914.nv26.02"
+  },
+  "runtime_identity_sha256": "34375f2d7272b24ccc276ab3aaebbf4ecadab1f1fa68dc6da5b56bc192c7f0c5",
+  "schema": "gdn-sm90a.public-evidence-contract.v1",
+  "secondary_ratios": [
+    {
+      "denominator": "fla",
+      "name": "tirx_over_fla",
+      "numerator": "tirx"
+    }
+  ],
+  "source_attestation_sha256": "62c394e8bc9a5bf3636091386e12628ee133c2ce2a6b3093023632ef55d2c699",
+  "source_attestations": {
+    "cutedsl": {
+      "clean_checkout": true,
+      "head": "88737e9d906cf313995a092624656a89d74dd65e",
+      "peeled_commit": "88737e9d906cf313995a092624656a89d74dd65e",
+      "required_path": "cula/gdn/prefill.py",
+      "runtime_commit": null,
+      "source": "cutedsl",
+      "tag": "gdn-sm90a-comparator-r1",
+      "tag_object": "0e2c50a4f39b58811e234466682a62f8926998c4",
+      "tracked_clean": true,
+      "tree": "aa01d1a169b72dedd582f86fc9b257e9e2776344"
+    },
+    "fla": {
+      "clean_checkout": true,
+      "head": "d1ce07369d581813553f30a750af3b6b5f9af6a9",
+      "peeled_commit": null,
+      "required_path": "fla/ops/gated_delta_rule/chunk.py",
+      "runtime_commit": null,
+      "source": "fla",
+      "tag": null,
+      "tag_object": null,
+      "tracked_clean": true,
+      "tree": "e5ea97e3041c3e4dd0bf6974c2259f7ed104ddc2"
+    },
+    "tirx": {
+      "clean_checkout": true,
+      "head": "12ce3721f7c62c5fbd911103ae373de689e58385",
+      "peeled_commit": "12ce3721f7c62c5fbd911103ae373de689e58385",
+      "required_path": "tirx_kernels/attention/gdn_sm90.py",
+      "runtime_commit": "90c9c62c84ecc452dd86602f0ea49a625845045c",
+      "source": "tirx",
+      "tag": "gdn-sm90a-kernel-r0",
+      "tag_object": "f233dcbfc314415b9af496e3fd855554d81d662c",
+      "tracked_clean": true,
+      "tree": "cc04daa65ff52014348c8e078721e9afb017467a"
+    },
+    "tvm": {
+      "clean_checkout": true,
+      "head": "acb1312de80b39340e09b0aaad818ff029e745d6",
+      "peeled_commit": "acb1312de80b39340e09b0aaad818ff029e745d6",
+      "required_path": "python/tvm/__init__.py",
+      "runtime_commit": null,
+      "source": "tvm",
+      "tag": "gdn-sm90a-compiler-r0",
+      "tag_object": "18e2172e54aefcba7e11f3e62fa8bfa137b480d4",
+      "tracked_clean": true,
+      "tree": "d7989ef4a8621448755da21bd1dec8b5d6c18a1b"
+    }
+  },
+  "source_locks": {
+    "cutedsl": {
+      "commit": "88737e9d906cf313995a092624656a89d74dd65e",
+      "repository": "https://github.com/Aharrypotter/cuLA",
+      "required_path": "cula/gdn/prefill.py",
+      "tag": "gdn-sm90a-comparator-r1",
+      "tag_object": "0e2c50a4f39b58811e234466682a62f8926998c4",
+      "tree": "aa01d1a169b72dedd582f86fc9b257e9e2776344"
+    },
+    "fla": {
+      "commit": "d1ce07369d581813553f30a750af3b6b5f9af6a9",
+      "repository": "https://github.com/fla-org/flash-linear-attention",
+      "required_path": "fla/ops/gated_delta_rule/chunk.py",
+      "tree": "e5ea97e3041c3e4dd0bf6974c2259f7ed104ddc2"
+    },
+    "tirx": {
+      "commit": "12ce3721f7c62c5fbd911103ae373de689e58385",
+      "repository": "https://github.com/Aharrypotter/tirx-kernels",
+      "required_path": "tirx_kernels/attention/gdn_sm90.py",
+      "runtime_commit": "90c9c62c84ecc452dd86602f0ea49a625845045c",
+      "tag": "gdn-sm90a-kernel-r0",
+      "tag_object": "f233dcbfc314415b9af496e3fd855554d81d662c",
+      "tree": "cc04daa65ff52014348c8e078721e9afb017467a"
+    },
+    "tvm": {
+      "commit": "acb1312de80b39340e09b0aaad818ff029e745d6",
+      "repository": "https://github.com/Aharrypotter/tvm",
+      "required_path": "python/tvm/__init__.py",
+      "tag": "gdn-sm90a-compiler-r0",
+      "tag_object": "18e2172e54aefcba7e11f3e62fa8bfa137b480d4",
+      "tree": "d7989ef4a8621448755da21bd1dec8b5d6c18a1b"
+    }
+  },
+  "timing": {
+    "base_processes": 3,
+    "escalated_processes": 7,
+    "escalation_ratios": [
+      "tirx_over_cutedsl",
+      "tirx_over_fla"
+    ],
+    "escalation_row_id": "packed-n10-t4096-h8-mha-state",
+    "max_gpu_util_pct": 5.0,
+    "noise_band_pct": 2.0,
+    "post_util_policy": "record_only",
+    "quiet_poll_interval_s": 1.0,
+    "quiet_timeout_s": 120.0,
+    "require_rotating_three_way_order": true,
+    "statistic": "median_of_process_averages",
+    "timed_iters": 100,
+    "timer": "cuda_event",
+    "warmup_iters": 20
+  },
+  "tvm_build_attestation_sha256": "028ca502d51e69078d0b0f22925a04e812ff8153905c8eebd1abb1545532154e"
+}

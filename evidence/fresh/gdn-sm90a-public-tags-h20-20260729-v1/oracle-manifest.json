@@ -1,0 +1,48 @@
+{
+  "backend_identity": "sm90_cutedsl_gdn",
+  "contract_sha256": "6d6f93b4cfcd29b1a5cc9d7830306bfdec01606d550e252ce3b76ef748a6b130",
+  "cutedsl_dependency_attestation_sha256": "563645e7381812dcf29777b3beb3fba97ff92a26911f2b9d16a23e4be9e8f811",
+  "entrypoint": "cula.gdn.prefill.chunk_gated_delta_rule",
+  "original_schema": "gdn-sm90a.cutedsl-oracle-manifest.v1",
+  "physical_device_binding_verified": true,
+  "process_isolation_verified": true,
+  "report_attestation_sha256": "c7ffd7619eb2daf12e28a1a0c90d02425470b8d0dabf3181c58e4cd2dd56033f",
+  "row_count": 6,
+  "rows": [
+    {
+      "oracle_sha256": "14b24784049df2c65f6eaed96a0ec0c119bd90f2c442890c8aa65011afa9e857",
+      "row_id": "single-t512-h8-mha-zero",
+      "state_present": false
+    },
+    {
+      "oracle_sha256": "e33d2677c91d45c1d1a9298123a0ea9483137b77f053dd7e735e00bf519bec54",
+      "row_id": "single-t1024-h8-mha-state",
+      "state_present": true
+    },
+    {
+      "oracle_sha256": "5db82bc45b8502aa327c3824e097e3dea3c5680f5eacf11717d5288be22f2c95",
+      "row_id": "single-t1024-h8-hv16-gva-state",
+      "state_present": true
+    },
+    {
+      "oracle_sha256": "ec4c015c965f4d2a9599d146322b4d857dcb3c3f2366e663b81f6cc82cfd3ff8",
+      "row_id": "single-t4096-h16-mha-zero",
+      "state_present": false
+    },
+    {
+      "oracle_sha256": "7f560d6ee11c34a4eed248cd6a096318f5c34194cedaafa4ff035e4e7043b1bd",
+      "row_id": "packed-n10-t4096-h8-mha-state",
+      "state_present": true
+    },
+    {
+      "oracle_sha256": "7612cee832e191d6a682919b50d28897dcd224134090cddef8f464442e8c3e7f",
+      "row_id": "packed-n20-t8192-h8-hv16-gva-state",
+      "state_present": true
+    }
+  ],
+  "runtime_identity_sha256": "34375f2d7272b24ccc276ab3aaebbf4ecadab1f1fa68dc6da5b56bc192c7f0c5",
+  "schema": "gdn-sm90a.public-oracle-manifest.v1",
+  "source_attestation_sha256": "62c394e8bc9a5bf3636091386e12628ee133c2ce2a6b3093023632ef55d2c699",
+  "status": "PASS",
+  "tvm_build_attestation_sha256": "028ca502d51e69078d0b0f22925a04e812ff8153905c8eebd1abb1545532154e"
+}

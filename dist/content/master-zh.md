@@ -89,13 +89,18 @@ CuTeDSL 对照实现绑定到 88737e9d906cf313995a092624656a89d74dd65e 上的 gd
 
 完整映射见[证据溯源](../../docs/evidence-provenance.md)与机器可读的 [link map](../../contracts/link-map.json)。
 
-## 当前证据状态，以及下一步
+## 历史与 fresh 两类证据
 
 公开包状态为 HISTORICAL_EVIDENCE_BOUND；unofficial-personal-fork 为 true，upstream-merge 为 false。
 
 脱敏 evidence bundle 是确定性、隐私安全的，并绑定到不可变历史 release seal。它保留数值回执和紧凑的正确性、安全性、codegen、release 摘要，同时排除原始日志、私有 host/device 标识、cache 路径、profiler artifact 与进程元数据。
 
-但它仍然是历史证据。新发布的公开 tags 尚未作为一个独立 release 被重新运行并单独封存。Fresh rerun 必须从公开 compiler、kernel、修正后的 CuTeDSL comparator 和精确 FLA commit 构建，重跑同一矩阵及各层验证，再发布一个新增的 evidence root。历史 bundle 绝不能被改名冒充 fresh 结果，也不能被覆盖。
+这个 bundle 永远保持历史证据身份，不会被改名或覆盖。Public tags 的运行属于另一份加性证据：
+
+精确 public tags 的 H20 6 行表征：bundle 派生 66 receipts，CHARACTERIZATION；TIRx/CuTeDSL 0.834812、TIRx/FLA 0.453700、packed-n10 基础三进程 1.017445。未复现历史 host-sync/sanitizer/完整 codegen/resource reseal；非官方 fork，无 upstream merge。
+
+[Fresh evidence root](../../evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1)
+和[来源派生的性能报告](../../reports/fresh-public-tag-performance.md)把结论绑定到精确 source/build/runtime identity、独立进程、物理 H20、receipt correctness 与 timing。历史 host-sync、sanitizer 和完整 codegen/resource 结果仍只属于历史证据。
 
 ## 公开资产
 
@@ -104,5 +109,7 @@ CuTeDSL 对照实现绑定到 88737e9d906cf313995a092624656a89d74dd65e 上的 gd
 - [TIRx GDN kernel tag](https://github.com/Aharrypotter/tirx-kernels/tree/gdn-sm90a-kernel-r0)
 - [修正后的 CuTeDSL GDN comparator tag](https://github.com/Aharrypotter/cuLA/tree/gdn-sm90a-comparator-r1)
 - [精确 FLA comparator commit](https://github.com/fla-org/flash-linear-attention/commit/d1ce07369d581813553f30a750af3b6b5f9af6a9)
+- [Fresh public-tag evidence](../../evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1)
+- [Fresh 性能 characterization](../../reports/fresh-public-tag-performance.md)
 
 这些都是非官方个人 fork 产物。没有任何上游项目合并、背书或发布这项工作。

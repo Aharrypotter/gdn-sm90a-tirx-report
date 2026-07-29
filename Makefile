@@ -1,4 +1,5 @@
 .PHONY: \
+	release-assets \
 	source-locks \
 	verify-all \
 	verify-benchmark \
@@ -7,7 +8,12 @@
 	verify-fresh-evidence \
 	verify-historical-evidence \
 	verify-json \
+	verify-release-assets \
+	verify-release-tools \
 	verify-static
+
+RELEASE_TAG ?= gdn-sm90a-r0
+RELEASE_DIR ?= build/releases/$(RELEASE_TAG)
 
 verify-static:
 	ruff check scripts reproduce
@@ -31,7 +37,12 @@ verify-benchmark:
 	python3 -m unittest discover -s reproduce/benchmark/tests -v
 
 verify-fresh-evidence:
+	python3 -m reproduce.fresh_evidence.verify \
+		--bundle evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1
 	python3 -m unittest discover -s reproduce/fresh_evidence/tests -v
+
+verify-release-tools:
+	python3 -m unittest discover -s scripts/tests -v
 
 verify-content:
 	python3 scripts/materialize_publication_content.py --check
@@ -46,7 +57,20 @@ verify-all: \
 	verify-claims \
 	verify-benchmark \
 	verify-fresh-evidence \
+	verify-release-tools \
 	verify-content
+
+release-assets:
+	python3 scripts/build_release_assets.py \
+		--tag "$(RELEASE_TAG)" \
+		--require-contract-tag \
+		--output "$(RELEASE_DIR)"
+
+verify-release-assets:
+	python3 scripts/verify_release_assets.py \
+		--tag "$(RELEASE_TAG)" \
+		--require-contract-tag \
+		--assets "$(RELEASE_DIR)"
 
 source-locks:
 	@test -n "$(TVM_DIR)" || { echo "TVM_DIR is required" >&2; exit 2; }

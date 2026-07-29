@@ -3,7 +3,19 @@
   "canonical_sources": {
     "performance": {
       "path": "evidence/historical/gdn-sm90a-h20-20260728-v1/results/performance.json",
-      "role": "The only source for public latency, ratio, row-count, and receipt-count facts."
+      "role": "The only source for historical public latency, ratio, row-count, and receipt-count facts."
+    },
+    "fresh_performance": {
+      "path": "evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1/performance.json",
+      "role": "The only source for fresh public-tag H20 latency, ratio, row-count, and receipt-count facts."
+    },
+    "fresh_publication": {
+      "path": "evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1/publication.json",
+      "role": "Fresh evidence class, claim scope, decision status, and upstream-merge boundary."
+    },
+    "fresh_environment": {
+      "path": "evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1/environment.json",
+      "role": "Public, privacy-safe fresh execution-environment identity."
     },
     "environment": {
       "path": "evidence/historical/gdn-sm90a-h20-20260728-v1/metadata/environment.json",
@@ -28,6 +40,7 @@
     "formats": {
       "exact": "Use the JSON number's shortest round-trip decimal representation.",
       "fixed_2": "Round the source-derived value to two decimal places at render time.",
+      "fixed_6": "Round the source-derived value to six decimal places at render time.",
       "integer": "Require and render an integral source-derived value."
     }
   },
@@ -333,20 +346,70 @@
     },
     {
       "id": "C12",
-      "enabled": false,
-      "category": "fresh-reproduction",
+      "enabled": true,
+      "category": "performance-fresh-characterization",
       "statement": {
-        "en": "The result was independently reproduced from the public release tags.",
-        "zh": "该结果已经从公开发布标签独立复现。"
+        "en": "Exact public tags, H20 {row_count} rows: {receipt_count} bundle-derived receipts; {decision_status}; TIRx/CuTeDSL {cutedsl_geomean}, TIRx/FLA {fla_geomean}, packed-n10 base-three-process {packed_n10_base_ratio}. Does not reproduce historical host-sync/sanitizer/full codegen/resource reseals. Unofficial forks; no upstream merge.",
+        "zh": "精确 public tags 的 H20 {row_count} 行表征：bundle 派生 {receipt_count} receipts，{decision_status}；TIRx/CuTeDSL {cutedsl_geomean}、TIRx/FLA {fla_geomean}、packed-n10 基础三进程 {packed_n10_base_ratio}。未复现历史 host-sync/sanitizer/完整 codegen/resource reseal；非官方 fork，无 upstream merge。"
       },
-      "bindings": {},
+      "bindings": {
+        "row_count": {
+          "source": "fresh_performance",
+          "pointer": "/rows",
+          "operation": "map_length",
+          "fact_class": "performance",
+          "format": "integer"
+        },
+        "receipt_count": {
+          "source": "fresh_performance",
+          "pointer": "/receipt_count",
+          "operation": "value",
+          "fact_class": "performance",
+          "format": "integer"
+        },
+        "decision_status": {
+          "source": "fresh_publication",
+          "pointer": "/decision_status",
+          "operation": "value",
+          "fact_class": "release",
+          "format": "exact"
+        },
+        "cutedsl_geomean": {
+          "source": "fresh_performance",
+          "pointer": "/primary_geomean/tirx_over_cutedsl",
+          "operation": "value",
+          "fact_class": "performance",
+          "format": "fixed_6"
+        },
+        "fla_geomean": {
+          "source": "fresh_performance",
+          "pointer": "/primary_geomean/tirx_over_fla",
+          "operation": "value",
+          "fact_class": "performance",
+          "format": "fixed_6"
+        },
+        "packed_n10_base_ratio": {
+          "source": "fresh_performance",
+          "pointer": "/packed_n10_base_ratios/tirx_over_cutedsl",
+          "operation": "value",
+          "fact_class": "performance",
+          "format": "fixed_6"
+        }
+      },
       "required_caveats": [
-        "K04"
+        "K01",
+        "K02",
+        "K07",
+        "K09"
       ],
-      "disabled_reason": "No independently sealed fresh public-tag evidence bundle exists.",
       "enablement_gate": {
-        "required_bundle_class": "FRESH_PUBLIC_TAG_REPRODUCTION",
+        "required_bundle_path": "evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1",
+        "required_bundle_class": "fresh-public-tag-h20-rerun",
+        "required_claim_scope": "fresh public-tag H20 six-row characterization",
         "required_status": "PASS",
+        "required_decision_status": "CHARACTERIZATION",
+        "required_upstream_merge_claim": false,
+        "receipt_count_policy": "derive_from_bundle",
         "must_not_use": "evidence/historical/gdn-sm90a-h20-20260728-v1"
       }
     },

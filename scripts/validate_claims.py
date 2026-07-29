@@ -19,9 +19,11 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
 import math
 import re
+import statistics
 import string
 from pathlib import Path
 from typing import Any
@@ -30,11 +32,35 @@ EXPECTED_CLAIM_IDS = tuple(f"C{index:02d}" for index in range(1, 15))
 CANONICAL_PERFORMANCE_PATH = (
     "evidence/historical/gdn-sm90a-h20-20260728-v1/results/performance.json"
 )
+FRESH_BUNDLE_PATH = "evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1"
+FRESH_PERFORMANCE_PATH = f"{FRESH_BUNDLE_PATH}/performance.json"
+FRESH_PUBLICATION_PATH = f"{FRESH_BUNDLE_PATH}/publication.json"
+FRESH_ENVIRONMENT_PATH = f"{FRESH_BUNDLE_PATH}/environment.json"
+FRESH_REPORT_PATH = "reports/fresh-public-tag-performance.md"
 PUBLIC_MANIFEST_PATH = "evidence/historical/gdn-sm90a-h20-20260728-v1/manifest.json"
 PUBLIC_MANIFEST_DOC_PATH = "docs/evidence-provenance.md"
 EXPECTED_CUTEDSL_TAG = "gdn-sm90a-comparator-r1"
 EXPECTED_CUTEDSL_COMMIT = "88737e9d906cf313995a092624656a89d74dd65e"
 EXCLUDED_CUTEDSL_TAG = "gdn2-sm90a-comparator-r0"
+FRESH_CLAIM_SCOPE = "fresh public-tag H20 six-row characterization"
+FRESH_EVIDENCE_KIND = "fresh-public-tag-h20-rerun"
+REPORT_TAG = "gdn-sm90a-r0"
+FRESH_ROW_ORDER = (
+    "single-t512-h8-mha-zero",
+    "single-t1024-h8-mha-state",
+    "single-t1024-h8-hv16-gva-state",
+    "single-t4096-h16-mha-zero",
+    "packed-n10-t4096-h8-mha-state",
+    "packed-n20-t8192-h8-hv16-gva-state",
+)
+FRESH_TEMPLATE_LANGUAGE = {
+    "master-en.md": "en",
+    "master-zh.md": "zh",
+    "wechat.md": "zh",
+    "x-thread-en.md": "en",
+    "x-thread-zh.md": "zh",
+    "zhihu.md": "zh",
+}
 CONTENT_SUFFIXES = {".md", ".txt"}
 PERFORMANCE_LITERAL = re.compile(r"(?<![A-Za-z0-9_-])\d+\.\d+(?![A-Za-z0-9_-])")
 
@@ -138,6 +164,12 @@ def format_value(value: Any, format_name: str) -> str:
         if not math.isfinite(value):
             raise ContractError("fixed_4 cannot render a non-finite number")
         return f"{value:.4f}"
+    if format_name == "fixed_6":
+        if isinstance(value, bool) or not isinstance(value, (int, float)):
+            raise ContractError(f"fixed_6 format requires number, found {value!r}")
+        if not math.isfinite(value):
+            raise ContractError("fixed_6 cannot render a non-finite number")
+        return f"{value:.6f}"
     raise ContractError(f"unsupported rendering format: {format_name!r}")
 
 
@@ -196,6 +228,17 @@ def validate_registry_structure(
     performance_source = registry.get("canonical_sources", {}).get("performance", {})
     if performance_source.get("path") != CANONICAL_PERFORMANCE_PATH:
         errors.append("claim registry does not name the canonical performance source")
+    fresh_sources = {
+        "fresh_performance": FRESH_PERFORMANCE_PATH,
+        "fresh_publication": FRESH_PUBLICATION_PATH,
+        "fresh_environment": FRESH_ENVIRONMENT_PATH,
+    }
+    for source_name, expected_path in fresh_sources.items():
+        source = registry.get("canonical_sources", {}).get(source_name, {})
+        if source.get("path") != expected_path:
+            errors.append(
+                f"claim registry does not name canonical {source_name} source {expected_path}"
+            )
     if caveats.get("canonical_performance_source") != CANONICAL_PERFORMANCE_PATH:
         errors.append("caveats do not name the canonical performance source")
 
@@ -230,20 +273,33 @@ def validate_registry_structure(
                         f"{claim.get('id')}/{language}: copied decimal performance literal"
                     )
         for name, binding in claim.get("bindings", {}).items():
-            if binding.get("fact_class") == "performance" and binding.get("source") != (
-                "performance"
-            ):
+            if binding.get("fact_class") != "performance":
+                continue
+            expected_source = "fresh_performance" if claim.get("id") == "C12" else "performance"
+            if binding.get("source") != expected_source:
                 errors.append(
-                    f"{claim.get('id')}/{name}: performance fact does not use performance.json"
+                    f"{claim.get('id')}/{name}: performance fact does not use "
+                    f"{expected_source}.json"
                 )
 
     by_id = {claim.get("id"): claim for claim in claims if isinstance(claim, dict)}
-    if by_id.get("C12", {}).get("enabled") is not False:
-        errors.append("C12 must remain disabled until a fresh public-tag bundle exists")
-    if by_id.get("C12", {}).get("enablement_gate", {}).get("must_not_use") != (
-        "evidence/historical/gdn-sm90a-h20-20260728-v1"
-    ):
-        errors.append("C12 does not explicitly exclude the historical bundle")
+    c12 = by_id.get("C12", {})
+    if c12.get("enabled") is not True:
+        errors.append("C12 must be enabled for the sealed fresh public-tag bundle")
+    expected_gate = {
+        "required_bundle_path": FRESH_BUNDLE_PATH,
+        "required_bundle_class": FRESH_EVIDENCE_KIND,
+        "required_claim_scope": FRESH_CLAIM_SCOPE,
+        "required_status": "PASS",
+        "required_decision_status": "CHARACTERIZATION",
+        "required_upstream_merge_claim": False,
+        "receipt_count_policy": "derive_from_bundle",
+        "must_not_use": "evidence/historical/gdn-sm90a-h20-20260728-v1",
+    }
+    if c12.get("enablement_gate") != expected_gate:
+        errors.append("C12 enablement gate does not exactly bind the fresh evidence boundary")
+    if set(c12.get("required_caveats", [])) != {"K01", "K02", "K07", "K09"}:
+        errors.append("C12 does not carry the required fresh performance and fork caveats")
     return errors
 
 
@@ -279,7 +335,12 @@ def validate_forbidden_phrases(caveats: dict[str, Any]) -> list[str]:
     return errors
 
 
-def validate_link_map(link_map: dict[str, Any], source_lock: dict[str, Any]) -> list[str]:
+def validate_link_map(
+    root: Path,
+    link_map: dict[str, Any],
+    source_lock: dict[str, Any],
+    fresh_source_lock: dict[str, Any],
+) -> list[str]:
     errors = []
     if link_map.get("schema") != "gdn-sm90a.public-link-map.v1":
         errors.append("unexpected link-map schema")
@@ -308,6 +369,66 @@ def validate_link_map(link_map: dict[str, Any], source_lock: dict[str, Any]) -> 
     locked_excluded = source_lock.get("superseded_artifacts", {}).get(EXCLUDED_CUTEDSL_TAG, {})
     if locked_excluded.get("status") != excluded.get("status"):
         errors.append("link map gdn2 exclusion differs from public source lock")
+
+    fresh_link = link_map.get("links", {}).get("fresh_evidence", {})
+    expected_fresh_url = (
+        "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/tree/"
+        f"{REPORT_TAG}/"
+        f"{FRESH_BUNDLE_PATH}"
+    )
+    if fresh_link.get("kind") != "repository_path" or fresh_link.get("url") != expected_fresh_url:
+        errors.append("link map does not name the canonical fresh evidence root")
+    if fresh_link.get("evidence_kind") != FRESH_EVIDENCE_KIND:
+        errors.append("link map fresh evidence kind drifted")
+    if fresh_link.get("decision_status") != "CHARACTERIZATION":
+        errors.append("link map fresh decision status drifted")
+    manifest_digest = hashlib.sha256(
+        (root / FRESH_BUNDLE_PATH / "manifest.json").read_bytes()
+    ).hexdigest()
+    if fresh_link.get("manifest_sha256") != manifest_digest:
+        errors.append("link map fresh manifest digest drifted")
+
+    report_link = link_map.get("links", {}).get("fresh_performance_report", {})
+    expected_report_url = (
+        "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/blob/"
+        f"{REPORT_TAG}/"
+        f"{FRESH_REPORT_PATH}"
+    )
+    if report_link.get("kind") != "repository_path" or report_link.get("url") != (
+        expected_report_url
+    ):
+        errors.append("link map does not name the canonical fresh performance report")
+
+    report_tag = link_map.get("links", {}).get("report_tag", {})
+    if report_tag != {
+        "kind": "immutable_tag",
+        "tag": REPORT_TAG,
+        "url": (f"https://github.com/Aharrypotter/gdn-sm90a-tirx-report/tree/{REPORT_TAG}"),
+    }:
+        errors.append("link map does not bind the final report tag")
+    report_release = link_map.get("links", {}).get("report_release", {})
+    if report_release != {
+        "kind": "release",
+        "tag": REPORT_TAG,
+        "url": (f"https://github.com/Aharrypotter/gdn-sm90a-tirx-report/releases/tag/{REPORT_TAG}"),
+    }:
+        errors.append("link map does not bind the final report release")
+
+    historical_link = link_map.get("links", {}).get("historical_evidence", {})
+    expected_historical_url = (
+        "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/tree/"
+        f"{REPORT_TAG}/evidence/historical/gdn-sm90a-h20-20260728-v1"
+    )
+    if historical_link.get("url") != expected_historical_url:
+        errors.append("link map historical evidence URL is not pinned to the report tag")
+
+    fresh_comparator = fresh_source_lock.get("locks", {}).get("cutedsl", {})
+    if fresh_comparator.get("tag") != comparator.get("tag"):
+        errors.append("link map comparator tag differs from fresh source lock")
+    if fresh_comparator.get("commit") != comparator.get("commit"):
+        errors.append("link map comparator commit differs from fresh source lock")
+    if fresh_comparator.get("required_path") != "cula/gdn/prefill.py":
+        errors.append("fresh source lock does not name the GDN comparator entrypoint path")
     return errors
 
 
@@ -367,6 +488,321 @@ def validate_performance_semantics(performance: dict[str, Any]) -> list[str]:
         errors.append("receipt_count does not match process-average membership")
     if performance.get("unique_cache_count") != expected_receipts:
         errors.append("unique_cache_count does not match process-average membership")
+    return errors
+
+
+def verify_fresh_bundle(root: Path) -> tuple[dict[str, Any] | None, list[str]]:
+    """Run the independent fresh-bundle verifier used by the public workflow."""
+
+    verifier_path = root / "reproduce/fresh_evidence/verify.py"
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "gdn_sm90a_fresh_evidence_verify", verifier_path
+        )
+        if spec is None or spec.loader is None:
+            raise ContractError("cannot load fresh evidence verifier")
+        verifier = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(verifier)
+        result = verifier.verify_bundle(root / FRESH_BUNDLE_PATH)
+    except Exception as error:  # The verifier owns its detailed error taxonomy.
+        return None, [f"{FRESH_BUNDLE_PATH}: independent verification failed: {error}"]
+    if not isinstance(result, dict) or result.get("status") != "PASS":
+        return None, [f"{FRESH_BUNDLE_PATH}: independent verifier did not return PASS"]
+    return result, []
+
+
+def validate_fresh_performance_semantics(
+    root: Path,
+    performance: dict[str, Any],
+    publication: dict[str, Any],
+    environment: dict[str, Any],
+    verifier_result: dict[str, Any] | None,
+) -> list[str]:
+    """Validate fresh facts without assuming whether escalation produced 54 or 66 receipts."""
+
+    errors = []
+    if performance.get("schema") != "gdn-sm90a.public-performance.v1":
+        errors.append("fresh performance schema drifted")
+    if performance.get("status") != "PASS":
+        errors.append("fresh performance status is not PASS")
+    if performance.get("decision_status") != "CHARACTERIZATION":
+        errors.append("fresh performance decision is not CHARACTERIZATION")
+
+    rows = performance.get("rows")
+    if not isinstance(rows, dict) or set(rows) != set(FRESH_ROW_ORDER):
+        return [*errors, "fresh performance rows are not the exact six-row matrix"]
+
+    expected_receipts = 0
+    implementations = {"tirx", "cutedsl", "fla"}
+    for row_id in FRESH_ROW_ORDER:
+        row = rows[row_id]
+        if not isinstance(row, dict):
+            errors.append(f"fresh/{row_id}: row must be an object")
+            continue
+        observed = row.get("observed_processes")
+        averages = row.get("process_averages_ms")
+        if not isinstance(observed, dict) or set(observed) != implementations:
+            errors.append(f"fresh/{row_id}: observed-process membership drifted")
+            continue
+        if not isinstance(averages, dict) or set(averages) != implementations:
+            errors.append(f"fresh/{row_id}: process-average membership drifted")
+            continue
+        expected_processes = row.get("expected_processes")
+        for implementation in sorted(implementations):
+            count = observed[implementation]
+            values = averages[implementation]
+            if (
+                isinstance(count, bool)
+                or not isinstance(count, int)
+                or count <= 0
+                or count != expected_processes
+            ):
+                errors.append(f"fresh/{row_id}/{implementation}: process count drifted")
+                continue
+            if not isinstance(values, list) or len(values) != count:
+                errors.append(f"fresh/{row_id}/{implementation}: receipt-derived averages drifted")
+                continue
+            if any(
+                isinstance(value, bool)
+                or not isinstance(value, (int, float))
+                or not math.isfinite(value)
+                or value <= 0
+                for value in values
+            ):
+                errors.append(f"fresh/{row_id}/{implementation}: process averages are invalid")
+            expected_receipts += count
+
+    receipt_lines = (root / FRESH_BUNDLE_PATH / "timing-receipts.jsonl").read_bytes().splitlines()
+    launch_lines = (root / FRESH_BUNDLE_PATH / "launches.jsonl").read_bytes().splitlines()
+    count_fields = {
+        "performance.receipt_count": performance.get("receipt_count"),
+        "performance.fresh_process_launch_count": performance.get("fresh_process_launch_count"),
+        "publication.receipt_count": publication.get("receipt_count"),
+        "publication.fresh_process_launch_count": publication.get("fresh_process_launch_count"),
+        "timing receipt ledger": len(receipt_lines),
+        "launch ledger": len(launch_lines),
+    }
+    if verifier_result is not None:
+        count_fields["independent verifier"] = verifier_result.get("receipt_count")
+    for name, count in count_fields.items():
+        if count != expected_receipts:
+            errors.append(
+                f"fresh {name}={count!r} does not match bundle-derived "
+                f"receipt count {expected_receipts}"
+            )
+
+    packed = rows["packed-n10-t4096-h8-mha-state"]
+    base_processes = performance.get("base_processes")
+    if isinstance(base_processes, bool) or not isinstance(base_processes, int):
+        errors.append("fresh base_processes is not an integer")
+    else:
+        tirx_values = packed.get("process_averages_ms", {}).get("tirx", [])
+        cutedsl_values = packed.get("process_averages_ms", {}).get("cutedsl", [])
+        if len(tirx_values) >= base_processes and len(cutedsl_values) >= base_processes:
+            derived_base_ratio = statistics.median(
+                tirx_values[:base_processes]
+            ) / statistics.median(cutedsl_values[:base_processes])
+            recorded_base_ratio = performance.get("packed_n10_base_ratios", {}).get(
+                "tirx_over_cutedsl"
+            )
+            if not math.isclose(
+                derived_base_ratio,
+                recorded_base_ratio,
+                rel_tol=0.0,
+                abs_tol=1e-15,
+            ):
+                errors.append("fresh packed-n10 base-three-process ratio is not receipt-derived")
+        else:
+            errors.append("fresh packed-n10 base-three-process set is incomplete")
+
+    primary_rows = [rows[row_id] for row_id in FRESH_ROW_ORDER if rows[row_id].get("primary")]
+    for ratio_name in ("tirx_over_cutedsl", "tirx_over_fla"):
+        ratios = [row.get(ratio_name) for row in primary_rows]
+        if any(
+            isinstance(value, bool)
+            or not isinstance(value, (int, float))
+            or not math.isfinite(value)
+            or value <= 0
+            for value in ratios
+        ):
+            errors.append(f"fresh {ratio_name} contains invalid row ratios")
+            continue
+        derived_geomean = math.exp(statistics.fmean(math.log(value) for value in ratios))
+        recorded_geomean = performance.get("primary_geomean", {}).get(ratio_name)
+        if not math.isclose(
+            derived_geomean,
+            recorded_geomean,
+            rel_tol=0.0,
+            abs_tol=1e-15,
+        ):
+            errors.append(f"fresh {ratio_name} geometric mean is not row-derived")
+
+    if publication.get("schema") != "gdn-sm90a.public-fresh-evidence.v1":
+        errors.append("fresh publication schema drifted")
+    if publication.get("status") != "PASS":
+        errors.append("fresh publication status is not PASS")
+    if publication.get("evidence_kind") != FRESH_EVIDENCE_KIND:
+        errors.append("fresh publication evidence kind drifted")
+    if publication.get("claim_scope") != FRESH_CLAIM_SCOPE:
+        errors.append("fresh publication claim scope drifted")
+    if publication.get("decision_status") != "CHARACTERIZATION":
+        errors.append("fresh publication decision is not CHARACTERIZATION")
+    if publication.get("upstream_merge_claim") is not False:
+        errors.append("fresh publication must not claim an upstream merge")
+    if publication.get("process_isolation_verified") is not True:
+        errors.append("fresh publication does not verify process isolation")
+    if publication.get("physical_device_binding_verified") is not True:
+        errors.append("fresh publication does not verify physical-device binding")
+    if environment.get("target_arch") != "sm_90a":
+        errors.append("fresh environment does not target sm_90a")
+    if not str(environment.get("accelerator", "")).startswith("NVIDIA H20"):
+        errors.append("fresh environment is not the frozen NVIDIA H20 target")
+    return errors
+
+
+def render_fresh_performance_report(
+    performance: dict[str, Any],
+    publication: dict[str, Any],
+    environment: dict[str, Any],
+    manifest_sha256: str,
+) -> str:
+    """Render the additive fresh report directly from the sealed bundle."""
+
+    def fixed_6(value: Any) -> str:
+        return format_value(value, "fixed_6")
+
+    packed_escalated = performance["packed_n10_escalation_required"]
+    packed_processes = performance["rows"]["packed-n10-t4096-h8-mha-state"]["expected_processes"]
+    if packed_escalated:
+        packed_interpretation = (
+            "The packed-n10 trigger ratio is intentionally the preregistered "
+            "base-three-process value. The table reports the final row ratio after "
+            f"the triggered {packed_processes}-process measurement."
+        )
+    else:
+        packed_interpretation = (
+            "The packed-n10 base-three-process ratio did not trigger escalation. "
+            "The table therefore reports the same three-process measurement set."
+        )
+
+    lines = [
+        "# Fresh public-tag H20 performance characterization",
+        "",
+        "This additive report is rendered from the separately sealed fresh evidence "
+        "bundle. It does not replace or mutate the historical performance report.",
+        "",
+        "## Evidence identity",
+        "",
+        f"- Evidence root: [`{FRESH_BUNDLE_PATH}`](../{FRESH_BUNDLE_PATH}/)",
+        f"- Evidence kind: `{publication['evidence_kind']}`",
+        f"- Claim scope: `{publication['claim_scope']}`",
+        f"- Decision status: `{publication['decision_status']}`",
+        f"- Environment: `{environment['accelerator']}`, target `{environment['target_arch']}`",
+        f"- Bundle-derived timing receipts: {performance['receipt_count']}",
+        f"- Manifest SHA-256: `{manifest_sha256}`",
+        "",
+        "## Six-row timing table",
+        "",
+        f"Ratio direction: {performance['ratio_direction']}. Latencies are the "
+        f"{performance['statistic']} in milliseconds.",
+        "",
+        "| Row | TIRx ms | CuTeDSL ms | FLA ms | TIRx/CuTeDSL | TIRx/FLA | "
+        "Processes per implementation |",
+        "|---|---:|---:|---:|---:|---:|---:|",
+    ]
+    for row_id in FRESH_ROW_ORDER:
+        row = performance["rows"][row_id]
+        lines.append(
+            f"| `{row_id}` | {fixed_6(row['median_ms']['tirx'])} | "
+            f"{fixed_6(row['median_ms']['cutedsl'])} | "
+            f"{fixed_6(row['median_ms']['fla'])} | "
+            f"{fixed_6(row['tirx_over_cutedsl'])} | "
+            f"{fixed_6(row['tirx_over_fla'])} | {row['expected_processes']} |"
+        )
+    lines.extend(
+        [
+            "",
+            "## Aggregate and packed-n10 trigger",
+            "",
+            "- Six-row geometric-mean TIRx/CuTeDSL ratio: "
+            f"`{fixed_6(performance['primary_geomean']['tirx_over_cutedsl'])}`.",
+            "- Six-row geometric-mean TIRx/FLA ratio: "
+            f"`{fixed_6(performance['primary_geomean']['tirx_over_fla'])}`.",
+            "- packed-n10 base-three-process TIRx/CuTeDSL trigger ratio: "
+            f"`{fixed_6(performance['packed_n10_base_ratios']['tirx_over_cutedsl'])}`.",
+            "- packed-n10 escalation required: "
+            f"`{str(packed_escalated).lower()}`; "
+            f"final processes per implementation: "
+            f"`{packed_processes}`.",
+            "",
+            packed_interpretation,
+            "",
+            "## Evidence boundary",
+            "",
+            "This bundle verifies exact public source tags/commits, fresh-process "
+            "launch identity, physical H20 binding, receipt-level correctness, and "
+            "the six-row public-call timing characterization. Its decision is "
+            "`CHARACTERIZATION`, not a universal performance or upstream-release claim.",
+            "",
+            "This fresh run does **not** reproduce the historical host-sync audit, "
+            "Compute Sanitizer gates, or full codegen/resource reseals. Those remain "
+            "historical-only evidence and are not promoted into this fresh bundle.",
+            "",
+            "The TVM, tirx-kernels, and cuLA sources are unofficial fork artifacts. "
+            "No upstream merge, endorsement, or official release is claimed.",
+            "",
+        ]
+    )
+    return "\n".join(lines)
+
+
+def validate_fresh_publication_content(
+    root: Path,
+    rendered_c12: dict[str, str],
+) -> list[str]:
+    errors = []
+    for language, statement in rendered_c12.items():
+        weight = sum(1 if ord(character) < 0x1100 else 2 for character in statement)
+        if weight > 280:
+            errors.append(f"C12/{language}: conservative X weight {weight} exceeds 280")
+    for name, language in FRESH_TEMPLATE_LANGUAGE.items():
+        path = root / "content" / name
+        token = f"{{{{claim:C12:{language}}}}}"
+        if token not in path.read_text():
+            errors.append(f"content/{name}: missing source-derived C12 token")
+
+    readme = (root / "README.md").read_text()
+    if rendered_c12["en"] not in readme:
+        errors.append("README.md: missing the exact source-derived English C12 statement")
+
+    required_fresh_links = {
+        "README.md": FRESH_BUNDLE_PATH,
+        "evidence/README.md": "fresh/gdn-sm90a-public-tags-h20-20260729-v1/",
+        "docs/limitations.md": FRESH_BUNDLE_PATH,
+    }
+    for relative, required_text in required_fresh_links.items():
+        text = (root / relative).read_text()
+        if required_text not in text:
+            errors.append(f"{relative}: missing the canonical fresh evidence link")
+        if "CHARACTERIZATION" not in text:
+            errors.append(f"{relative}: missing the fresh CHARACTERIZATION boundary")
+
+    stale_markers = (
+        "A fresh public-tag rerun is still pending",
+        "Fresh public-tag rerun 仍待执行",
+        "A fresh public-tag 66-receipt rerun is still required",
+        "does not yet contain a fresh public-tag execution bundle",
+    )
+    for relative in [
+        "README.md",
+        "evidence/README.md",
+        "docs/limitations.md",
+        *(f"content/{name}" for name in FRESH_TEMPLATE_LANGUAGE),
+    ]:
+        text = (root / relative).read_text()
+        for marker in stale_markers:
+            if marker.casefold() in text.casefold():
+                errors.append(f"{relative}: contains stale fresh-evidence marker {marker!r}")
     return errors
 
 
@@ -443,11 +879,14 @@ def validate(root: Path, requested_content: list[Path]) -> dict[str, Any]:
     source_lock = load_json(
         root / "evidence/historical/gdn-sm90a-h20-20260728-v1/metadata/source-lock.json"
     )
+    fresh_source_lock = load_json(root / FRESH_BUNDLE_PATH / "source-lock.json")
+    verifier_result, verifier_errors = verify_fresh_bundle(root)
 
     errors.extend(validate_registry_structure(registry, caveats))
     errors.extend(validate_forbidden_phrases(caveats))
-    errors.extend(validate_link_map(link_map, source_lock))
+    errors.extend(validate_link_map(root, link_map, source_lock, fresh_source_lock))
     errors.extend(validate_public_manifest_reference(root))
+    errors.extend(verifier_errors)
 
     sources = {}
     for source_name, source in registry.get("canonical_sources", {}).items():
@@ -459,6 +898,23 @@ def validate(root: Path, requested_content: list[Path]) -> dict[str, Any]:
     performance = sources.get("performance")
     if performance is not None:
         errors.extend(validate_performance_semantics(performance))
+    fresh_performance = sources.get("fresh_performance")
+    fresh_publication = sources.get("fresh_publication")
+    fresh_environment = sources.get("fresh_environment")
+    if (
+        fresh_performance is not None
+        and fresh_publication is not None
+        and fresh_environment is not None
+    ):
+        errors.extend(
+            validate_fresh_performance_semantics(
+                root,
+                fresh_performance,
+                fresh_publication,
+                fresh_environment,
+                verifier_result,
+            )
+        )
 
     rendered_claims = {}
     raw_values = {}
@@ -474,6 +930,31 @@ def validate(root: Path, requested_content: list[Path]) -> dict[str, Any]:
         rendered_claims[claim_id] = rendered
         raw_values[claim_id] = values
 
+    if "C12" in rendered_claims:
+        errors.extend(validate_fresh_publication_content(root, rendered_claims["C12"]))
+    else:
+        errors.append("C12 did not materialize from the fresh bundle")
+
+    if (
+        fresh_performance is not None
+        and fresh_publication is not None
+        and fresh_environment is not None
+    ):
+        manifest_sha256 = hashlib.sha256(
+            (root / FRESH_BUNDLE_PATH / "manifest.json").read_bytes()
+        ).hexdigest()
+        expected_report = render_fresh_performance_report(
+            fresh_performance,
+            fresh_publication,
+            fresh_environment,
+            manifest_sha256,
+        )
+        report_path = root / FRESH_REPORT_PATH
+        if not report_path.is_file():
+            errors.append(f"{FRESH_REPORT_PATH}: missing")
+        elif report_path.read_text() != expected_report:
+            errors.append(f"{FRESH_REPORT_PATH}: not source-derived from the fresh bundle")
+
     try:
         content_files = find_content_files(root, requested_content)
         errors.extend(scan_content(root, content_files, caveats))
@@ -487,6 +968,10 @@ def validate(root: Path, requested_content: list[Path]) -> dict[str, Any]:
         "error_count": len(errors),
         "errors": errors,
         "canonical_performance_source": CANONICAL_PERFORMANCE_PATH,
+        "canonical_fresh_performance_source": FRESH_PERFORMANCE_PATH,
+        "fresh_bundle_receipt_count": (
+            verifier_result.get("receipt_count") if verifier_result is not None else None
+        ),
         "enabled_claim_count": len(rendered_claims),
         "disabled_claims": [
             claim.get("id")

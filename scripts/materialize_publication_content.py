@@ -48,6 +48,11 @@ CLAIM_TOKEN = re.compile(r"\{\{claim:(C\d{2}):(en|zh)\}\}")
 ANY_CLAIM_TOKEN = re.compile(r"\{\{claim:[^{}\n]+\}\}")
 TEMPLATE_ONLY_BLOCK = re.compile(r"<!--\s*TEMPLATE_ONLY\b.*?-->\s*", re.DOTALL)
 MARKDOWN_LINK = re.compile(r"(?P<prefix>!?\[[^\]]*\]\()(?P<target>[^)\s]+)(?P<suffix>\))")
+X_POST_BLOCK = re.compile(
+    r"^## (?P<number>\d+)\n\n(?P<body>.*?)(?=^## \d+\n|\Z)",
+    re.MULTILINE | re.DOTALL,
+)
+X_POST_MAX_WEIGHT = 280
 
 
 class MaterializationError(ValueError):
@@ -92,6 +97,29 @@ def rebase_relative_links(text: str, source: Path, output: Path, root: Path) -> 
     return MARKDOWN_LINK.sub(replace, text)
 
 
+def conservative_x_weight(text: str) -> int:
+    """Count raw URLs in full and weight non-ASCII text conservatively."""
+
+    return sum(1 if ord(character) < 0x1100 else 2 for character in text)
+
+
+def validate_x_thread_blocks(text: str, source: Path) -> None:
+    matches = list(X_POST_BLOCK.finditer(text))
+    if not matches:
+        raise MaterializationError(f"{source}: no numbered X post blocks found")
+    numbers = [int(match.group("number")) for match in matches]
+    if numbers != list(range(1, len(matches) + 1)):
+        raise MaterializationError(f"{source}: X post numbers are not contiguous")
+    for match in matches:
+        body = match.group("body").strip()
+        weight = conservative_x_weight(body)
+        if weight > X_POST_MAX_WEIGHT:
+            raise MaterializationError(
+                f"{source}: X post {match.group('number')} weighs {weight}, "
+                f"exceeding conservative limit {X_POST_MAX_WEIGHT}"
+            )
+
+
 def materialize_one(
     *,
     source: Path,
@@ -122,10 +150,6 @@ def materialize_one(
         claim = claims_by_id.get(claim_id)
         if claim is None:
             raise MaterializationError(f"{source}: unknown claim token {claim_id}")
-        if claim_id == "C12":
-            raise MaterializationError(
-                f"{source}: C12 cannot be materialized before its gate passes"
-            )
         if claim.get("enabled") is not True:
             reason = claim.get("disabled_reason", "claim is not enabled")
             raise MaterializationError(f"{source}: disabled claim token {claim_id}: {reason}")
@@ -150,6 +174,8 @@ def materialize_one(
         raise MaterializationError(f"{source}: template-only publication instructions remain")
 
     text = rebase_relative_links(text, source, output, root)
+    if source.name in {"x-thread-en.md", "x-thread-zh.md"}:
+        validate_x_thread_blocks(text, source)
     text = text.rstrip() + "\n"
 
     allowed_decimals = collections.Counter(

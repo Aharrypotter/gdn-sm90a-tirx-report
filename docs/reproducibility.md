@@ -8,9 +8,9 @@ Reproducibility has three distinct levels:
 3. **Fresh execution**: build and run the exact public sources on H20 under the
    frozen contract.
 
-Levels 1 and 2 are available now.  Level 3 is required before the evidence
-status can be promoted beyond `HISTORICAL_EVIDENCE_BOUND`; no fresh public-tag
-execution bundle is currently claimed.
+All three levels are now available, but they remain separate evidence classes.
+The fresh execution is a `CHARACTERIZATION`; it does not promote or relabel
+the historical `HISTORICAL_EVIDENCE_BOUND` package.
 
 ## 1. Retrieve exact sources
 
@@ -80,10 +80,11 @@ Equivalent repository command:
 make verify-historical-evidence
 ```
 
-## 3. Fresh execution contract
+## 3. Fresh execution result and contract
 
-A valid fresh public-tag rerun must satisfy all of the following before it can
-be published:
+The published
+[`fresh bundle`](../evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1/)
+satisfies this bounded execution contract:
 
 - build the exact TVM compiler, tirx-kernels release, corrected CuTeDSL GDN
   comparator, and FLA commit listed above;
@@ -95,14 +96,26 @@ be published:
   [`contracts/benchmark.json`](../evidence/historical/gdn-sm90a-h20-20260728-v1/contracts/benchmark.json);
 - use 20 warmups, 100 timed iterations, independent processes, unique empty
   caches, the 5% quiet threshold, and the frozen 3/7 process counts;
-- capture all 66 raw timing receipts and per-receipt correctness;
-- rerun public GPU semantics, exact route/near-miss, safety, and
-  source-bound codegen/resource gates;
-- seal source, receipts, summaries, and artifacts in a new evidence root.
+- derive the receipt count from the base-process and preregistered escalation
+  policy; the sealed run contains 66 timing receipts after packed-n10
+  escalation;
+- preserve per-receipt correctness and one fresh process launch per receipt;
+- seal source, build, runtime, environment, launches, receipts, summaries,
+  performance, and publication status in a new evidence root.
 
-The fresh package must be additive, for example under `evidence/fresh/`.  It
-must never overwrite, mutate, or relabel
+Verify it without trusting the producer:
+
+```bash
+python3 -m reproduce.fresh_evidence.verify \
+  --bundle evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1
+```
+
+The fresh package is additive and must never overwrite, mutate, or relabel
 [`evidence/historical/gdn-sm90a-h20-20260728-v1`](../evidence/historical/gdn-sm90a-h20-20260728-v1/).
+
+This fresh rerun does not reproduce the historical host-sync audit, Compute
+Sanitizer gates, or full codegen/resource reseals. Those historical gates
+remain valid only for their original evidence identity.
 
 ## Environment boundary
 

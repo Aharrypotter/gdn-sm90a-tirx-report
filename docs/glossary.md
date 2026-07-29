@@ -44,13 +44,15 @@ pipeline.
 
 A complete timing matrix executed for the exact final source under the frozen
 benchmark contract.  The historical campaign used fresh canonical timing
-within its seal; a separate fresh public-tag rerun is still required.
+within its seal. The separately sealed public-tag characterization is a
+different evidence identity.
 
 **Fresh public-tag rerun**
 
 A new execution built from the published TVM, tirx-kernels, and corrected
-cuLA tags plus the exact FLA commit.  It must be stored separately from the
-historical bundle.
+cuLA tags plus the exact FLA commit. The current instance is stored under
+[`evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1`](../evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1/)
+with decision `CHARACTERIZATION`, separately from the historical bundle.
 
 **GDN**
 
@@ -76,9 +78,9 @@ not generalized to every Hopper product.
 
 **Historical evidence bound**
 
-The current publication class.  It means the bundle is a verified derivation
-from the immutable historical seal but is not represented as a rerun from the
-new public tags.
+The publication class of the original bundle. It means that bundle is a
+verified derivation from the immutable historical seal and is not represented
+as a rerun from the new public tags.
 
 **Ho**
 

@@ -5,9 +5,30 @@
       "kind": "repository",
       "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report"
     },
+    "report_tag": {
+      "kind": "immutable_tag",
+      "tag": "gdn-sm90a-r0",
+      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/tree/gdn-sm90a-r0"
+    },
+    "report_release": {
+      "kind": "release",
+      "tag": "gdn-sm90a-r0",
+      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/releases/tag/gdn-sm90a-r0"
+    },
     "historical_evidence": {
       "kind": "repository_path",
-      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/tree/main/evidence/historical/gdn-sm90a-h20-20260728-v1"
+      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/tree/gdn-sm90a-r0/evidence/historical/gdn-sm90a-h20-20260728-v1"
+    },
+    "fresh_evidence": {
+      "kind": "repository_path",
+      "evidence_kind": "fresh-public-tag-h20-rerun",
+      "decision_status": "CHARACTERIZATION",
+      "manifest_sha256": "d20b748ac54a3e14786d957353e3f85bee2566ceb913adc8679b8e660d2f282d",
+      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/tree/gdn-sm90a-r0/evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1"
+    },
+    "fresh_performance_report": {
+      "kind": "repository_path",
+      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/blob/gdn-sm90a-r0/reports/fresh-public-tag-performance.md"
     },
     "tvm_compiler": {
       "kind": "immutable_tag",

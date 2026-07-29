@@ -5,10 +5,10 @@ bounded SM90a compiler slice in a personal TVM fork lowers a productized GDN
 prefill operator from TIRx.  The operator owns its recurrence, packed-sequence
 semantics, schedules, dispatch, and public PyTorch-facing API.
 
-> Evidence status: the numbers currently published in this repository are
-> `HISTORICAL_EVIDENCE_BOUND`.  They were derived from an immutable historical
-> release seal, not rerun from the newly published tags.  See
-> [evidence provenance](evidence-provenance.md).
+> Evidence status: the original numbers remain
+> `HISTORICAL_EVIDENCE_BOUND`. A separate exact-public-tag H20 run is published
+> as `CHARACTERIZATION`. The two bundles and their aggregates remain distinct.
+> See [evidence provenance](evidence-provenance.md).
 
 ```mermaid
 flowchart LR
@@ -34,7 +34,7 @@ flowchart LR
 | Semantic contract | BF16/FP32 shapes, head mapping, recurrence, chunk algebra, precision-visible ordering, packed isolation | [contract.py](https://github.com/Aharrypotter/tirx-kernels/blob/90c9c62c84ecc452dd86602f0ea49a625845045c/tirx_kernels/attention/_gdn_sm90/contract.py), [reference.py](https://github.com/Aharrypotter/tirx-kernels/blob/90c9c62c84ecc452dd86602f0ea49a625845045c/tirx_kernels/attention/_gdn_sm90/reference.py) |
 | Product implementation | General, register-replay, and tail-predecessor schedules | [runtime commit `90c9c62…`](https://github.com/Aharrypotter/tirx-kernels/commit/90c9c62c84ecc452dd86602f0ea49a625845045c) |
 | Public API and dispatch | Input validation, SM90 capability check, exact route selection, compilation cache, output allocation | [api.py](https://github.com/Aharrypotter/tirx-kernels/blob/90c9c62c84ecc452dd86602f0ea49a625845045c/tirx_kernels/attention/_gdn_sm90/api.py) |
-| Validation | CPU semantics, GPU semantics, route/near-miss tests, safety, codegen/resources, timing receipts | [`evidence/historical/...`](../evidence/historical/gdn-sm90a-h20-20260728-v1/) |
+| Validation | Historical full gate ladder plus a separate public-tag timing characterization | [historical evidence](../evidence/historical/gdn-sm90a-h20-20260728-v1/), [fresh evidence](../evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1/) |
 
 The compiler and kernel repositories are intentionally separate.  The
 compiler layer provides reusable mechanisms; it does not know the GDN

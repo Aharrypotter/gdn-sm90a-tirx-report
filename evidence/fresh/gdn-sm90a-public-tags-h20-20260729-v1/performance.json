@@ -1,0 +1,256 @@
+{
+  "base_processes": 3,
+  "contract_sha256": "6d6f93b4cfcd29b1a5cc9d7830306bfdec01606d550e252ce3b76ef748a6b130",
+  "cutedsl_dependency_attestation_sha256": "563645e7381812dcf29777b3beb3fba97ff92a26911f2b9d16a23e4be9e8f811",
+  "decision_status": "CHARACTERIZATION",
+  "fresh_process_launch_count": 66,
+  "packed_n10_base_ratios": {
+    "tirx_over_cutedsl": 1.0174448290368854,
+    "tirx_over_fla": 0.4414553814927911
+  },
+  "packed_n10_escalated_processes": 7,
+  "packed_n10_escalation_required": true,
+  "packed_n10_noise_band_pct": 2.0,
+  "primary_geomean": {
+    "tirx_over_cutedsl": 0.8348118807637096,
+    "tirx_over_fla": 0.4537000213823878
+  },
+  "process_isolation_verified": true,
+  "ratio_direction": "TIRx latency / comparator latency; lower is faster",
+  "receipt_count": 66,
+  "report_attestation_sha256": "c7ffd7619eb2daf12e28a1a0c90d02425470b8d0dabf3181c58e4cd2dd56033f",
+  "rows": {
+    "packed-n10-t4096-h8-mha-state": {
+      "critical": false,
+      "expected_processes": 7,
+      "median_ms": {
+        "cutedsl": 0.1707119995355606,
+        "fla": 0.3927561593055725,
+        "tirx": 0.17338432013988495
+      },
+      "observed_processes": {
+        "cutedsl": 7,
+        "fla": 7,
+        "tirx": 7
+      },
+      "oracle_sha256": "7f560d6ee11c34a4eed248cd6a096318f5c34194cedaafa4ff035e4e7043b1bd",
+      "primary": true,
+      "process_averages_ms": {
+        "cutedsl": [
+          0.17041152030229567,
+          0.1702015994489193,
+          0.17231519967317582,
+          0.17162592008709907,
+          0.1707119995355606,
+          0.17344992026686668,
+          0.17038624003529548
+        ],
+        "fla": [
+          0.39025440096855163,
+          0.3927561593055725,
+          0.3939062398672104,
+          0.39605472087860105,
+          0.389595519900322,
+          0.4019888013601303,
+          0.3878361615538597
+        ],
+        "tirx": [
+          0.17338432013988495,
+          0.17350784003734587,
+          0.172326720058918,
+          0.1739801597595215,
+          0.17315232023596763,
+          0.17353856101632117,
+          0.17236063987016678
+        ]
+      },
+      "tirx_over_cutedsl": 1.015653970497649,
+      "tirx_over_fla": 0.4414553814927911
+    },
+    "packed-n20-t8192-h8-hv16-gva-state": {
+      "critical": true,
+      "expected_processes": 3,
+      "median_ms": {
+        "cutedsl": 0.5559955191612244,
+        "fla": 0.629735357761383,
+        "tirx": 0.5201065564155578
+      },
+      "observed_processes": {
+        "cutedsl": 3,
+        "fla": 3,
+        "tirx": 3
+      },
+      "oracle_sha256": "7612cee832e191d6a682919b50d28897dcd224134090cddef8f464442e8c3e7f",
+      "primary": true,
+      "process_averages_ms": {
+        "cutedsl": [
+          0.556419517993927,
+          0.5559955191612244,
+          0.5548889583349228
+        ],
+        "fla": [
+          0.629735357761383,
+          0.6332031989097595,
+          0.6234889614582062
+        ],
+        "tirx": [
+          0.5191184014081955,
+          0.5212252843379974,
+          0.5201065564155578
+        ]
+      },
+      "tirx_over_cutedsl": 0.9354509856485738,
+      "tirx_over_fla": 0.8259129013566278
+    },
+    "single-t1024-h8-hv16-gva-state": {
+      "critical": false,
+      "expected_processes": 3,
+      "median_ms": {
+        "cutedsl": 0.17797056064009667,
+        "fla": 0.3949267187714577,
+        "tirx": 0.14325120002031327
+      },
+      "observed_processes": {
+        "cutedsl": 3,
+        "fla": 3,
+        "tirx": 3
+      },
+      "oracle_sha256": "5db82bc45b8502aa327c3824e097e3dea3c5680f5eacf11717d5288be22f2c95",
+      "primary": true,
+      "process_averages_ms": {
+        "cutedsl": [
+          0.17797056064009667,
+          0.17622655957937242,
+          0.1793014396727085
+        ],
+        "fla": [
+          0.3949267187714577,
+          0.4323942402005196,
+          0.3914259195327759
+        ],
+        "tirx": [
+          0.14325120002031327,
+          0.14503168061375618,
+          0.1423056000471115
+        ]
+      },
+      "tirx_over_cutedsl": 0.8049151472304732,
+      "tirx_over_fla": 0.3627285600375195
+    },
+    "single-t1024-h8-mha-state": {
+      "critical": false,
+      "expected_processes": 3,
+      "median_ms": {
+        "cutedsl": 0.1749151998758316,
+        "fla": 0.3895174413919449,
+        "tirx": 0.1574300794303417
+      },
+      "observed_processes": {
+        "cutedsl": 3,
+        "fla": 3,
+        "tirx": 3
+      },
+      "oracle_sha256": "e33d2677c91d45c1d1a9298123a0ea9483137b77f053dd7e735e00bf519bec54",
+      "primary": true,
+      "process_averages_ms": {
+        "cutedsl": [
+          0.1749151998758316,
+          0.17547391951084138,
+          0.17491392001509667
+        ],
+        "fla": [
+          0.3962940800189972,
+          0.38743775874376296,
+          0.3895174413919449
+        ],
+        "tirx": [
+          0.16259968042373657,
+          0.1563356801867485,
+          0.1574300794303417
+        ]
+      },
+      "tirx_over_cutedsl": 0.9000365865407799,
+      "tirx_over_fla": 0.4041669581412416
+    },
+    "single-t4096-h16-mha-zero": {
+      "critical": true,
+      "expected_processes": 3,
+      "median_ms": {
+        "cutedsl": 0.45166079938411713,
+        "fla": 0.4428867220878601,
+        "tirx": 0.2630537602305412
+      },
+      "observed_processes": {
+        "cutedsl": 3,
+        "fla": 3,
+        "tirx": 3
+      },
+      "oracle_sha256": "ec4c015c965f4d2a9599d146322b4d857dcb3c3f2366e663b81f6cc82cfd3ff8",
+      "primary": true,
+      "process_averages_ms": {
+        "cutedsl": [
+          0.45166079938411713,
+          0.4502863985300064,
+          0.454306880235672
+        ],
+        "fla": [
+          0.44409535974264147,
+          0.4428867220878601,
+          0.43992991983890534
+        ],
+        "tirx": [
+          0.2827801591157913,
+          0.2630537602305412,
+          0.26193855941295624
+        ]
+      },
+      "tirx_over_cutedsl": 0.5824144149530804,
+      "tirx_over_fla": 0.5939526906348673
+    },
+    "single-t512-h8-mha-zero": {
+      "critical": false,
+      "expected_processes": 3,
+      "median_ms": {
+        "cutedsl": 0.12145407997071743,
+        "fla": 0.3732822397351265,
+        "tirx": 0.10254976004362107
+      },
+      "observed_processes": {
+        "cutedsl": 3,
+        "fla": 3,
+        "tirx": 3
+      },
+      "oracle_sha256": "14b24784049df2c65f6eaed96a0ec0c119bd90f2c442890c8aa65011afa9e857",
+      "primary": true,
+      "process_averages_ms": {
+        "cutedsl": [
+          0.12098560020327569,
+          0.12145407997071743,
+          0.12159359976649284
+        ],
+        "fla": [
+          0.3732822397351265,
+          0.3732035201787949,
+          0.3764768001437187
+        ],
+        "tirx": [
+          0.10254976004362107,
+          0.24056255511939525,
+          0.10147007994353771
+        ]
+      },
+      "tirx_over_cutedsl": 0.8443500627426086,
+      "tirx_over_fla": 0.2747244554586586
+    }
+  },
+  "run_id": "gdn-sm90a-public-tags-h20-r0-a5",
+  "runtime_identity_sha256": "34375f2d7272b24ccc276ab3aaebbf4ecadab1f1fa68dc6da5b56bc192c7f0c5",
+  "schema": "gdn-sm90a.public-performance.v1",
+  "source_attestation_sha256": "62c394e8bc9a5bf3636091386e12628ee133c2ce2a6b3093023632ef55d2c699",
+  "statistic": "median of per-process averages",
+  "status": "PASS",
+  "timed_iters": 100,
+  "timer": "CUDA events around the public call",
+  "tvm_build_attestation_sha256": "028ca502d51e69078d0b0f22925a04e812ff8153905c8eebd1abb1545532154e",
+  "warmup_iters": 20
+}

@@ -3,12 +3,19 @@
 This document is part of the result.  The release should not be cited without
 these boundaries.
 
-## Evidence age
+## Evidence classes
 
-The published bundle is `HISTORICAL_EVIDENCE_BOUND`.  It is a verified
-allowlisted derivation from an immutable 380-file release seal, but it is not
-an independent rerun from the public Git tags.  A fresh public-tag 66-receipt
-rerun is still required.
+The original published bundle remains `HISTORICAL_EVIDENCE_BOUND`. It is a
+verified allowlisted derivation from an immutable 380-file release seal, but
+it is not an independent rerun from the public Git tags.
+
+The additive
+[`fresh public-tag bundle`](../evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1/)
+is a separately sealed six-row H20 `CHARACTERIZATION`. Its current 66-receipt
+count and all fresh ratios are derived from that bundle. It does not reproduce
+the historical host-sync audit, Compute Sanitizer gates, or full
+codegen/resource reseals. Those historical results are not promoted into the
+fresh evidence class.
 
 See
 [`PUBLICATION.json`](../evidence/historical/gdn-sm90a-h20-20260728-v1/PUBLICATION.json)
@@ -51,6 +58,11 @@ The performance claim is limited to the frozen public-call rows.  One
 packed-10 comparison remains inside the preregistered noise band and is not a
 speed win.  The complete generated table is
 [`reports/historical-performance.md`](../reports/historical-performance.md).
+
+The separately derived fresh public-tag values are reported only in
+[`reports/fresh-public-tag-performance.md`](../reports/fresh-public-tag-performance.md).
+Its packed-n10 base-three-process trigger ratio is distinct from the final
+seven-process row ratio.
 
 This does not establish a universal TIRx or CuTeDSL ordering.  Any reciprocal
 speedup statement would need to name the exact aggregate, ratio direction,

@@ -88,17 +88,9 @@ https://github.com/Aharrypotter/cuLA/tree/gdn-sm90a-comparator-r1
 
 ## 16
 
-Fresh public-tag rerun 仍待执行。历史 bundle 保持不可变，不会被改名冒充 fresh reproduction。
-
-TVM：
-https://github.com/Aharrypotter/tvm/tree/gdn-sm90a-compiler-r0
+{{claim:C12:zh}}
 
 ## 17
 
-TIRx kernel：
-https://github.com/Aharrypotter/tirx-kernels/tree/gdn-sm90a-kernel-r0
-
-Report：
-https://github.com/Aharrypotter/gdn-sm90a-tirx-report
-
-不声明 upstream merge 或 endorsement。
+Fresh 来源派生报告：
+https://github.com/Aharrypotter/gdn-sm90a-tirx-report/blob/gdn-sm90a-r0/reports/fresh-public-tag-performance.md

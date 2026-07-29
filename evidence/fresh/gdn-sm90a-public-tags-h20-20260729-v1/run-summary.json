@@ -1,0 +1,23 @@
+{
+  "base_processes": 3,
+  "contract_sha256": "6d6f93b4cfcd29b1a5cc9d7830306bfdec01606d550e252ce3b76ef748a6b130",
+  "cutedsl_dependency_attestation_sha256": "563645e7381812dcf29777b3beb3fba97ff92a26911f2b9d16a23e4be9e8f811",
+  "fresh_process_launch_count": 66,
+  "noise_band_pct": 2.0,
+  "packed_n10_base_ratios": {
+    "tirx_over_cutedsl": 1.0174448290368854,
+    "tirx_over_fla": 0.4414553814927911
+  },
+  "packed_n10_escalated": true,
+  "packed_n10_final_processes": 7,
+  "physical_device_binding_verified": true,
+  "process_isolation_verified": true,
+  "receipt_count": 66,
+  "report_attestation_sha256": "c7ffd7619eb2daf12e28a1a0c90d02425470b8d0dabf3181c58e4cd2dd56033f",
+  "run_id": "gdn-sm90a-public-tags-h20-r0-a5",
+  "runtime_identity_sha256": "34375f2d7272b24ccc276ab3aaebbf4ecadab1f1fa68dc6da5b56bc192c7f0c5",
+  "schema": "gdn-sm90a.public-run-summary.v1",
+  "source_attestation_sha256": "62c394e8bc9a5bf3636091386e12628ee133c2ce2a6b3093023632ef55d2c699",
+  "status": "PASS",
+  "tvm_build_attestation_sha256": "028ca502d51e69078d0b0f22925a04e812ff8153905c8eebd1abb1545532154e"
+}

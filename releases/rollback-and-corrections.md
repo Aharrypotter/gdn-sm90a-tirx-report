@@ -126,9 +126,9 @@ Supersession:
 [contracts/link-map.json 中的 generated report 或 canonical repository URL]
 
 边界：
-该结果仍属于冻结 H20 BF16/D128 矩阵的 HISTORICAL_EVIDENCE_BOUND 证据；
-fresh public-tag rerun 尚未完成。相关产物是非官方个人 fork，没有 upstream
-merge 或 endorsement。
+必须明确该结果属于 HISTORICAL_EVIDENCE_BOUND 证据，还是独立封存的
+fresh public-tag H20 CHARACTERIZATION；不得混合两类 aggregate。相关产物
+是非官方个人 fork，没有 upstream merge 或 endorsement。
 
 替代关系：
 [旧 payload/release 标识] 已由 [新 payload/release 标识] 替代。

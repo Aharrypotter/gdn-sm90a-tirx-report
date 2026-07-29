@@ -1,0 +1,14 @@
+{
+  "accelerator": "NVIDIA H20-3e",
+  "compute_capability": "9.0",
+  "cuda_compiler_release": "13.1",
+  "driver_version": "595.45.04",
+  "logical_cuda_device_count": 1,
+  "memory_total_mib": 143771,
+  "physical_device_binding_verified": true,
+  "receipt_identity_consistent": true,
+  "schema": "gdn-sm90a.public-environment.v1",
+  "target_arch": "sm_90a",
+  "torch_cuda_version": "13.1",
+  "torch_version": "2.11.0a0+eb65b36914.nv26.02"
+}

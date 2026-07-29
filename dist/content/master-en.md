@@ -135,7 +135,7 @@ one callable.
 The complete mapping is in [the evidence provenance note](../../docs/evidence-provenance.md)
 and the machine-readable [link map](../../contracts/link-map.json).
 
-## Evidence status and what comes next
+## Historical and fresh evidence classes
 
 The public package status is HISTORICAL_EVIDENCE_BOUND; unofficial-personal-fork is true and upstream-merge is false.
 
@@ -145,11 +145,16 @@ correctness, safety, codegen, and release summaries, while excluding raw logs,
 private host/device identifiers, cache paths, profiler artifacts, and process
 metadata.
 
-It is still historical evidence. The newly published public tags have not yet
-been independently rerun as one separately sealed release. A fresh run must
-build the public compiler, kernel, corrected CuTeDSL comparator, and exact FLA
-commit; rerun the same matrix and validation gates; then publish a new additive
-evidence root. The historical bundle must never be relabeled or overwritten.
+That bundle remains historical evidence and is never relabeled or overwritten.
+The public-tag run is a separate, additive evidence class:
+
+Exact public tags, H20 6 rows: 66 bundle-derived receipts; CHARACTERIZATION; TIRx/CuTeDSL 0.834812, TIRx/FLA 0.453700, packed-n10 base-three-process 1.017445. Does not reproduce historical host-sync/sanitizer/full codegen/resource reseals. Unofficial forks; no upstream merge.
+
+Its [fresh evidence root](../../evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1)
+and [source-derived report](../../reports/fresh-public-tag-performance.md) bind the
+claim to the exact source/build/runtime identities, fresh processes, physical
+H20 target, receipt correctness, and timing. Historical host-sync, sanitizer,
+and full codegen/resource results remain historical-only.
 
 ## Public artifacts
 
@@ -158,6 +163,8 @@ evidence root. The historical bundle must never be relabeled or overwritten.
 - [TIRx GDN kernel tag](https://github.com/Aharrypotter/tirx-kernels/tree/gdn-sm90a-kernel-r0)
 - [Corrected CuTeDSL GDN comparator tag](https://github.com/Aharrypotter/cuLA/tree/gdn-sm90a-comparator-r1)
 - [Exact FLA comparator commit](https://github.com/fla-org/flash-linear-attention/commit/d1ce07369d581813553f30a750af3b6b5f9af6a9)
+- [Fresh public-tag evidence](../../evidence/fresh/gdn-sm90a-public-tags-h20-20260729-v1)
+- [Fresh performance characterization](../../reports/fresh-public-tag-performance.md)
 
 These are unofficial personal-fork artifacts. No upstream project has merged,
 endorsed, or released this work.
