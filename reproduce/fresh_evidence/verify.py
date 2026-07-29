@@ -46,6 +46,12 @@ PAYLOAD_FILES = (
 )
 HEX = frozenset("0123456789abcdef")
 WINDOWS_ABSOLUTE = re.compile(r"^[A-Za-z]:[\\/]")
+TVM_FFI_CONSOLE_SCRIPT_PATHS = frozenset(
+    {
+        "../../../bin/tvm-ffi-config",
+        "../../../bin/tvm-ffi-stubgen",
+    }
+)
 
 SOURCE_LOCKS: dict[str, dict[str, Any]] = {
     "tvm": {
@@ -287,6 +293,15 @@ def _is_hex(value: Any) -> bool:
     return (
         isinstance(value, str) and len(value) == 64 and all(character in HEX for character in value)
     )
+
+
+def _is_safe_tvm_ffi_installed_path(value: Any) -> bool:
+    if not isinstance(value, str) or not value or "\\" in value or value.startswith("/"):
+        return False
+    parts = value.split("/")
+    if any(part in {"", "."} for part in parts):
+        return False
+    return ".." not in parts or value in TVM_FFI_CONSOLE_SCRIPT_PATHS
 
 
 def _is_number(value: Any, *, positive: bool = False) -> bool:
@@ -723,10 +738,7 @@ def _verify_runtime_identity(identity: Any, label: str) -> None:
             f"{label} tvm-ffi file {index}",
         )
         _require(
-            isinstance(entry["path"], str)
-            and entry["path"]
-            and not Path(entry["path"]).is_absolute()
-            and ".." not in Path(entry["path"]).parts
+            _is_safe_tvm_ffi_installed_path(entry["path"])
             and (previous_path is None or previous_path < entry["path"])
             and isinstance(entry["size_bytes"], int)
             and not isinstance(entry["size_bytes"], bool)

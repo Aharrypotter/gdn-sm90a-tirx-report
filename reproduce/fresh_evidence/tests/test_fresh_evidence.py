@@ -36,8 +36,21 @@ from reproduce.benchmark.contract import (
     canonical_json_bytes,
     frozen_rows,
 )
-from reproduce.fresh_evidence.derive import EvidenceError, derive_bundle, seal_bundle
-from reproduce.fresh_evidence.verify import VerificationError, verify_bundle
+from reproduce.fresh_evidence.derive import (
+    EvidenceError,
+    derive_bundle,
+    seal_bundle,
+)
+from reproduce.fresh_evidence.derive import (
+    _is_safe_tvm_ffi_installed_path as producer_accepts_tvm_ffi_path,
+)
+from reproduce.fresh_evidence.verify import (
+    VerificationError,
+    verify_bundle,
+)
+from reproduce.fresh_evidence.verify import (
+    _is_safe_tvm_ffi_installed_path as verifier_accepts_tvm_ffi_path,
+)
 
 GPU_UUID = "GPU-deadbeef-dead-beef-dead-beefdeadbeef"
 PACKAGE_VERSIONS = {
@@ -143,12 +156,28 @@ def _private_contract() -> dict[str, Any]:
         ],
     }
     dependency_root = "/private/dependencies/cutedsl"
-    ffi_file = {
-        "path": "tvm_ffi/__init__.py",
-        "size_bytes": 321,
-        "sha256": _digest("tvm-ffi-init"),
-    }
-    ffi_aggregate = hashlib.sha256(canonical_json_bytes(ffi_file) + b"\n").hexdigest()
+    ffi_files = [
+        {
+            "path": "../../../bin/tvm-ffi-config",
+            "size_bytes": 10,
+            "sha256": _digest("tvm-ffi-config"),
+        },
+        {
+            "path": "../../../bin/tvm-ffi-stubgen",
+            "size_bytes": 11,
+            "sha256": _digest("tvm-ffi-stubgen"),
+        },
+        {
+            "path": "tvm_ffi/__init__.py",
+            "size_bytes": 321,
+            "sha256": _digest("tvm-ffi-init"),
+        },
+    ]
+    ffi_aggregate_state = hashlib.sha256()
+    for ffi_file in ffi_files:
+        ffi_aggregate_state.update(canonical_json_bytes(ffi_file))
+        ffi_aggregate_state.update(b"\n")
+    ffi_aggregate = ffi_aggregate_state.hexdigest()
     runtime_identity = {
         "sys_executable": "/private/runtime/bin/python",
         "python_version": "3.13.5",
@@ -175,9 +204,9 @@ def _private_contract() -> dict[str, Any]:
                 "installed_files": {
                     "schema": "gdn-sm90a.installed-distribution-files.v1",
                     "aggregate_sha256": ffi_aggregate,
-                    "entry_count": 1,
-                    "total_file_bytes": 321,
-                    "entries": [ffi_file],
+                    "entry_count": len(ffi_files),
+                    "total_file_bytes": sum(entry["size_bytes"] for entry in ffi_files),
+                    "entries": ffi_files,
                 },
             },
             "nvidia_cutlass_dsl": {
@@ -769,6 +798,22 @@ class FreshEvidenceTest(unittest.TestCase):
         shutil.copytree(self.bundle, destination)
         return destination
 
+    def test_tvm_ffi_console_script_paths_use_an_exact_allowlist(self) -> None:
+        cases = {
+            "../../../bin/tvm-ffi-config": True,
+            "../../../bin/tvm-ffi-stubgen": True,
+            "tvm_ffi/__init__.py": True,
+            "../../../bin/unrelated-command": False,
+            "../../../../bin/tvm-ffi-config": False,
+            "../tvm_ffi/__init__.py": False,
+            "/private/bin/tvm-ffi-config": False,
+            r"..\..\..\bin\tvm-ffi-config": False,
+        }
+        for path, expected in cases.items():
+            with self.subTest(path=path):
+                self.assertEqual(producer_accepts_tvm_ffi_path(path), expected)
+                self.assertEqual(verifier_accepts_tvm_ffi_path(path), expected)
+
     def test_happy_path_is_deterministic_and_private_free(self) -> None:
         result = verify_bundle(self.bundle)
         self.assertEqual(result["status"], "PASS")
@@ -876,6 +921,22 @@ class FreshEvidenceTest(unittest.TestCase):
         path.write_bytes(b"".join(canonical_json_bytes(receipt) + b"\n" for receipt in receipts))
         seal_bundle(bundle, replace=True)
         with self.assertRaisesRegex(VerificationError, "torch drift"):
+            verify_bundle(bundle)
+
+    def test_unallowlisted_tvm_ffi_traversal_after_forged_reseal_is_rejected(self) -> None:
+        bundle = self.copy_bundle("tamper-tvm-ffi-path-resealed")
+        path = bundle / "contract.json"
+        contract = json.loads(path.read_text())
+        installed = contract["runtime_identity"]["distributions"]["tvm_ffi"]["installed_files"]
+        installed["entries"][0]["path"] = "../../../bin/unrelated-command"
+        aggregate = hashlib.sha256()
+        for entry in installed["entries"]:
+            aggregate.update(canonical_json_bytes(entry))
+            aggregate.update(b"\n")
+        installed["aggregate_sha256"] = aggregate.hexdigest()
+        _write_json(path, contract)
+        seal_bundle(bundle, replace=True)
+        with self.assertRaisesRegex(VerificationError, "malformed tvm-ffi file entry"):
             verify_bundle(bundle)
 
     def test_forbidden_private_field_after_forged_reseal_is_rejected(self) -> None:

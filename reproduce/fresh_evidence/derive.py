@@ -48,6 +48,12 @@ PAYLOAD_FILES = (
     "performance.json",
 )
 HEX = frozenset("0123456789abcdef")
+TVM_FFI_CONSOLE_SCRIPT_PATHS = frozenset(
+    {
+        "../../../bin/tvm-ffi-config",
+        "../../../bin/tvm-ffi-stubgen",
+    }
+)
 
 
 class EvidenceError(ValueError):
@@ -93,6 +99,15 @@ def _is_hex(value: Any) -> bool:
     return (
         isinstance(value, str) and len(value) == 64 and all(character in HEX for character in value)
     )
+
+
+def _is_safe_tvm_ffi_installed_path(value: Any) -> bool:
+    if not isinstance(value, str) or not value or "\\" in value or value.startswith("/"):
+        return False
+    parts = value.split("/")
+    if any(part in {"", "."} for part in parts):
+        return False
+    return ".." not in parts or value in TVM_FFI_CONSOLE_SCRIPT_PATHS
 
 
 def _is_number(value: Any, *, positive: bool = False) -> bool:
@@ -367,10 +382,7 @@ def _safe_runtime_identity(contract: dict[str, Any]) -> dict[str, Any]:
                 _require(
                     isinstance(entry, dict)
                     and set(entry) == {"path", "size_bytes", "sha256"}
-                    and isinstance(entry["path"], str)
-                    and entry["path"]
-                    and not Path(entry["path"]).is_absolute()
-                    and ".." not in Path(entry["path"]).parts
+                    and _is_safe_tvm_ffi_installed_path(entry["path"])
                     and isinstance(entry["size_bytes"], int)
                     and entry["size_bytes"] >= 0
                     and _is_hex(entry["sha256"]),

@@ -216,7 +216,10 @@ version and the PyTorch distribution-metadata version as distinct exact fields;
 this preserves vendor version strings such as `nv26.02` even when package
 metadata normalizes the corresponding segment to `nv26.2`.  When Triton has no
 distribution metadata, both the contract and each timing worker bind its exact
-module version instead.  The harness never kills a conflicting process.
+module version instead.  The non-editable `tvm-ffi` identity fingerprints every
+installed file; its only allowed parent-relative records are the exact standard
+wheel console scripts `../../../bin/tvm-ffi-config` and
+`../../../bin/tvm-ffi-stubgen`.  The harness never kills a conflicting process.
 
 ## Optional: seal a committed source delta
 
