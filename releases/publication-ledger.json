@@ -1,0 +1,156 @@
+{
+  "audits": {
+    "authenticated_draft": {
+      "asset_download_mode": "AUTHENTICATED",
+      "latest_required": false,
+      "release_id": 361667794,
+      "status": "PASS",
+      "superseded_r1_lock": "PASS_ANONYMOUS"
+    },
+    "anonymous_public": {
+      "path": "releases/audits/gdn-sm90a-r2-public-audit.json",
+      "sha256": "f65cc5efe0875b58ba95e8e9b1f866d90255806cb8c089b2bd084c0d0c264822",
+      "size_bytes": 7805,
+      "status": "PASS"
+    }
+  },
+  "evidence": {
+    "fresh": {
+      "decision_status": "CHARACTERIZATION",
+      "evidence_class": "fresh-public-tag-h20-characterization",
+      "manifest_sha256": "d20b748ac54a3e14786d957353e3f85bee2566ceb913adc8679b8e660d2f282d",
+      "receipt_count": 66,
+      "seal_sha256": "cf27d78a62637b344eb0597244e275003540e54257ee2340f10a87ffac8338af",
+      "status": "PASS"
+    },
+    "historical": {
+      "evidence_class": "HISTORICAL_EVIDENCE_BOUND",
+      "manifest_sha256": "54e733e9edc053afea9a41f720ed6688ff5106b0c346af2f002f37045f3b1b50",
+      "receipt_count": 66,
+      "seal_sha256": "74a0930e09434989586d66edd37ad467c2b138333ece51a1344856de1bf904da",
+      "status": "PASS"
+    }
+  },
+  "github": {
+    "assets": [
+      {
+        "asset_id": 493912231,
+        "name": "SHA256SUMS",
+        "sha256": "4c09fbb678198d20ab6f31dc5bfe1e64677c168043222b4dad90abceb9937bd3",
+        "size_bytes": 393
+      },
+      {
+        "asset_id": 493912237,
+        "name": "gdn-sm90a-r2-public-evidence.tar",
+        "sha256": "eb28791df0b86ee46de3a8b5b5b353596905977ddc0c27094c2fdca10cf469c5",
+        "size_bytes": 1740800
+      },
+      {
+        "asset_id": 493912230,
+        "name": "gdn-sm90a-r2-publication-content.zip",
+        "sha256": "3b6b7ee2ee870dd450069d1a792ef05975f2c9a41b21f1c4187300ac60a70c7e",
+        "size_bytes": 1188303
+      },
+      {
+        "asset_id": 493912238,
+        "name": "gdn-sm90a-r2-release-manifest.json",
+        "sha256": "69954fd332845a4c73ae31bdcc3c132e6ccdb60adecf8e31167041e9eb32df77",
+        "size_bytes": 6641
+      },
+      {
+        "asset_id": 493912229,
+        "name": "gdn-sm90a-r2-source.tar",
+        "sha256": "8723eb3d4a62cb427569821c8505daad19cf2eea339b56ea54daecd1f23b7533",
+        "size_bytes": 3174400
+      }
+    ],
+    "main_ci": {
+      "commit": "b35952afc410212ac9a648cdb15fb234af8953ae",
+      "conclusion": "success",
+      "run_id": 30443571810,
+      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/actions/runs/30443571810"
+    },
+    "release": {
+      "created_at_utc": "2026-07-29T10:28:20Z",
+      "draft": false,
+      "latest": true,
+      "prerelease": false,
+      "published_at_utc": "2026-07-29T10:31:42Z",
+      "release_id": 361667794,
+      "status": "PUBLISHED_VERIFIED",
+      "updated_at_utc": "2026-07-29T10:31:42Z",
+      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/releases/tag/gdn-sm90a-r2"
+    },
+    "tag": {
+      "commit": "b35952afc410212ac9a648cdb15fb234af8953ae",
+      "name": "gdn-sm90a-r2",
+      "object": "0de2a619994c34d1a910dea667e356da70cf371b",
+      "tree": "8623c99ba8714a505628aff5be2854dde76b8c33",
+      "type": "annotated"
+    },
+    "tag_ci": {
+      "commit": "b35952afc410212ac9a648cdb15fb234af8953ae",
+      "conclusion": "success",
+      "release_assets_job": "PASS",
+      "run_id": 30443820728,
+      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/actions/runs/30443820728",
+      "verify_job": "PASS"
+    }
+  },
+  "performance_boundary": {
+    "dtype": "BF16",
+    "fresh_primary_geomean": {
+      "tirx_over_cutedsl": 0.8348118807637096,
+      "tirx_over_fla": 0.4537000213823878
+    },
+    "hardware": "NVIDIA H20",
+    "head_dimension": 128,
+    "historical_and_fresh_aggregates_merged": false,
+    "packed_n10_base_three_process_tirx_over_cutedsl": 1.0174448290368854,
+    "packed_n10_is_universal_win": false,
+    "row_count": 6,
+    "scope": "operator latency for the frozen GDN prefill matrix"
+  },
+  "platforms": {
+    "github": {
+      "status": "PUBLISHED_VERIFIED",
+      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/releases/tag/gdn-sm90a-r2"
+    },
+    "wechat": {
+      "payload_path": "dist/content/wechat.md",
+      "payload_sha256": "8e448d387bea025c523ac36e1c3011551f702811afb54f65a986f211026f9c85",
+      "status": "HANDOFF_READY_NOT_PUBLISHED"
+    },
+    "x": {
+      "payloads": [
+        {
+          "language": "en",
+          "path": "dist/content/x-thread-en.md",
+          "sha256": "69b76bc787809bb96a4f81967963bdcfc0516cf52776b7207d18ecb7e42a6431"
+        },
+        {
+          "language": "zh",
+          "path": "dist/content/x-thread-zh.md",
+          "sha256": "9b8e88ac3ff43d45facc0b6a9565298f1951041744bdb24ee72b17d04891d4a6"
+        }
+      ],
+      "status": "HANDOFF_READY_NOT_PUBLISHED"
+    },
+    "zhihu": {
+      "payload_path": "dist/content/zhihu.md",
+      "payload_sha256": "9a66920b63084363b612b7b71e42652dad0ca148a31fada4599226b14ab9e7ee",
+      "status": "HANDOFF_READY_NOT_PUBLISHED"
+    }
+  },
+  "publication_policy": {
+    "external_platform_identity_used": false,
+    "no_upstream_pr": true,
+    "official_or_upstream_endorsement_claimed": false,
+    "reason_external_posts_not_executed": "No authenticated X, Zhihu, or WeChat publishing identity was available in this workflow.",
+    "r1_status": "PUBLIC_UNMODIFIED_SUPERSEDED_FOR_PUBLICATION_GUIDANCE",
+    "r2_is_canonical_for_new_posts": true
+  },
+  "schema": "gdn-sm90a.publication-ledger.v1",
+  "sealed_at_utc": "2026-07-29T10:33:59Z",
+  "status": "GITHUB_PUBLIC_RELEASE_COMPLETE_PLATFORM_HANDOFF_READY"
+}

@@ -1,0 +1,38 @@
+{
+  "decision": "PUBLIC_RELEASE_READY_WITH_PLATFORM_HANDOFF",
+  "gates": {
+    "anonymous_public_asset_downloads": "PASS",
+    "content_claim_and_stale_state_validation": "PASS",
+    "draft_release_audit": "PASS",
+    "fresh_public_tag_characterization": "PASS",
+    "historical_public_evidence": "PASS",
+    "main_ci": "PASS",
+    "no_upstream_pull_requests": "PASS",
+    "public_latest_release_audit": "PASS",
+    "r1_immutability_reaudit": "PASS",
+    "release_asset_byte_identical_rebuilds": "PASS",
+    "source_identity_audit": "PASS",
+    "tag_ci_release_assets": "PASS",
+    "tag_ci_verify": "PASS"
+  },
+  "github_publication_status": "PUBLISHED_VERIFIED",
+  "limitations": [
+    "The measured scope is one NVIDIA H20 environment and the frozen six-row BF16, head-dimension-128 GDN prefill matrix.",
+    "Historical and fresh evidence classes remain separate; fresh CHARACTERIZATION does not inherit historical sanitizer, host-sync, or full-codegen gates.",
+    "The packed-n10 case is not presented as a universal performance win.",
+    "The TVM, TIRx-kernels, and CuTe DSL repositories are unofficial personal forks; no upstream merge or endorsement is claimed.",
+    "X, Zhihu, and WeChat payloads are machine-validated handoff artifacts and were not posted by this workflow."
+  ],
+  "publication_ledger": "releases/publication-ledger.json",
+  "release": {
+    "commit": "b35952afc410212ac9a648cdb15fb234af8953ae",
+    "release_id": 361667794,
+    "tag": "gdn-sm90a-r2",
+    "tag_object": "0de2a619994c34d1a910dea667e356da70cf371b",
+    "tree": "8623c99ba8714a505628aff5be2854dde76b8c33",
+    "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/releases/tag/gdn-sm90a-r2"
+  },
+  "schema": "gdn-sm90a.report-public-release-decision.v1",
+  "social_publication_status": "HANDOFF_READY_NOT_PUBLISHED",
+  "status": "PASS"
+}

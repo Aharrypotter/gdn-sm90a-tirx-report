@@ -1,0 +1,230 @@
+{
+  "anonymous_release_page": true,
+  "commit": "b35952afc410212ac9a648cdb15fb234af8953ae",
+  "downloaded_assets": [
+    {
+      "anonymous_download": true,
+      "name": "SHA256SUMS",
+      "sha256": "4c09fbb678198d20ab6f31dc5bfe1e64677c168043222b4dad90abceb9937bd3",
+      "size_bytes": 393,
+      "status": "PASS"
+    },
+    {
+      "anonymous_download": true,
+      "name": "gdn-sm90a-r2-public-evidence.tar",
+      "sha256": "eb28791df0b86ee46de3a8b5b5b353596905977ddc0c27094c2fdca10cf469c5",
+      "size_bytes": 1740800,
+      "status": "PASS"
+    },
+    {
+      "anonymous_download": true,
+      "name": "gdn-sm90a-r2-publication-content.zip",
+      "sha256": "3b6b7ee2ee870dd450069d1a792ef05975f2c9a41b21f1c4187300ac60a70c7e",
+      "size_bytes": 1188303,
+      "status": "PASS"
+    },
+    {
+      "anonymous_download": true,
+      "name": "gdn-sm90a-r2-release-manifest.json",
+      "sha256": "69954fd332845a4c73ae31bdcc3c132e6ccdb60adecf8e31167041e9eb32df77",
+      "size_bytes": 6641,
+      "status": "PASS"
+    },
+    {
+      "anonymous_download": true,
+      "name": "gdn-sm90a-r2-source.tar",
+      "sha256": "8723eb3d4a62cb427569821c8505daad19cf2eea339b56ea54daecd1f23b7533",
+      "size_bytes": 3174400,
+      "status": "PASS"
+    }
+  ],
+  "draft": false,
+  "latest_release": {
+    "release_id": 361667794,
+    "status": "PASS",
+    "tag": "gdn-sm90a-r2"
+  },
+  "local_asset_verification": {
+    "byte_identical_rebuilds": true,
+    "fresh_decision_status": "CHARACTERIZATION",
+    "fresh_evidence_class": "fresh-public-tag-h20-characterization",
+    "rebuild_count": 2,
+    "status": "PASS"
+  },
+  "mode": "public",
+  "prerelease": false,
+  "release_id": 361667794,
+  "release_url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/releases/tag/gdn-sm90a-r2",
+  "report_tag": {
+    "commit": "b35952afc410212ac9a648cdb15fb234af8953ae",
+    "repository": "Aharrypotter/gdn-sm90a-tirx-report",
+    "status": "PASS",
+    "tag": "gdn-sm90a-r2",
+    "tag_object": "0de2a619994c34d1a910dea667e356da70cf371b",
+    "tree": "8623c99ba8714a505628aff5be2854dde76b8c33"
+  },
+  "repository": "Aharrypotter/gdn-sm90a-tirx-report",
+  "schema": "gdn-sm90a.public-release-audit.v1",
+  "source_links": [
+    {
+      "commit": "88737e9d906cf313995a092624656a89d74dd65e",
+      "release_url": "https://github.com/Aharrypotter/cuLA/releases/tag/gdn-sm90a-comparator-r1",
+      "repository": "Aharrypotter/cuLA",
+      "source_url": "https://github.com/Aharrypotter/cuLA/tree/gdn-sm90a-comparator-r1",
+      "status": "PASS",
+      "tag": "gdn-sm90a-comparator-r1",
+      "tag_object": "0e2c50a4f39b58811e234466682a62f8926998c4",
+      "tree": "aa01d1a169b72dedd582f86fc9b257e9e2776344"
+    },
+    {
+      "commit": "d1ce07369d581813553f30a750af3b6b5f9af6a9",
+      "repository": "fla-org/flash-linear-attention",
+      "source_url": "https://github.com/fla-org/flash-linear-attention/commit/d1ce07369d581813553f30a750af3b6b5f9af6a9",
+      "status": "PASS",
+      "tree": "e5ea97e3041c3e4dd0bf6974c2259f7ed104ddc2"
+    },
+    {
+      "commit": "12ce3721f7c62c5fbd911103ae373de689e58385",
+      "release_url": "https://github.com/Aharrypotter/tirx-kernels/releases/tag/gdn-sm90a-kernel-r0",
+      "repository": "Aharrypotter/tirx-kernels",
+      "source_url": "https://github.com/Aharrypotter/tirx-kernels/tree/gdn-sm90a-kernel-r0",
+      "status": "PASS",
+      "tag": "gdn-sm90a-kernel-r0",
+      "tag_object": "f233dcbfc314415b9af496e3fd855554d81d662c",
+      "tree": "cc04daa65ff52014348c8e078721e9afb017467a"
+    },
+    {
+      "commit": "acb1312de80b39340e09b0aaad818ff029e745d6",
+      "release_url": "https://github.com/Aharrypotter/tvm/releases/tag/gdn-sm90a-compiler-r0",
+      "repository": "Aharrypotter/tvm",
+      "source_url": "https://github.com/Aharrypotter/tvm/tree/gdn-sm90a-compiler-r0",
+      "status": "PASS",
+      "tag": "gdn-sm90a-compiler-r0",
+      "tag_object": "18e2172e54aefcba7e11f3e62fa8bfa137b480d4",
+      "tree": "d7989ef4a8621448755da21bd1dec8b5d6c18a1b"
+    }
+  ],
+  "status": "PASS",
+  "superseded_release_lock": {
+    "body": {
+      "canonical_sha256": "0d17b42eb621ab062164c3dab42ce65c5a731daab6fb86006b8db16a22250683",
+      "canonical_size_bytes": 3048,
+      "status": "PASS"
+    },
+    "commit": "08c92c76d7c644a3caa1929d6cd8cac8bbb91595",
+    "downloaded_assets": [
+      {
+        "anonymous_download": true,
+        "name": "SHA256SUMS",
+        "sha256": "3894be61df219ead2f857629eb12892c28cd8985e0577bda99753e7b80da8ca8",
+        "size_bytes": 393,
+        "status": "PASS"
+      },
+      {
+        "anonymous_download": true,
+        "name": "gdn-sm90a-r1-public-evidence.tar",
+        "sha256": "a722d540fedc7eb37845fe52f1d45bf7493d0201aac81831a73903725c5874e0",
+        "size_bytes": 1740800,
+        "status": "PASS"
+      },
+      {
+        "anonymous_download": true,
+        "name": "gdn-sm90a-r1-publication-content.zip",
+        "sha256": "0316cfb489c78520bd84815668f4e715d281d8d6ce5bb670d597d680609249f2",
+        "size_bytes": 1159648,
+        "status": "PASS"
+      },
+      {
+        "anonymous_download": true,
+        "name": "gdn-sm90a-r1-release-manifest.json",
+        "sha256": "80f3cbaa27e9fa35ba4db6927593497f233e68ae2ff6a93dfdc417080f383671",
+        "size_bytes": 6641,
+        "status": "PASS"
+      },
+      {
+        "anonymous_download": true,
+        "name": "gdn-sm90a-r1-source.tar",
+        "sha256": "e26ad2906d5252d8dfaf6fcf54b08d5e615cf8234b75a56d58dc5df161537c26",
+        "size_bytes": 3092480,
+        "status": "PASS"
+      }
+    ],
+    "draft": false,
+    "mutation_policy": {
+      "edit_r1_release_body": false,
+      "move_or_delete_r1_tag": false,
+      "replace_or_delete_r1_assets": false
+    },
+    "prerelease": false,
+    "published_at_utc": "2026-07-29T09:32:17Z",
+    "release_id": 361635172,
+    "release_url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/releases/tag/gdn-sm90a-r1",
+    "repository": "Aharrypotter/gdn-sm90a-tirx-report",
+    "status": "PASS",
+    "tag": "gdn-sm90a-r1",
+    "tag_ci": {
+      "conclusion": "success",
+      "event": "push",
+      "head_sha": "08c92c76d7c644a3caa1929d6cd8cac8bbb91595",
+      "run_id": 30439842047,
+      "status": "completed",
+      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/actions/runs/30439842047"
+    },
+    "tag_object": "fca41983444d9fdc66651034f7269ebaaba219fb",
+    "tree": "22297bfb13c0778ab03f6b9882fff173ec89752d",
+    "validity": {
+      "evidence_integrity": "VALID_UNCHANGED",
+      "performance_facts": "VALID_UNCHANGED",
+      "publication_guidance": "SUPERSEDED",
+      "runtime_source": "VALID_UNCHANGED",
+      "source_provenance": "VALID_UNCHANGED"
+    }
+  },
+  "tag": "gdn-sm90a-r2",
+  "tag_object": "0de2a619994c34d1a910dea667e356da70cf371b",
+  "tree": "8623c99ba8714a505628aff5be2854dde76b8c33",
+  "upstream_pr_audit": [
+    {
+      "head": "Aharrypotter:gdn-sm90a-comparator",
+      "head_pr_count": 0,
+      "keyword_checks": [],
+      "source_id": "cutedsl_comparator",
+      "status": "PASS",
+      "upstream_repository": "inclusionAI/cuLA"
+    },
+    {
+      "head": "Aharrypotter:gdn-sm90a",
+      "head_pr_count": 0,
+      "keyword_checks": [
+        {
+          "keyword": "gdn",
+          "match_count": 0
+        },
+        {
+          "keyword": "sm90",
+          "match_count": 0
+        }
+      ],
+      "source_id": "tirx_kernels",
+      "status": "PASS",
+      "upstream_repository": "mlc-ai/tirx-kernels"
+    },
+    {
+      "head": "Aharrypotter:tirx-sm90a-wgmma",
+      "head_pr_count": 0,
+      "keyword_checks": [
+        {
+          "keyword": "gdn",
+          "match_count": 0
+        },
+        {
+          "keyword": "sm90",
+          "match_count": 0
+        }
+      ],
+      "source_id": "tvm",
+      "status": "PASS",
+      "upstream_repository": "apache/tvm"
+    }
+  ]
+}
