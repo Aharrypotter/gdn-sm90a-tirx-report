@@ -60,6 +60,12 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+      - name: Restore the exact annotated tag object
+        run: |
+          git fetch --force origin \
+            "refs/tags/${GITHUB_REF_NAME}:refs/tags/${GITHUB_REF_NAME}"
+          test "$(git cat-file -t "refs/tags/${GITHUB_REF_NAME}")" = tag
+          test "$(git rev-parse "refs/tags/${GITHUB_REF_NAME}^{}")" = "${GITHUB_SHA}"
       - name: Build and independently verify deterministic release assets
         run: >-
           make release-assets verify-release-assets

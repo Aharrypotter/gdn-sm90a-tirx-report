@@ -1,4 +1,4 @@
-GDN SM90a / TIRx public evidence r0
+GDN SM90a / TIRx public evidence r1
 
 Unofficial personal-fork report, public evidence, reproducer, and publication
 package. No upstream merge or endorsement is claimed.

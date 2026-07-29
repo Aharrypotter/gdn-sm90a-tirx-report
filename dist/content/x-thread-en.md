@@ -103,4 +103,4 @@ Exact public tags, H20 6 rows: 66 bundle-derived receipts; CHARACTERIZATION; TIR
 ## 17
 
 Fresh source-derived report:
-https://github.com/Aharrypotter/gdn-sm90a-tirx-report/blob/gdn-sm90a-r0/reports/fresh-public-tag-performance.md
+https://github.com/Aharrypotter/gdn-sm90a-tirx-report/blob/gdn-sm90a-r1/reports/fresh-public-tag-performance.md

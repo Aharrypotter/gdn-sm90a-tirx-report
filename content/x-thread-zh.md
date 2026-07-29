@@ -93,4 +93,4 @@ https://github.com/Aharrypotter/cuLA/tree/gdn-sm90a-comparator-r1
 ## 17
 
 Fresh 来源派生报告：
-https://github.com/Aharrypotter/gdn-sm90a-tirx-report/blob/gdn-sm90a-r0/reports/fresh-public-tag-performance.md
+https://github.com/Aharrypotter/gdn-sm90a-tirx-report/blob/gdn-sm90a-r1/reports/fresh-public-tag-performance.md

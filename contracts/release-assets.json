@@ -22,7 +22,7 @@
   },
   "packages": {
     "content": {
-      "filename": "gdn-sm90a-r0-publication-content.zip",
+      "filename": "gdn-sm90a-r1-publication-content.zip",
       "format": "zip",
       "include": [
         "CITATION.cff",
@@ -38,10 +38,10 @@
         "releases",
         "reports"
       ],
-      "prefix": "gdn-sm90a-r0-publication-content"
+      "prefix": "gdn-sm90a-r1-publication-content"
     },
     "evidence": {
-      "filename": "gdn-sm90a-r0-public-evidence.tar",
+      "filename": "gdn-sm90a-r1-public-evidence.tar",
       "format": "tar",
       "include": [
         "LICENSE",
@@ -59,25 +59,25 @@
         "scripts/verify_public_evidence.py",
         "scripts/verify_release_assets.py"
       ],
-      "prefix": "gdn-sm90a-r0-public-evidence"
+      "prefix": "gdn-sm90a-r1-public-evidence"
     },
     "source": {
-      "filename": "gdn-sm90a-r0-source.tar",
+      "filename": "gdn-sm90a-r1-source.tar",
       "format": "tar",
       "include": [
         "**"
       ],
-      "prefix": "gdn-sm90a-r0-source"
+      "prefix": "gdn-sm90a-r1-source"
     }
   },
   "release": {
-    "expected_public_tag": "gdn-sm90a-r0",
-    "notes_path": "releases/gdn-sm90a-r0.md",
+    "expected_public_tag": "gdn-sm90a-r1",
+    "notes_path": "releases/gdn-sm90a-r1.md",
     "repository": "Aharrypotter/gdn-sm90a-tirx-report",
-    "tag_message_path": "releases/gdn-sm90a-r0-tag-message.txt",
-    "title": "GDN SM90a / TIRx public evidence r0"
+    "tag_message_path": "releases/gdn-sm90a-r1-tag-message.txt",
+    "title": "GDN SM90a / TIRx public evidence r1"
   },
-  "release_manifest_filename": "gdn-sm90a-r0-release-manifest.json",
+  "release_manifest_filename": "gdn-sm90a-r1-release-manifest.json",
   "claim_registry_path": "contracts/claim-registry.json",
   "required_claims": {
     "C12": true

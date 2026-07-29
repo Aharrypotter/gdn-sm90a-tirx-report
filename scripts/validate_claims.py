@@ -44,7 +44,8 @@ EXPECTED_CUTEDSL_COMMIT = "88737e9d906cf313995a092624656a89d74dd65e"
 EXCLUDED_CUTEDSL_TAG = "gdn2-sm90a-comparator-r0"
 FRESH_CLAIM_SCOPE = "fresh public-tag H20 six-row characterization"
 FRESH_EVIDENCE_KIND = "fresh-public-tag-h20-rerun"
-REPORT_TAG = "gdn-sm90a-r0"
+REPORT_TAG = "gdn-sm90a-r1"
+SUPERSEDED_REPORT_TAG = "gdn-sm90a-r0"
 FRESH_ROW_ORDER = (
     "single-t512-h8-mha-zero",
     "single-t1024-h8-mha-state",
@@ -421,6 +422,22 @@ def validate_link_map(
     )
     if historical_link.get("url") != expected_historical_url:
         errors.append("link map historical evidence URL is not pinned to the report tag")
+
+    superseded_report = link_map.get("excluded_links", {}).get(SUPERSEDED_REPORT_TAG, {})
+    if superseded_report != {
+        "tag": SUPERSEDED_REPORT_TAG,
+        "tag_object": "81c0ec29ebbceed192d871f8d91794d7170bba18",
+        "peeled_commit": "e1fd180b12b65552183a63ea2a0b62f21c3b8634",
+        "tree": "48f8e4688e5cae8c0aedef6171dc38675b9c3c84",
+        "status": "SUPERSEDED_BEFORE_RELEASE",
+        "reason": (
+            "The tag-event checkout dereferenced the annotated tag object, so the "
+            "required tag-object-only asset CI correctly failed. The tag remains "
+            "immutable and has no GitHub release; r1 restores the exact tag object "
+            "before building."
+        ),
+    }:
+        errors.append("superseded report r0 tag identity or reason drifted")
 
     fresh_comparator = fresh_source_lock.get("locks", {}).get("cutedsl", {})
     if fresh_comparator.get("tag") != comparator.get("tag"):

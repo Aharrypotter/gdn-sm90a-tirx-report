@@ -12,7 +12,7 @@
 	verify-release-tools \
 	verify-static
 
-RELEASE_TAG ?= gdn-sm90a-r0
+RELEASE_TAG ?= gdn-sm90a-r1
 RELEASE_DIR ?= build/releases/$(RELEASE_TAG)
 
 verify-static:
