@@ -16,6 +16,7 @@
 
 from __future__ import annotations
 
+import importlib.metadata
 import math
 import os
 import tempfile
@@ -44,6 +45,7 @@ from reproduce.benchmark.contract import (
 from reproduce.benchmark.report import geometric_mean, median_process_average
 from reproduce.benchmark.run import compose_pythonpath, escalation_required
 from reproduce.benchmark.worker import (
+    _versions,
     expected_launch_token,
     parse_gpu_state_row,
     path_is_within_any_root,
@@ -128,6 +130,37 @@ class AuditHelpersTest(unittest.TestCase):
         self.assertTrue(math.isclose(geometric_mean([1.0, 4.0]), 2.0))
         with self.assertRaises(ValueError):
             geometric_mean([0.0])
+
+    def test_triton_version_falls_back_to_exact_module_version(self) -> None:
+        def distribution_version(name: str) -> str:
+            if name == "triton":
+                raise importlib.metadata.PackageNotFoundError(name)
+            return f"{name}-distribution-version"
+
+        with (
+            mock.patch(
+                "reproduce.benchmark.worker.importlib.metadata.version",
+                side_effect=distribution_version,
+            ),
+            mock.patch(
+                "reproduce.benchmark.worker.importlib.import_module",
+                return_value=mock.Mock(__version__="3.6.0"),
+            ),
+        ):
+            self.assertEqual(_versions()["triton"], "3.6.0")
+
+        with (
+            mock.patch(
+                "reproduce.benchmark.worker.importlib.metadata.version",
+                side_effect=distribution_version,
+            ),
+            mock.patch(
+                "reproduce.benchmark.worker.importlib.import_module",
+                return_value=mock.Mock(spec=[]),
+            ),
+            self.assertRaisesRegex(RuntimeError, "neither distribution metadata"),
+        ):
+            _versions()
 
 
 class RuntimePathTest(unittest.TestCase):

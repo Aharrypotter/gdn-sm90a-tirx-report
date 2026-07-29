@@ -163,10 +163,10 @@ def _private_contract() -> dict[str, Any]:
                 "metadata_root": "/private/runtime/site-packages",
             },
             "triton": {
-                "distribution": "triton",
+                "distribution": None,
                 "version": "3.4.0",
-                "metadata_root": "/private/runtime/site-packages",
-                "module_file": None,
+                "metadata_root": None,
+                "module_file": "/private/runtime/site-packages/triton/__init__.py",
             },
             "tvm_ffi": {
                 "distribution": "apache-tvm-ffi",

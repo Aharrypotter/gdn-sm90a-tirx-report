@@ -326,7 +326,16 @@ def _versions() -> dict[str, str | None]:
         try:
             result[name] = importlib.metadata.version(name)
         except importlib.metadata.PackageNotFoundError:
-            result[name] = None
+            if name != "triton":
+                result[name] = None
+                continue
+            module = importlib.import_module("triton")
+            module_version = getattr(module, "__version__", None)
+            if not isinstance(module_version, str) or not module_version:
+                raise RuntimeError(
+                    "triton has neither distribution metadata nor a module version"
+                ) from None
+            result[name] = module_version
     return result
 
 
