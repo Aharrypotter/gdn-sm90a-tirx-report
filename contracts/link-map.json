@@ -1,0 +1,53 @@
+{
+  "schema": "gdn-sm90a.public-link-map.v1",
+  "links": {
+    "report_repository": {
+      "kind": "repository",
+      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report"
+    },
+    "historical_evidence": {
+      "kind": "repository_path",
+      "url": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/tree/main/evidence/historical/gdn-sm90a-h20-20260728-v1"
+    },
+    "tvm_compiler": {
+      "kind": "immutable_tag",
+      "repository": "https://github.com/Aharrypotter/tvm",
+      "tag": "gdn-sm90a-compiler-r0",
+      "commit": "acb1312de80b39340e09b0aaad818ff029e745d6",
+      "url": "https://github.com/Aharrypotter/tvm/tree/gdn-sm90a-compiler-r0"
+    },
+    "tirx_kernel": {
+      "kind": "immutable_tag",
+      "repository": "https://github.com/Aharrypotter/tirx-kernels",
+      "tag": "gdn-sm90a-kernel-r0",
+      "commit": "12ce3721f7c62c5fbd911103ae373de689e58385",
+      "runtime_commit": "90c9c62c84ecc452dd86602f0ea49a625845045c",
+      "url": "https://github.com/Aharrypotter/tirx-kernels/tree/gdn-sm90a-kernel-r0"
+    },
+    "cutedsl_comparator": {
+      "kind": "immutable_tag",
+      "repository": "https://github.com/Aharrypotter/cuLA",
+      "tag": "gdn-sm90a-comparator-r1",
+      "commit": "88737e9d906cf313995a092624656a89d74dd65e",
+      "entrypoint": "cula.gdn.prefill.chunk_gated_delta_rule",
+      "backend": "sm90_cutedsl_gdn",
+      "cutedsl_version": "4.5.1",
+      "url": "https://github.com/Aharrypotter/cuLA/tree/gdn-sm90a-comparator-r1"
+    },
+    "fla_comparator": {
+      "kind": "immutable_commit",
+      "repository": "https://github.com/fla-org/flash-linear-attention",
+      "commit": "d1ce07369d581813553f30a750af3b6b5f9af6a9",
+      "entrypoint": "fla.ops.gated_delta_rule.chunk",
+      "url": "https://github.com/fla-org/flash-linear-attention/commit/d1ce07369d581813553f30a750af3b6b5f9af6a9"
+    }
+  },
+  "excluded_links": {
+    "gdn2-sm90a-comparator-r0": {
+      "tag": "gdn2-sm90a-comparator-r0",
+      "status": "NOT_USED_BY_HISTORICAL_GDN_RECEIPTS",
+      "peeled_commit": "6aa1065abad5fc5717cadbb574126002fe78646b",
+      "reason": "The historical receipts resolve cula.gdn.prefill.chunk_gated_delta_rule, not cula.gdn2."
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "schema": "gdn-sm90a.fresh-public-tag-timing-protocol.v1",
+  "claim_status_before_fresh_run": "HISTORICAL_EVIDENCE_BOUND",
+  "implementations": [
+    {
+      "id": "tirx",
+      "release_tags": [
+        "gdn-sm90a-compiler-r0",
+        "gdn-sm90a-kernel-r0"
+      ],
+      "expected_backend": "tirx.gdn.sm90a.wgmma.product-dispatch.packed.v3"
+    },
+    {
+      "id": "cutedsl",
+      "release_tags": [
+        "gdn-sm90a-comparator-r1"
+      ],
+      "expected_backend": "sm90_cutedsl_gdn",
+      "expected_entrypoint": "cula.gdn.prefill.chunk_gated_delta_rule",
+      "cutedsl_version": "4.5.1"
+    },
+    {
+      "id": "fla",
+      "commit": "d1ce07369d581813553f30a750af3b6b5f9af6a9",
+      "expected_backend": "fla.gdn.chunk.triton.d1ce07369d58",
+      "expected_entrypoint": "fla.ops.gated_delta_rule.chunk"
+    }
+  ],
+  "device_gate": {
+    "accelerator": "NVIDIA H20",
+    "compute_capability": "9.0",
+    "target_arch": "sm_90a",
+    "cuda_visible_device_count": 1,
+    "physical_identity_binding_required": true,
+    "max_gpu_utilization_percent": 5.0,
+    "quiet_timeout_seconds": 120.0,
+    "quiet_poll_interval_seconds": 1.0,
+    "foreign_process_policy": "ABORT_OR_DEFER; never terminate an unrelated process"
+  },
+  "correctness_gate": {
+    "required_before_timing": true,
+    "same_seeded_inputs_for_all_implementations": true,
+    "output": {
+      "atol": 0.01,
+      "rtol": 0.01,
+      "max_abs": 0.075,
+      "relative_rms": 0.15
+    },
+    "final_state": {
+      "atol": 0.005,
+      "rtol": 0.001,
+      "max_abs": 0.075,
+      "relative_rms": 0.15
+    }
+  },
+  "measurement": {
+    "unit": "one public operator invocation through its exact tagged dispatch path",
+    "lower_is_better": true,
+    "timer": "cuda_event",
+    "warmup_iterations": 20,
+    "timed_iterations": 100,
+    "compile_first_call": "recorded separately; excluded from latency samples",
+    "implementation_order": "permuted for each independent process and recorded in the receipt",
+    "base_independent_processes": 3,
+    "escalated_independent_processes": 7,
+    "escalation_rule": "rerun all implementations for a row when a primary ratio is within ±2%",
+    "expected_total_receipts_after_packed10_escalation": 66
+  },
+  "aggregation": {
+    "process_statistic": "arithmetic mean of the 100 raw per-iteration samples",
+    "row_statistic": "median of independent-process arithmetic means",
+    "ratio_definition": "TIRx row median divided by comparator row median",
+    "noise_band_percent": 2.0,
+    "inside_noise_band": "ratio in [0.98, 1.02]",
+    "primary_summary": "geometric mean of the six per-row ratios",
+    "raw_samples_required": true
+  },
+  "receipt_requirements": [
+    "exact source identities and resolved backend",
+    "row id, seed, implementation, process index, and execution order",
+    "correctness result and output/state hashes",
+    "quiet-gate result",
+    "compile-first-call diagnostic",
+    "20 warmups and 100 raw CUDA-event samples",
+    "per-process summary"
+  ],
+  "promotion_gate": {
+    "required_receipt_count": 66,
+    "source_lock_verification": "PASS",
+    "environment_check": "PASS",
+    "gpu_correctness_safety_codegen_resources": "PASS",
+    "public_bundle_reseal": "PASS",
+    "upstream_merge_claim": false
+  }
+}

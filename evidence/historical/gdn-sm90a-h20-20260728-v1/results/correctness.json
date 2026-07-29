@@ -1,0 +1,236 @@
+{
+  "all_receipts_correctness_passed": true,
+  "formal_gate_receipts": {
+    "compiler-tests-full": {
+      "rc": "0",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "public-gpu-semantics": {
+      "rc": "0",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "public-route-tests": {
+      "rc": "0",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    }
+  },
+  "fresh_gate_status": {
+    "compiler_tests": "92 passed, 88 skipped",
+    "formal_gates_status": "PASS",
+    "public_gpu_semantics": "10 passed",
+    "public_route_tests": "15 passed"
+  },
+  "per_row": {
+    "packed-n10-t4096-h8-mha-state": {
+      "cutedsl": {
+        "all_correctness_passed": true,
+        "output_allclose": true,
+        "output_max_abs_max": 0.0,
+        "output_relative_rms_max": 0.0,
+        "receipt_count": 7,
+        "state_allclose": true,
+        "state_max_abs_max": 0.0,
+        "state_relative_rms_max": 0.0
+      },
+      "fla": {
+        "all_correctness_passed": true,
+        "output_allclose": true,
+        "output_max_abs_max": 3.0517578125e-05,
+        "output_relative_rms_max": 0.0024198677856475115,
+        "receipt_count": 7,
+        "state_allclose": true,
+        "state_max_abs_max": 3.455928526818752e-05,
+        "state_relative_rms_max": 0.003075198270380497
+      },
+      "tirx": {
+        "all_correctness_passed": true,
+        "output_allclose": true,
+        "output_max_abs_max": 3.0517578125e-05,
+        "output_relative_rms_max": 0.001773279975168407,
+        "receipt_count": 7,
+        "state_allclose": true,
+        "state_max_abs_max": 2.801208756864071e-05,
+        "state_relative_rms_max": 0.002066164743155241
+      }
+    },
+    "packed-n20-t8192-h8-hv16-gva-state": {
+      "cutedsl": {
+        "all_correctness_passed": true,
+        "output_allclose": true,
+        "output_max_abs_max": 0.0,
+        "output_relative_rms_max": 0.0,
+        "receipt_count": 3,
+        "state_allclose": true,
+        "state_max_abs_max": 0.0,
+        "state_relative_rms_max": 0.0
+      },
+      "fla": {
+        "all_correctness_passed": true,
+        "output_allclose": true,
+        "output_max_abs_max": 3.0517578125e-05,
+        "output_relative_rms_max": 0.002424653386697173,
+        "receipt_count": 3,
+        "state_allclose": true,
+        "state_max_abs_max": 4.2080762796103954e-05,
+        "state_relative_rms_max": 0.003003662684932351
+      },
+      "tirx": {
+        "all_correctness_passed": true,
+        "output_allclose": true,
+        "output_max_abs_max": 3.0517578125e-05,
+        "output_relative_rms_max": 0.0020110656041651964,
+        "receipt_count": 3,
+        "state_allclose": true,
+        "state_max_abs_max": 5.311798304319382e-05,
+        "state_relative_rms_max": 0.0021249190904200077
+      }
+    },
+    "single-t1024-h8-hv16-gva-state": {
+      "cutedsl": {
+        "all_correctness_passed": true,
+        "output_allclose": true,
+        "output_max_abs_max": 0.0,
+        "output_relative_rms_max": 0.0,
+        "receipt_count": 3,
+        "state_allclose": true,
+        "state_max_abs_max": 0.0,
+        "state_relative_rms_max": 0.0
+      },
+      "fla": {
+        "all_correctness_passed": true,
+        "output_allclose": true,
+        "output_max_abs_max": 3.0517578125e-05,
+        "output_relative_rms_max": 0.0030666515231132507,
+        "receipt_count": 3,
+        "state_allclose": true,
+        "state_max_abs_max": 2.75482889264822e-05,
+        "state_relative_rms_max": 0.0028884008061140776
+      },
+      "tirx": {
+        "all_correctness_passed": true,
+        "output_allclose": true,
+        "output_max_abs_max": 3.0517578125e-05,
+        "output_relative_rms_max": 0.002535873791202903,
+        "receipt_count": 3,
+        "state_allclose": true,
+        "state_max_abs_max": 2.889055758714676e-05,
+        "state_relative_rms_max": 0.0022115532774478197
+      }
+    },
+    "single-t1024-h8-mha-state": {
+      "cutedsl": {
+        "all_correctness_passed": true,
+        "output_allclose": true,
+        "output_max_abs_max": 0.0,
+        "output_relative_rms_max": 0.0,
+        "receipt_count": 3,
+        "state_allclose": true,
+        "state_max_abs_max": 0.0,
+        "state_relative_rms_max": 0.0
+      },
+      "fla": {
+        "all_correctness_passed": true,
+        "output_allclose": true,
+        "output_max_abs_max": 3.0517578125e-05,
+        "output_relative_rms_max": 0.0030718655325472355,
+        "receipt_count": 3,
+        "state_allclose": true,
+        "state_max_abs_max": 2.6577035896480083e-05,
+        "state_relative_rms_max": 0.002926516579464078
+      },
+      "tirx": {
+        "all_correctness_passed": true,
+        "output_allclose": true,
+        "output_max_abs_max": 3.0517578125e-05,
+        "output_relative_rms_max": 0.002197873080149293,
+        "receipt_count": 3,
+        "state_allclose": true,
+        "state_max_abs_max": 2.0735315047204494e-05,
+        "state_relative_rms_max": 0.0022522620856761932
+      }
+    },
+    "single-t4096-h16-mha-zero": {
+      "cutedsl": {
+        "all_correctness_passed": true,
+        "output_allclose": true,
+        "output_max_abs_max": 0.0,
+        "output_relative_rms_max": 0.0,
+        "receipt_count": 3,
+        "state_allclose": true,
+        "state_max_abs_max": null,
+        "state_relative_rms_max": null
+      },
+      "fla": {
+        "all_correctness_passed": true,
+        "output_allclose": true,
+        "output_max_abs_max": 1.52587890625e-05,
+        "output_relative_rms_max": 0.004282784182578325,
+        "receipt_count": 3,
+        "state_allclose": true,
+        "state_max_abs_max": null,
+        "state_relative_rms_max": null
+      },
+      "tirx": {
+        "all_correctness_passed": true,
+        "output_allclose": true,
+        "output_max_abs_max": 2.6345252990722656e-05,
+        "output_relative_rms_max": 0.003768408205360174,
+        "receipt_count": 3,
+        "state_allclose": true,
+        "state_max_abs_max": null,
+        "state_relative_rms_max": null
+      }
+    },
+    "single-t512-h8-mha-zero": {
+      "cutedsl": {
+        "all_correctness_passed": true,
+        "output_allclose": true,
+        "output_max_abs_max": 0.0,
+        "output_relative_rms_max": 0.0,
+        "receipt_count": 3,
+        "state_allclose": true,
+        "state_max_abs_max": null,
+        "state_relative_rms_max": null
+      },
+      "fla": {
+        "all_correctness_passed": true,
+        "output_allclose": true,
+        "output_max_abs_max": 7.62939453125e-06,
+        "output_relative_rms_max": 0.004296144470572472,
+        "receipt_count": 3,
+        "state_allclose": true,
+        "state_max_abs_max": null,
+        "state_relative_rms_max": null
+      },
+      "tirx": {
+        "all_correctness_passed": true,
+        "output_allclose": true,
+        "output_max_abs_max": 7.62939453125e-06,
+        "output_relative_rms_max": 0.003020027419552207,
+        "receipt_count": 3,
+        "state_allclose": true,
+        "state_max_abs_max": null,
+        "state_relative_rms_max": null
+      }
+    }
+  },
+  "policy": {
+    "oracle": "CuTeDSL tensors frozen from the same seeded inputs",
+    "output_atol": 0.01,
+    "output_max_abs": 0.075,
+    "output_relative_rms": 0.15,
+    "output_rtol": 0.01,
+    "state_atol": 0.005,
+    "state_max_abs": 0.075,
+    "state_relative_rms": 0.15,
+    "state_rtol": 0.001
+  },
+  "receipt_count": 66,
+  "receipt_count_by_implementation": {
+    "cutedsl": 22,
+    "fla": 22,
+    "tirx": 22
+  },
+  "schema": "gdn-sm90a.public-correctness-summary.v1",
+  "status": "PASS"
+}

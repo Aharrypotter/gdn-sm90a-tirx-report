@@ -1,0 +1,181 @@
+{
+  "globally_excluded": [
+    "raw logs and job scripts",
+    "process identifiers and return-code marker files",
+    "filesystem and cache roots",
+    "host, container, SSH alias, and GPU UUID values",
+    "raw profiler traces",
+    "generated CUDA, cubin, SASS, and ptxas logs",
+    "raw reviewer report"
+  ],
+  "method": "explicit_field_allowlist",
+  "outputs": {
+    "PUBLICATION.json": [
+      {
+        "json_paths": [
+          "$.release_ready",
+          "$.decision"
+        ],
+        "source": "results/release-reseal-decision.json"
+      },
+      {
+        "json_paths": [],
+        "role": "verified immutable seal",
+        "source": "results/artifact-manifest.sha256"
+      }
+    ],
+    "contracts/benchmark.json": [
+      {
+        "json_paths": [
+          "$.schema",
+          "$.run_id",
+          "$.source_manifest_sha256",
+          "$.implementations.*",
+          "$.correctness.*",
+          "$.timing except physical_gpu_index and gpu_uuid",
+          "$.rows[*]"
+        ],
+        "source": "contract/benchmark-full.json"
+      }
+    ],
+    "contracts/product.json": [
+      {
+        "json_paths": [
+          "$.product_contract"
+        ],
+        "source": "results/release-summary.json"
+      }
+    ],
+    "metadata/environment.json": [
+      {
+        "json_paths": [
+          "$.status",
+          "$.target_kind",
+          "$.target_arch",
+          "$.torch_version",
+          "$.torch_cuda_version",
+          "$.gates.*"
+        ],
+        "source": "results/formal-identity-r1.json"
+      },
+      {
+        "json_paths": [
+          "$.package_versions",
+          "$.torch_version",
+          "$.torch_cuda_version"
+        ],
+        "source": "results/benchmark-full/timing/*.json"
+      }
+    ],
+    "metadata/source-lock.json": [
+      {
+        "json_paths": [
+          "$.implementations.*"
+        ],
+        "source": "contract/benchmark-full.json"
+      },
+      {
+        "json_paths": [
+          "$.*"
+        ],
+        "role": "live public Git identities audited separately",
+        "source": "config/public-source-lock.json"
+      }
+    ],
+    "receipts/timing.jsonl": [
+      {
+        "json_paths": [
+          "$.identity fields",
+          "$.correctness fields",
+          "$.raw_per_iter_ms",
+          "$.summary",
+          "$.compile_first_call_ms",
+          "$.gpu_quiet_gate"
+        ],
+        "source": "results/benchmark-full/timing/*.json"
+      }
+    ],
+    "results/codegen-resources.json": [
+      {
+        "json_paths": [
+          "explicit resource fields"
+        ],
+        "source": "results/codegen/**/resource-inventory.json"
+      },
+      {
+        "json_paths": [
+          "$.*"
+        ],
+        "source": "results/codegen-comparison.json"
+      }
+    ],
+    "results/controls.json": [
+      {
+        "json_paths": [
+          "$.schema",
+          "$.status",
+          "$.file_count",
+          "$.manifest_sha256",
+          "$.errors",
+          "$.unexpected_files"
+        ],
+        "source": "results/artifact-verification-{local,remote}.json"
+      }
+    ],
+    "results/correctness.json": [
+      {
+        "json_paths": [
+          "$.correctness_passed",
+          "$.output_metrics",
+          "$.state_metrics"
+        ],
+        "source": "results/benchmark-full/timing/*.json"
+      }
+    ],
+    "results/performance.json": [
+      {
+        "json_paths": [
+          "$.* except no excluded fields are present"
+        ],
+        "source": "results/benchmark-full-report.json"
+      },
+      {
+        "json_paths": [
+          "$.*"
+        ],
+        "source": "results/benchmark-full-gates.json"
+      }
+    ],
+    "results/release-decision.json": [
+      {
+        "json_paths": [
+          "$.* except $.identities"
+        ],
+        "source": "results/release-reseal-decision.json"
+      }
+    ],
+    "results/safety.json": [
+      {
+        "json_paths": [
+          "$.* except $.trace"
+        ],
+        "source": "results/host-sync-analysis.json"
+      },
+      {
+        "json_paths": [
+          "$.*"
+        ],
+        "source": "results/redzone.json"
+      },
+      {
+        "json_paths": [
+          "$.fresh_gates.host_sync",
+          "$.fresh_gates.redzone",
+          "$.fresh_gates.sanitizer"
+        ],
+        "source": "results/release-summary.json"
+      }
+    ]
+  },
+  "schema": "gdn-sm90a.public-field-map.v1"
+}

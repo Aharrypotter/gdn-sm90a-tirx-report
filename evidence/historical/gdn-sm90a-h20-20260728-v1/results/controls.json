@@ -1,0 +1,88 @@
+{
+  "artifact_verification": {
+    "local": {
+      "errors": [],
+      "file_count": 380,
+      "manifest_sha256": "f090d0ce736b8e162307b9e2a8838cb4e1559dfce1c17e5b8102e38b23dc7c9a",
+      "schema": "tirx.gdn-sm90a.a46-s3-artifact-verification.v1",
+      "status": "PASS",
+      "unexpected_files": []
+    },
+    "remote": {
+      "errors": [],
+      "file_count": 380,
+      "manifest_sha256": "f090d0ce736b8e162307b9e2a8838cb4e1559dfce1c17e5b8102e38b23dc7c9a",
+      "schema": "tirx.gdn-sm90a.a46-s3-artifact-verification.v1",
+      "status": "PASS",
+      "unexpected_files": []
+    }
+  },
+  "original_seal_verification": {
+    "artifact_manifest_sha256": "f090d0ce736b8e162307b9e2a8838cb4e1559dfce1c17e5b8102e38b23dc7c9a",
+    "file_count": 380,
+    "release_decision_sha256": "39670f9e73282f5c336c70ee70b6d79791cc5b5529fd8c529defa7339722bcad",
+    "source_bundle_sha256": "dd161b457810ad6fea91cc305c9f27b40f627ad4acf3cb426f5a798d5326531c",
+    "status": "PASS"
+  },
+  "release_controls": {
+    "codegen_inheritance_eligible": false,
+    "full_canonical_rerun_passed": true,
+    "sentinel_inheritance_eligible": true
+  },
+  "sanitizer_control_failure_supersession": {
+    "attempt": "sanitizer-r0",
+    "completed_checks": {
+      "memcheck-pipeline-boundary": "PASS",
+      "memcheck-short-packed": "PASS"
+    },
+    "diagnosis": {
+      "classification": "control-tool-child-process-tracking",
+      "compute_sanitizer_target_processes": "all",
+      "descendant_state": "shell child exited but remained under recursive sanitizer tracking",
+      "kernel_error_observed": false
+    },
+    "elapsed_seconds_before_termination": 1200,
+    "failed_check": "memcheck-tail-single",
+    "product_source_changed_between_attempts": false,
+    "schema": "tirx.gdn-sm90a.a46-s3-sanitizer-supersession.v1",
+    "status": "SUPERSEDED_CONTROL_FAILURE",
+    "superseding_attempt": {
+      "fresh_per_case_caches": true,
+      "name": "sanitizer-r1",
+      "per_case_timeout_seconds": 1200,
+      "required_checks": [
+        "memcheck-pipeline-boundary",
+        "memcheck-short-packed",
+        "memcheck-tail-single",
+        "memcheck-tail-packed",
+        "racecheck-tail-packed",
+        "synccheck-tail-packed"
+      ],
+      "target_processes": "application-only"
+    }
+  },
+  "schema": "gdn-sm90a.public-controls.v1",
+  "status": "PASS",
+  "timing_controls": {
+    "errors": [],
+    "escalation_needed": [],
+    "gates": {
+      "accepted_incumbent_every_row": true,
+      "accepted_incumbent_geomean": true,
+      "accepted_promotion_decision": true,
+      "accepted_promotion_report_identity": true,
+      "accepted_target_pairs_favor_candidate": true,
+      "critical_row_cutedsl_le_1_05": true,
+      "every_row_cutedsl_le_1_10": true,
+      "every_row_fla_lt_0_98": true,
+      "geomean_cutedsl_le_1_05": true,
+      "geomean_fla_lt_0_95": true,
+      "no_escalation": true,
+      "receipt_count_complete": true,
+      "report_pass": true,
+      "six_rows_present": true
+    },
+    "receipt_count": 66,
+    "unique_cache_count": 66
+  }
+}

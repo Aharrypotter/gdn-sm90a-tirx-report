@@ -1,0 +1,58 @@
+{
+  "$id": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/schemas/publication-v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "fresh_public_tag_rerun_status": {
+      "const": "REQUIRED"
+    },
+    "historical_release_status": {
+      "const": "RELEASE_READY"
+    },
+    "original_seal": {
+      "additionalProperties": false,
+      "properties": {
+        "artifact_file_count": {
+          "const": 380
+        },
+        "artifact_manifest_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "release_decision_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "source_bundle_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_manifest_sha256",
+        "artifact_file_count",
+        "source_bundle_sha256",
+        "release_decision_sha256"
+      ],
+      "type": "object"
+    },
+    "package_id": {
+      "type": "string"
+    },
+    "package_status": {
+      "const": "HISTORICAL_EVIDENCE_BOUND"
+    },
+    "schema": {
+      "const": "gdn-sm90a.publication.v1"
+    }
+  },
+  "required": [
+    "schema",
+    "package_id",
+    "package_status",
+    "historical_release_status",
+    "fresh_public_tag_rerun_status",
+    "original_seal"
+  ],
+  "type": "object"
+}

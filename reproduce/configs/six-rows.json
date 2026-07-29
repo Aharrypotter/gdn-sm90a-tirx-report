@@ -1,0 +1,133 @@
+{
+  "schema": "gdn-sm90a.fresh-public-tag-six-rows.v1",
+  "claim_scope": {
+    "accelerator": "NVIDIA H20",
+    "compute_capability": "9.0",
+    "target_arch": "sm_90a",
+    "operator": "GDN prefill",
+    "qkv_dtype": "bfloat16",
+    "gate_dtype": "float32",
+    "state_dtype": "float32",
+    "head_dimension": 128
+  },
+  "common": {
+    "alpha_present": true,
+    "beta_present": true,
+    "cu_seqlens_dtype": "int32",
+    "scale": 0.73
+  },
+  "rows": [
+    {
+      "row_id": "single-t512-h8-mha-zero",
+      "sequence_lengths": [
+        512
+      ],
+      "q_heads": 8,
+      "k_heads": 8,
+      "v_heads": 8,
+      "initial_state": false,
+      "output_final_state": false,
+      "seed": 240801,
+      "primary": true,
+      "critical": false
+    },
+    {
+      "row_id": "single-t1024-h8-mha-state",
+      "sequence_lengths": [
+        1024
+      ],
+      "q_heads": 8,
+      "k_heads": 8,
+      "v_heads": 8,
+      "initial_state": true,
+      "output_final_state": true,
+      "seed": 240802,
+      "primary": true,
+      "critical": false
+    },
+    {
+      "row_id": "single-t1024-h8-hv16-gva-state",
+      "sequence_lengths": [
+        1024
+      ],
+      "q_heads": 8,
+      "k_heads": 8,
+      "v_heads": 16,
+      "initial_state": true,
+      "output_final_state": true,
+      "seed": 240803,
+      "primary": true,
+      "critical": false
+    },
+    {
+      "row_id": "single-t4096-h16-mha-zero",
+      "sequence_lengths": [
+        4096
+      ],
+      "q_heads": 16,
+      "k_heads": 16,
+      "v_heads": 16,
+      "initial_state": false,
+      "output_final_state": false,
+      "seed": 240804,
+      "primary": true,
+      "critical": true
+    },
+    {
+      "row_id": "packed-n10-t4096-h8-mha-state",
+      "sequence_lengths": [
+        410,
+        410,
+        410,
+        410,
+        410,
+        410,
+        409,
+        409,
+        409,
+        409
+      ],
+      "q_heads": 8,
+      "k_heads": 8,
+      "v_heads": 8,
+      "initial_state": true,
+      "output_final_state": true,
+      "seed": 240805,
+      "primary": true,
+      "critical": false
+    },
+    {
+      "row_id": "packed-n20-t8192-h8-hv16-gva-state",
+      "sequence_lengths": [
+        5000,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        170,
+        132
+      ],
+      "q_heads": 8,
+      "k_heads": 8,
+      "v_heads": 16,
+      "initial_state": true,
+      "output_final_state": true,
+      "seed": 240806,
+      "primary": true,
+      "critical": true
+    }
+  ]
+}

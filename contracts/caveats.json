@@ -1,0 +1,202 @@
+{
+  "schema": "gdn-sm90a.public-claim-caveats.v1",
+  "canonical_performance_source": "evidence/historical/gdn-sm90a-h20-20260728-v1/results/performance.json",
+  "mandatory_caveats": [
+    {
+      "id": "K01",
+      "applies_to": [
+        "headline",
+        "performance",
+        "scope"
+      ],
+      "text": {
+        "en": "The measured scope is the frozen matrix in the cited evidence bundle on one NVIDIA H20 environment; it is not a claim about every Hopper GPU or shape.",
+        "zh": "测量范围仅限于所引证据包中的冻结矩阵和一套 NVIDIA H20 环境，并不代表所有 Hopper GPU 或所有形状。"
+      }
+    },
+    {
+      "id": "K02",
+      "applies_to": [
+        "performance"
+      ],
+      "text": {
+        "en": "Every latency and ratio is resolved from results/performance.json; TIRx latency divided by comparator latency is reported, so lower is faster.",
+        "zh": "所有延迟和比值均从 results/performance.json 解析；报告的是 TIRx 延迟除以对照实现延迟，因此数值越低越快。"
+      }
+    },
+    {
+      "id": "K03",
+      "applies_to": [
+        "performance"
+      ],
+      "text": {
+        "en": "The packed-n10 row is not a CuTeDSL speed win; its exact ratio remains inside the preregistered noise band.",
+        "zh": "packed-n10 这一行并非相对 CuTeDSL 的性能胜出；其精确比值仍在预先登记的噪声区间内。"
+      }
+    },
+    {
+      "id": "K04",
+      "applies_to": [
+        "evidence",
+        "performance",
+        "reproduction"
+      ],
+      "text": {
+        "en": "This bundle is HISTORICAL_EVIDENCE_BOUND and is not an independent rerun from the public tags.",
+        "zh": "该证据包的等级是 HISTORICAL_EVIDENCE_BOUND，并非从公开标签独立重跑所得。"
+      }
+    },
+    {
+      "id": "K05",
+      "applies_to": [
+        "compiler",
+        "headline"
+      ],
+      "text": {
+        "en": "The compiler result is the SM90a capability required by this operator, not complete TVM support for every SM90 workload.",
+        "zh": "编译器结果仅覆盖该算子所需的 SM90a 能力，并不表示 TVM 已完整支持所有 SM90 工作负载。"
+      }
+    },
+    {
+      "id": "K06",
+      "applies_to": [
+        "kernel",
+        "scope"
+      ],
+      "text": {
+        "en": "The optimized public dispatch is an exact allowlist; non-allowlisted shapes use the documented pipeline route.",
+        "zh": "公开优化调度采用精确白名单；非白名单形状走文档定义的 pipeline 路径。"
+      }
+    },
+    {
+      "id": "K07",
+      "applies_to": [
+        "performance"
+      ],
+      "text": {
+        "en": "The timing region is the final public callable under the frozen benchmark contract, not an end-to-end model benchmark.",
+        "zh": "计时区域是冻结基准契约下的最终公开可调用路径，并非端到端模型基准。"
+      }
+    },
+    {
+      "id": "K08",
+      "applies_to": [
+        "provenance",
+        "source"
+      ],
+      "text": {
+        "en": "The historical CuTeDSL GDN receipts are bound to gdn-sm90a-comparator-r1 at commit 88737e9d906cf313995a092624656a89d74dd65e; gdn2-sm90a-comparator-r0 is explicitly excluded.",
+        "zh": "历史 CuTeDSL GDN 回执绑定到提交 88737e9d906cf313995a092624656a89d74dd65e 上的 gdn-sm90a-comparator-r1；明确排除 gdn2-sm90a-comparator-r0。"
+      }
+    },
+    {
+      "id": "K09",
+      "applies_to": [
+        "release",
+        "source"
+      ],
+      "text": {
+        "en": "These are unofficial personal-fork artifacts; no upstream project has merged, endorsed, or released this work.",
+        "zh": "这些是非官方个人 fork 产物；没有任何上游项目合并、背书或发布该工作。"
+      }
+    },
+    {
+      "id": "K10",
+      "applies_to": [
+        "scope"
+      ],
+      "text": {
+        "en": "The tagged operator contract is BF16 with head dimension 128; that source-level contract must not be generalized to other dtypes or dimensions.",
+        "zh": "标签源码中的算子契约为 BF16、head dimension 128；不得将该源码级契约泛化到其他数据类型或维度。"
+      }
+    }
+  ],
+  "forbidden_phrases": [
+    {
+      "id": "F01",
+      "match": "literal_casefold",
+      "pattern": "TIRx is always faster than CuTe DSL",
+      "reason": "The packed-n10 row is not a speed win."
+    },
+    {
+      "id": "F02",
+      "match": "literal_casefold",
+      "pattern": "TVM now fully supports SM90",
+      "reason": "The published compiler scope is capability-specific."
+    },
+    {
+      "id": "F03",
+      "match": "literal_casefold",
+      "pattern": "official Apache TVM SM90 release",
+      "reason": "The work is an unofficial personal fork."
+    },
+    {
+      "id": "F04",
+      "match": "literal_casefold",
+      "pattern": "production-ready for every Hopper workload",
+      "reason": "The evidence covers a bounded operator matrix."
+    },
+    {
+      "id": "F05",
+      "match": "literal_casefold",
+      "pattern": "all GDN shapes are optimized",
+      "reason": "Only the exact public allowlist uses optimized routes."
+    },
+    {
+      "id": "F06",
+      "match": "literal_casefold",
+      "pattern": "全面超越 CuTeDSL",
+      "reason": "packed-n10 并非性能胜出。"
+    },
+    {
+      "id": "F07",
+      "match": "literal_casefold",
+      "pattern": "TVM 已完整支持 SM90",
+      "reason": "公开编译器范围是针对特定算子的能力集合。"
+    },
+    {
+      "id": "F08",
+      "match": "literal_casefold",
+      "pattern": "Apache TVM 官方 SM90 版本",
+      "reason": "该工作是非官方个人 fork。"
+    },
+    {
+      "id": "F09",
+      "match": "literal_casefold",
+      "pattern": "所有 Hopper 工作负载均已生产就绪",
+      "reason": "证据仅覆盖有边界的算子矩阵。"
+    },
+    {
+      "id": "F10",
+      "match": "literal_casefold",
+      "pattern": "所有 GDN 形状都已优化",
+      "reason": "只有精确白名单使用优化路径。"
+    },
+    {
+      "id": "F11",
+      "match": "regex_casefold",
+      "pattern": "\\b(?:2\\.4|2\\.40)x faster\\b",
+      "reason": "A reciprocal latency ratio needs an explicit comparator, row set, and derivation."
+    },
+    {
+      "id": "F12",
+      "match": "regex_casefold",
+      "pattern": "\\b(?:is|was|has been|now) upstreamed\\b|\\b(?:is|was|has been) merged upstream\\b",
+      "reason": "No upstream pull request or merge exists."
+    }
+  ],
+  "semantic_prohibitions": [
+    {
+      "id": "S01",
+      "rule": "Do not present a reciprocal speedup as a latency reduction."
+    },
+    {
+      "id": "S02",
+      "rule": "Do not promote HISTORICAL_EVIDENCE_BOUND to fresh public-tag reproduction."
+    },
+    {
+      "id": "S03",
+      "rule": "Do not use rejected, superseded, or excluded evidence as a current comparator."
+    }
+  ]
+}

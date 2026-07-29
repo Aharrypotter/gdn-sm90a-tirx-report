@@ -1,0 +1,17 @@
+{
+  "fresh_public_tag_rerun_required": true,
+  "fresh_public_tag_rerun_status": "NOT_YET_PUBLISHED",
+  "historical_claim_boundary": "use the fresh canonical run named by the contract",
+  "historical_codegen_inheritance_eligible": false,
+  "historical_errors": [],
+  "historical_fresh_gate_failures": [],
+  "historical_full_canonical_rerun_passed": true,
+  "historical_release_decision": "USE_FRESH_CANONICAL_TIMING",
+  "historical_release_ready": true,
+  "historical_schema": "codex.release-cuda-kernels.reseal-decision.v1",
+  "historical_sentinel_inheritance_eligible": true,
+  "historical_timing_decision": "USE_FRESH_CANONICAL_TIMING",
+  "public_package_status": "HISTORICAL_EVIDENCE_BOUND",
+  "schema": "gdn-sm90a.public-release-decision.v1",
+  "upstream_merge": false
+}

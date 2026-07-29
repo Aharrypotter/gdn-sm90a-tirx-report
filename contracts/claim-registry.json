@@ -1,0 +1,432 @@
+{
+  "schema": "gdn-sm90a.public-claim-registry.v1",
+  "canonical_sources": {
+    "performance": {
+      "path": "evidence/historical/gdn-sm90a-h20-20260728-v1/results/performance.json",
+      "role": "The only source for public latency, ratio, row-count, and receipt-count facts."
+    },
+    "environment": {
+      "path": "evidence/historical/gdn-sm90a-h20-20260728-v1/metadata/environment.json",
+      "role": "Public, privacy-safe execution-environment identity."
+    },
+    "product_contract": {
+      "path": "evidence/historical/gdn-sm90a-h20-20260728-v1/contracts/product.json",
+      "role": "Public dispatch and source-contract boundary."
+    },
+    "publication": {
+      "path": "evidence/historical/gdn-sm90a-h20-20260728-v1/PUBLICATION.json",
+      "role": "Evidence class and publication status."
+    },
+    "link_map": {
+      "path": "contracts/link-map.json",
+      "role": "Immutable public source coordinates and explicit exclusions."
+    }
+  },
+  "rendering_policy": {
+    "performance_literals_in_templates": false,
+    "rule": "Performance values are resolved from the canonical performance source at validation or rendering time. Templates contain placeholders, never copied result literals.",
+    "formats": {
+      "exact": "Use the JSON number's shortest round-trip decimal representation.",
+      "fixed_2": "Round the source-derived value to two decimal places at render time.",
+      "integer": "Require and render an integral source-derived value."
+    }
+  },
+  "claims": [
+    {
+      "id": "C01",
+      "enabled": true,
+      "category": "identity",
+      "statement": {
+        "en": "This is an unofficial personal-fork experiment for TIRx on Hopper SM90a.",
+        "zh": "这是一个面向 Hopper SM90a 的非官方 TIRx 个人 fork 实验。"
+      },
+      "bindings": {},
+      "required_caveats": [
+        "K09"
+      ]
+    },
+    {
+      "id": "C02",
+      "enabled": true,
+      "category": "compiler",
+      "statement": {
+        "en": "The compiler fork supplies the SM90a WGMMA/TMA-oriented capabilities required by this operator; it is not a complete-SM90 support claim.",
+        "zh": "编译器 fork 提供该算子所需的 SM90a WGMMA/TMA 相关能力；这不是完整 SM90 支持声明。"
+      },
+      "bindings": {},
+      "required_caveats": [
+        "K05",
+        "K09"
+      ]
+    },
+    {
+      "id": "C03",
+      "enabled": true,
+      "category": "kernel",
+      "statement": {
+        "en": "The TIRx fork publishes a productized GDN prefill operator with exact optimized routes and a documented {non_allowlisted_route} route.",
+        "zh": "TIRx fork 发布了产品化 GDN prefill 算子，包含精确优化路径和有文档说明的 {non_allowlisted_route} 路径。"
+      },
+      "bindings": {
+        "non_allowlisted_route": {
+          "source": "product_contract",
+          "pointer": "/non_allowlisted_route",
+          "operation": "value",
+          "fact_class": "contract",
+          "format": "exact"
+        }
+      },
+      "required_caveats": [
+        "K06",
+        "K09"
+      ]
+    },
+    {
+      "id": "C04",
+      "enabled": true,
+      "category": "scope",
+      "statement": {
+        "en": "The historical benchmark covers {row_count} exact {input_dtype}/D{head_dimension} rows on one {accelerator} environment.",
+        "zh": "历史基准覆盖一套 {accelerator} 环境上的 {row_count} 个精确 {input_dtype}/D{head_dimension} 测试行。"
+      },
+      "bindings": {
+        "row_count": {
+          "source": "performance",
+          "pointer": "/rows",
+          "operation": "map_length",
+          "fact_class": "performance",
+          "format": "integer"
+        },
+        "accelerator": {
+          "source": "environment",
+          "pointer": "/accelerator",
+          "operation": "value",
+          "fact_class": "environment",
+          "format": "exact"
+        },
+        "input_dtype": {
+          "source": "product_contract",
+          "pointer": "/public_tag_source_contract/input_dtype",
+          "operation": "value",
+          "fact_class": "contract",
+          "format": "exact"
+        },
+        "head_dimension": {
+          "source": "product_contract",
+          "pointer": "/public_tag_source_contract/head_dimension",
+          "operation": "value",
+          "fact_class": "contract",
+          "format": "integer"
+        }
+      },
+      "required_caveats": [
+        "K01",
+        "K07",
+        "K10"
+      ]
+    },
+    {
+      "id": "C05",
+      "enabled": true,
+      "category": "performance-definition",
+      "statement": {
+        "en": "Ratio direction: {ratio_direction}.",
+        "zh": "比值方向：{ratio_direction}。"
+      },
+      "bindings": {
+        "ratio_direction": {
+          "source": "performance",
+          "pointer": "/ratio_direction",
+          "operation": "value",
+          "fact_class": "performance",
+          "format": "exact"
+        }
+      },
+      "required_caveats": [
+        "K02"
+      ]
+    },
+    {
+      "id": "C06",
+      "enabled": true,
+      "category": "performance",
+      "statement": {
+        "en": "Across the frozen matrix, the TIRx/CuTeDSL geometric-mean latency ratio is {cutedsl_geomean}.",
+        "zh": "在冻结矩阵上，TIRx/CuTeDSL 延迟比的几何平均值为 {cutedsl_geomean}。"
+      },
+      "bindings": {
+        "cutedsl_geomean": {
+          "source": "performance",
+          "pointer": "/primary_geomean/tirx_over_cutedsl",
+          "operation": "value",
+          "fact_class": "performance",
+          "format": "exact"
+        }
+      },
+      "required_caveats": [
+        "K01",
+        "K02",
+        "K03",
+        "K04",
+        "K07"
+      ]
+    },
+    {
+      "id": "C07",
+      "enabled": true,
+      "category": "performance",
+      "statement": {
+        "en": "Across the frozen matrix, the TIRx/FLA geometric-mean latency ratio is {fla_geomean}.",
+        "zh": "在冻结矩阵上，TIRx/FLA 延迟比的几何平均值为 {fla_geomean}。"
+      },
+      "bindings": {
+        "fla_geomean": {
+          "source": "performance",
+          "pointer": "/primary_geomean/tirx_over_fla",
+          "operation": "value",
+          "fact_class": "performance",
+          "format": "exact"
+        }
+      },
+      "required_caveats": [
+        "K01",
+        "K02",
+        "K04",
+        "K07"
+      ]
+    },
+    {
+      "id": "C08",
+      "enabled": true,
+      "category": "performance",
+      "statement": {
+        "en": "TIRx has lower latency than CuTeDSL on {cutedsl_wins} of {row_count} frozen rows.",
+        "zh": "在 {row_count} 个冻结测试行中，TIRx 有 {cutedsl_wins} 行的延迟低于 CuTeDSL。"
+      },
+      "bindings": {
+        "cutedsl_wins": {
+          "source": "performance",
+          "pointer": "/rows",
+          "operation": "count_where",
+          "field": "tirx_over_cutedsl",
+          "operator": "lt",
+          "operand": 1.0,
+          "fact_class": "performance",
+          "format": "integer"
+        },
+        "row_count": {
+          "source": "performance",
+          "pointer": "/rows",
+          "operation": "map_length",
+          "fact_class": "performance",
+          "format": "integer"
+        }
+      },
+      "required_caveats": [
+        "K01",
+        "K02",
+        "K03",
+        "K04",
+        "K07"
+      ]
+    },
+    {
+      "id": "C09",
+      "enabled": true,
+      "category": "performance-exception",
+      "statement": {
+        "en": "packed-n10 has an exact TIRx/CuTeDSL ratio of {packed_n10_ratio}, or {packed_n10_slower_pct}% higher latency, inside the preregistered {noise_band_pct}% noise band; it is not a speed win.",
+        "zh": "packed-n10 的精确 TIRx/CuTeDSL 比值为 {packed_n10_ratio}，即延迟高 {packed_n10_slower_pct}%，仍处于预先登记的 {noise_band_pct}% 噪声区间内；该行并非性能胜出。"
+      },
+      "bindings": {
+        "packed_n10_ratio": {
+          "source": "performance",
+        "pointer": "/rows/packed-n10-t4096-h8-mha-state/tirx_over_cutedsl",
+        "operation": "value",
+        "fact_class": "performance",
+        "format": "fixed_4"
+        },
+        "packed_n10_slower_pct": {
+          "source": "performance",
+          "pointer": "/rows/packed-n10-t4096-h8-mha-state/tirx_over_cutedsl",
+          "operation": "percent_above_one",
+          "fact_class": "performance",
+          "format": "fixed_2"
+        },
+        "noise_band_pct": {
+          "source": "performance",
+          "pointer": "/packed_n10_interpretation/noise_band_pct",
+          "operation": "value",
+          "fact_class": "performance",
+          "format": "exact"
+        }
+      },
+      "required_caveats": [
+        "K01",
+        "K02",
+        "K03",
+        "K04",
+        "K07"
+      ]
+    },
+    {
+      "id": "C10",
+      "enabled": true,
+      "category": "performance",
+      "statement": {
+        "en": "TIRx has lower latency than FLA on {fla_wins} of {row_count} frozen rows.",
+        "zh": "在 {row_count} 个冻结测试行中，TIRx 有 {fla_wins} 行的延迟低于 FLA。"
+      },
+      "bindings": {
+        "fla_wins": {
+          "source": "performance",
+          "pointer": "/rows",
+          "operation": "count_where",
+          "field": "tirx_over_fla",
+          "operator": "lt",
+          "operand": 1.0,
+          "fact_class": "performance",
+          "format": "integer"
+        },
+        "row_count": {
+          "source": "performance",
+          "pointer": "/rows",
+          "operation": "map_length",
+          "fact_class": "performance",
+          "format": "integer"
+        }
+      },
+      "required_caveats": [
+        "K01",
+        "K02",
+        "K04",
+        "K07"
+      ]
+    },
+    {
+      "id": "C11",
+      "enabled": true,
+      "category": "evidence",
+      "statement": {
+        "en": "The historical performance summary contains {receipt_count} timing receipts and {unique_cache_count} unique timing caches.",
+        "zh": "历史性能汇总包含 {receipt_count} 份计时回执和 {unique_cache_count} 个唯一计时缓存。"
+      },
+      "bindings": {
+        "receipt_count": {
+          "source": "performance",
+          "pointer": "/receipt_count",
+          "operation": "value",
+          "fact_class": "performance",
+          "format": "integer"
+        },
+        "unique_cache_count": {
+          "source": "performance",
+          "pointer": "/unique_cache_count",
+          "operation": "value",
+          "fact_class": "performance",
+          "format": "integer"
+        }
+      },
+      "required_caveats": [
+        "K04"
+      ]
+    },
+    {
+      "id": "C12",
+      "enabled": false,
+      "category": "fresh-reproduction",
+      "statement": {
+        "en": "The result was independently reproduced from the public release tags.",
+        "zh": "该结果已经从公开发布标签独立复现。"
+      },
+      "bindings": {},
+      "required_caveats": [
+        "K04"
+      ],
+      "disabled_reason": "No independently sealed fresh public-tag evidence bundle exists.",
+      "enablement_gate": {
+        "required_bundle_class": "FRESH_PUBLIC_TAG_REPRODUCTION",
+        "required_status": "PASS",
+        "must_not_use": "evidence/historical/gdn-sm90a-h20-20260728-v1"
+      }
+    },
+    {
+      "id": "C13",
+      "enabled": true,
+      "category": "provenance",
+      "statement": {
+        "en": "The CuTeDSL comparator is {cutedsl_tag} at {cutedsl_commit}, using {cutedsl_entrypoint}; {excluded_tag} is excluded from this report.",
+        "zh": "CuTeDSL 对照实现绑定到 {cutedsl_commit} 上的 {cutedsl_tag}，入口为 {cutedsl_entrypoint}；本报告明确排除 {excluded_tag}。"
+      },
+      "bindings": {
+        "cutedsl_tag": {
+          "source": "link_map",
+          "pointer": "/links/cutedsl_comparator/tag",
+          "operation": "value",
+          "fact_class": "provenance",
+          "format": "exact"
+        },
+        "cutedsl_commit": {
+          "source": "link_map",
+          "pointer": "/links/cutedsl_comparator/commit",
+          "operation": "value",
+          "fact_class": "provenance",
+          "format": "exact"
+        },
+        "cutedsl_entrypoint": {
+          "source": "link_map",
+          "pointer": "/links/cutedsl_comparator/entrypoint",
+          "operation": "value",
+          "fact_class": "provenance",
+          "format": "exact"
+        },
+        "excluded_tag": {
+          "source": "link_map",
+          "pointer": "/excluded_links/gdn2-sm90a-comparator-r0/tag",
+          "operation": "value",
+          "fact_class": "provenance",
+          "format": "exact"
+        }
+      },
+      "required_caveats": [
+        "K08"
+      ]
+    },
+    {
+      "id": "C14",
+      "enabled": true,
+      "category": "release-status",
+      "statement": {
+        "en": "The public package status is {package_status}; unofficial-personal-fork is {unofficial_personal_forks} and upstream-merge is {upstream_merge}.",
+        "zh": "公开包状态为 {package_status}；unofficial-personal-fork 为 {unofficial_personal_forks}，upstream-merge 为 {upstream_merge}。"
+      },
+      "bindings": {
+        "package_status": {
+          "source": "publication",
+          "pointer": "/package_status",
+          "operation": "value",
+          "fact_class": "release",
+          "format": "exact"
+        },
+        "unofficial_personal_forks": {
+          "source": "publication",
+          "pointer": "/unofficial_personal_forks",
+          "operation": "value",
+          "fact_class": "release",
+          "format": "exact"
+        },
+        "upstream_merge": {
+          "source": "publication",
+          "pointer": "/upstream_merge",
+          "operation": "value",
+          "fact_class": "release",
+          "format": "exact"
+        }
+      },
+      "required_caveats": [
+        "K04",
+        "K09"
+      ]
+    }
+  ]
+}

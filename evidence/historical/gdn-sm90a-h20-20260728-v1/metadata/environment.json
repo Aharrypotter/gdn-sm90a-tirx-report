@@ -1,0 +1,54 @@
+{
+  "accelerator": "NVIDIA H20",
+  "formal_identity_gates": {
+    "fresh_native_first": true,
+    "sm90a_target": true,
+    "source_bundle": true,
+    "tvm_source": true
+  },
+  "physical_device_binding_verified": true,
+  "private_device_identifiers_published": false,
+  "schema": "gdn-sm90a.public-environment.v1",
+  "software_from_all_66_receipts": {
+    "package_versions_by_implementation": {
+      "cutedsl": {
+        "nvidia-cutlass-dsl": "4.5.1",
+        "nvidia-cutlass-dsl-libs-base": "4.5.1",
+        "nvidia-cutlass-dsl-libs-cu13": "4.5.1",
+        "triton": null,
+        "tvm-ffi": null
+      },
+      "fla": {
+        "nvidia-cutlass-dsl": "4.5.1",
+        "nvidia-cutlass-dsl-libs-base": "4.5.1",
+        "nvidia-cutlass-dsl-libs-cu13": "4.5.1",
+        "triton": null,
+        "tvm-ffi": null
+      },
+      "tirx": {
+        "nvidia-cutlass-dsl": "4.5.1",
+        "nvidia-cutlass-dsl-libs-base": "4.5.1",
+        "nvidia-cutlass-dsl-libs-cu13": "4.5.1",
+        "triton": null,
+        "tvm-ffi": null
+      }
+    },
+    "torch_cuda_version": "13.1",
+    "torch_version": "2.11.0a0+eb65b36914.nv26.02"
+  },
+  "status": "PASS",
+  "target_arch": "sm_90a",
+  "target_kind": "cuda",
+  "timing_protocol": {
+    "base_processes": 3,
+    "escalated_processes": 7,
+    "max_gpu_util_pct": 5.0,
+    "noise_band_pct": 2.0,
+    "quiet_poll_interval_s": 1.0,
+    "quiet_timeout_s": 120.0,
+    "timed_iters": 100,
+    "warmup_iters": 20
+  },
+  "torch_cuda_version": "13.1",
+  "torch_version": "2.11.0a0+eb65b36914.nv26.02"
+}

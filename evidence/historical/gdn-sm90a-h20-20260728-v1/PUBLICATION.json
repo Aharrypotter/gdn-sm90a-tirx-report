@@ -1,0 +1,23 @@
+{
+  "claim_scope": "Historical six-row public-call latency, correctness, safety, and codegen evidence on one NVIDIA H20 execution environment.",
+  "derivation": {
+    "deterministic_manifest": true,
+    "method": "explicit_field_allowlist",
+    "private_device_or_host_identifiers_included": false,
+    "raw_logs_included": false
+  },
+  "derivation_date": "2026-07-29",
+  "fresh_public_tag_rerun_status": "REQUIRED",
+  "historical_release_status": "RELEASE_READY",
+  "original_seal": {
+    "artifact_file_count": 380,
+    "artifact_manifest_sha256": "f090d0ce736b8e162307b9e2a8838cb4e1559dfce1c17e5b8102e38b23dc7c9a",
+    "release_decision_sha256": "39670f9e73282f5c336c70ee70b6d79791cc5b5529fd8c529defa7339722bcad",
+    "source_bundle_sha256": "dd161b457810ad6fea91cc305c9f27b40f627ad4acf3cb426f5a798d5326531c"
+  },
+  "package_id": "gdn-sm90a-h20-20260728-historical-v1",
+  "package_status": "HISTORICAL_EVIDENCE_BOUND",
+  "schema": "gdn-sm90a.publication.v1",
+  "unofficial_personal_forks": true,
+  "upstream_merge": false
+}

@@ -1,0 +1,140 @@
+{
+  "schema": "gdn-sm90a.public-source-lock.v1",
+  "claim_status": "HISTORICAL_EVIDENCE_BOUND",
+  "historical_seal": {
+    "source_bundle_sha256": "dd161b457810ad6fea91cc305c9f27b40f627ad4acf3cb426f5a798d5326531c",
+    "release_decision_sha256": "39670f9e73282f5c336c70ee70b6d79791cc5b5529fd8c529defa7339722bcad",
+    "artifact_manifest_sha256": "f090d0ce736b8e162307b9e2a8838cb4e1559dfce1c17e5b8102e38b23dc7c9a",
+    "artifact_file_count": 380
+  },
+  "repositories": {
+    "tvm": {
+      "role": "SM90a compiler support",
+      "upstream_repository": "https://github.com/apache/tvm",
+      "fork_repository": "https://github.com/Aharrypotter/tvm",
+      "frozen_upstream_base": {
+        "commit": "5b2693d96e06a3b635c5fdeb6e044d2fa13a0349",
+        "tree": "72dcc569c16ae2b3a13c381d50b5df38901f7d8c"
+      },
+      "public_release": {
+        "branch": "tirx-sm90a-wgmma",
+        "tag": "gdn-sm90a-compiler-r0",
+        "tag_object": "18e2172e54aefcba7e11f3e62fa8bfa137b480d4",
+        "commit": "acb1312de80b39340e09b0aaad818ff029e745d6",
+        "tree": "d7989ef4a8621448755da21bd1dec8b5d6c18a1b"
+      },
+      "exact_runtime_delta": {
+        "commit": "acb1312de80b39340e09b0aaad818ff029e745d6",
+        "tree": "d7989ef4a8621448755da21bd1dec8b5d6c18a1b",
+        "file_count": 25,
+        "manifest_sha256": "b22793282ec1e6e31c5e15a923f37586f30c85530a7bf26840bf54fe1a80b55e"
+      },
+      "upstream_pr": null
+    },
+    "tirx_kernels": {
+      "role": "Productized GDN prefill operator",
+      "upstream_repository": "https://github.com/mlc-ai/tirx-kernels",
+      "fork_repository": "https://github.com/Aharrypotter/tirx-kernels",
+      "frozen_upstream_base": {
+        "commit": "5f714f508a6bbfffeff449288c001377ab616f44",
+        "tree": "7491e427d6e02ceee73d88c2d5af22ba905a00b7"
+      },
+      "public_release": {
+        "branch": "gdn-sm90a",
+        "tag": "gdn-sm90a-kernel-r0",
+        "tag_object": "f233dcbfc314415b9af496e3fd855554d81d662c",
+        "commit": "12ce3721f7c62c5fbd911103ae373de689e58385",
+        "tree": "cc04daa65ff52014348c8e078721e9afb017467a"
+      },
+      "exact_runtime_delta": {
+        "commit": "90c9c62c84ecc452dd86602f0ea49a625845045c",
+        "tree": "0453ca537eb846871064338c519a983329618dff",
+        "file_count": 21,
+        "manifest_sha256": "7249c0c8a70cf8b59fcde7fda7b423e01ca714bc4cf2a611d84b3d93c484c4e6"
+      },
+      "upstream_pr": null
+    },
+    "cutedsl_comparator": {
+      "role": "Exact CuTeDSL GDN comparator used by the historical receipts",
+      "upstream_repository": "https://github.com/inclusionAI/cuLA",
+      "fork_repository": "https://github.com/Aharrypotter/cuLA",
+      "frozen_upstream_base": {
+        "commit": "88737e9d906cf313995a092624656a89d74dd65e",
+        "tree": "aa01d1a169b72dedd582f86fc9b257e9e2776344"
+      },
+      "public_release": {
+        "branch": "gdn-sm90a-comparator",
+        "tag": "gdn-sm90a-comparator-r1",
+        "tag_object": "0e2c50a4f39b58811e234466682a62f8926998c4",
+        "commit": "88737e9d906cf313995a092624656a89d74dd65e",
+        "tree": "aa01d1a169b72dedd582f86fc9b257e9e2776344"
+      },
+      "exact_runtime_source": {
+        "commit": "88737e9d906cf313995a092624656a89d74dd65e",
+        "tree": "aa01d1a169b72dedd582f86fc9b257e9e2776344",
+        "entrypoint": "cula.gdn.prefill.chunk_gated_delta_rule",
+        "backend_identity": "sm90_cutedsl_gdn",
+        "cutedsl_version": "4.5.1",
+        "historical_receipt_count": 22,
+        "binding": "COMMIT_ENTRYPOINT_BACKEND_AND_DSL_VERSION"
+      },
+      "upstream_pr": null
+    },
+    "fla": {
+      "role": "Official FLA Triton comparator",
+      "upstream_repository": "https://github.com/fla-org/flash-linear-attention",
+      "commit": "d1ce07369d581813553f30a750af3b6b5f9af6a9",
+      "tree": "e5ea97e3041c3e4dd0bf6974c2259f7ed104ddc2",
+      "operator": "fla.ops.gated_delta_rule.chunk"
+    }
+  },
+  "aggregate_definition": {
+    "algorithm": "sha256",
+    "entry": "<sha256(file bytes)>__<repo-relative path>\\n",
+    "separator_note": "__ represents two ASCII spaces",
+    "ordering": "repo-relative path bytewise ascending",
+    "scope": "ACMR paths in frozen-base..exact-runtime-delta for components that publish a runtime delta"
+  },
+  "upstream_pr_audit": {
+    "observed_at_utc": "2026-07-29T05:00:58Z",
+    "query_state": "all",
+    "tvm_matches": [],
+    "tirx_kernels_matches": [],
+    "cutedsl_comparator_matches": []
+  },
+  "superseded_artifacts": {
+    "gdn2-sm90a-comparator-r0": {
+      "tag_object": "e510eec8463b0d2e44448407c02400d17b1637e9",
+      "peeled_commit": "6aa1065abad5fc5717cadbb574126002fe78646b",
+      "status": "NOT_USED_BY_HISTORICAL_GDN_RECEIPTS",
+      "reason": "All 22 CuTeDSL receipts resolve cula.gdn.prefill.chunk_gated_delta_rule, not cula.gdn2."
+    }
+  },
+  "signature_status": {
+    "release_commits": "unsigned",
+    "annotated_tags": "unsigned",
+    "immutability_policy": "Never move an r0 tag; publish a new tag or attestation for future provenance changes."
+  },
+  "licenses": {
+    "tvm": {
+      "spdx": "Apache-2.0",
+      "license_sha256": "e62264b483aca7a9f8c1ac69388b476971b43975ced90ac11dbd9e9c530edb46",
+      "notice_sha256": "967cd2fb97712c43271e2b1c4f636c4d8823898869f0f76f65bf8a3232584f0f"
+    },
+    "tirx_kernels": {
+      "spdx": "Apache-2.0",
+      "license_sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1"
+    },
+    "cutedsl_comparator": {
+      "spdx": "Apache-2.0",
+      "license_sha256": "5664febbb86271af0b3f41ba7ca3bd928d17d736f8df8281c8d99e9f5234c5ac",
+      "source_attribution": "Copyright 2026 Ant Group Co., Ltd.; inclusionAI/cuLA"
+    }
+  },
+  "disclaimers": [
+    "These are unofficial personal-fork snapshots.",
+    "No upstream project has merged or endorsed this work.",
+    "The GDN comparator is bound to commit 88737e9, entrypoint cula.gdn.prefill.chunk_gated_delta_rule, backend sm90_cutedsl_gdn, and CuTe DSL 4.5.1.",
+    "The historical measurements remain bound to the original sealed source bundle until a fresh public-tag rerun is published."
+  ]
+}

@@ -1,0 +1,19 @@
+[project]
+name = "gdn-sm90a-tirx-report"
+version = "0.1.0"
+description = "Reproducible evidence and technical report for the TIRx GDN SM90a campaign"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+
+[project.optional-dependencies]
+figures = [
+  "matplotlib==3.10.8",
+  "pillow==12.1.1",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]

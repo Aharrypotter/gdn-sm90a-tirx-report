@@ -1,0 +1,45 @@
+{
+  "$id": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/schemas/manifest-v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "file_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "files": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "size_bytes": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "size_bytes"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "schema": {
+      "const": "gdn-sm90a.public-evidence-manifest.v1"
+    }
+  },
+  "required": [
+    "schema",
+    "file_count",
+    "files"
+  ],
+  "type": "object"
+}

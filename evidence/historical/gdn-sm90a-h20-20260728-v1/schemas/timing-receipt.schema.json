@@ -1,0 +1,57 @@
+{
+  "$id": "https://github.com/Aharrypotter/gdn-sm90a-tirx-report/schemas/timing-receipt-v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "implementation": {
+      "enum": [
+        "tirx",
+        "cutedsl",
+        "fla"
+      ]
+    },
+    "process_index": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "raw_per_iter_ms": {
+      "items": {
+        "minimum": 0,
+        "type": "number"
+      },
+      "maxItems": 100,
+      "minItems": 100,
+      "type": "array"
+    },
+    "row_id": {
+      "enum": [
+        "single-t512-h8-mha-zero",
+        "single-t1024-h8-mha-state",
+        "single-t1024-h8-hv16-gva-state",
+        "single-t4096-h16-mha-zero",
+        "packed-n10-t4096-h8-mha-state",
+        "packed-n20-t8192-h8-hv16-gva-state"
+      ]
+    },
+    "schema": {
+      "const": "gdn-sm90a.public-timing-receipt.v1"
+    },
+    "source_receipt_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "summary_ms": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema",
+    "row_id",
+    "implementation",
+    "process_index",
+    "raw_per_iter_ms",
+    "summary_ms",
+    "source_receipt_sha256"
+  ],
+  "type": "object"
+}

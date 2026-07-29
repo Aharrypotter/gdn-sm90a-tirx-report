@@ -1,0 +1,191 @@
+{
+  "claim_boundary": "Passing checks apply to the frozen six-row product routes and do not constitute a formal proof for arbitrary inputs.",
+  "formal_receipts": {
+    "host-sync-analysis": {
+      "rc": "0",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "host-sync-trace": {
+      "rc": "0",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "memcheck-pipeline-boundary-r1": {
+      "rc": "0",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "memcheck-short-packed-r1": {
+      "rc": "0",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "memcheck-tail-packed-r1": {
+      "rc": "0",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "memcheck-tail-single-r1": {
+      "rc": "0",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "racecheck-tail-packed-r1": {
+      "rc": "0",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "redzone": {
+      "rc": "0",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "safety-pipeline-boundary": {
+      "rc": "0",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "safety-short-packed": {
+      "rc": "0",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "safety-tail-packed": {
+      "rc": "0",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "safety-tail-single": {
+      "rc": "0",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "sanitizer-r1": {
+      "rc": "0",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "synccheck-tail-packed-r1": {
+      "rc": "0",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    }
+  },
+  "host_sync": {
+    "claim_boundary": "PASS covers dispatcher-visible operations in this traced workload only; custom-extension internals require Nsight Systems or CUPTI.",
+    "contract": {
+      "min_profiled_calls": 9,
+      "require_complete_evidence": true,
+      "require_default_path": true,
+      "require_fresh_inputs": true
+    },
+    "errors": [],
+    "evidence_completeness": "COMPLETE",
+    "evidence_gaps": [],
+    "findings": [
+      {
+        "classification": "d2d_copy",
+        "destination_device": "cuda",
+        "operation": "aten::to",
+        "source_device": "cuda"
+      },
+      {
+        "classification": "d2d_copy",
+        "destination_device": "cuda",
+        "operation": "aten::_to_copy",
+        "source_device": "cuda"
+      },
+      {
+        "classification": "d2d_copy",
+        "destination_device": "cuda",
+        "operation": "aten::copy_",
+        "source_device": "cuda"
+      },
+      {
+        "classification": "d2d_copy",
+        "destination_device": "cuda",
+        "operation": "aten::to",
+        "source_device": "cuda"
+      },
+      {
+        "classification": "d2d_copy",
+        "destination_device": "cuda",
+        "operation": "aten::_to_copy",
+        "source_device": "cuda"
+      },
+      {
+        "classification": "d2d_copy",
+        "destination_device": "cuda",
+        "operation": "aten::copy_",
+        "source_device": "cuda"
+      },
+      {
+        "classification": "d2d_copy",
+        "destination_device": "cuda",
+        "operation": "aten::to",
+        "source_device": "cuda"
+      },
+      {
+        "classification": "d2d_copy",
+        "destination_device": "cuda",
+        "operation": "aten::_to_copy",
+        "source_device": "cuda"
+      },
+      {
+        "classification": "d2d_copy",
+        "destination_device": "cuda",
+        "operation": "aten::copy_",
+        "source_device": "cuda"
+      }
+    ],
+    "observed": {
+      "fresh_tensor_objects_per_call": true,
+      "operation_counts": {
+        "aten::_to_copy": 3,
+        "aten::copy_": 3,
+        "aten::empty": 42,
+        "aten::empty_like": 9,
+        "aten::empty_strided": 12,
+        "aten::to": 3
+      },
+      "profiled_calls": 9,
+      "validate_inputs": false
+    },
+    "schema": "codex.audit-pytorch-cuda-sync.analysis.v1",
+    "status": "PASS",
+    "violations": []
+  },
+  "redzone": {
+    "adjacent_sequence_boundary_count": 19,
+    "guard_elements": 256,
+    "guards": {
+      "output_prefix": true,
+      "output_suffix": true,
+      "state_prefix": true,
+      "state_suffix": true
+    },
+    "inputs_immutable": true,
+    "route": "tail-predecessor",
+    "schema": "tirx.gdn-sm90a.product-redzone.v1",
+    "status": "PASS"
+  },
+  "release_gate_summaries": {
+    "host_sync": {
+      "analysis_sha256": "15ea830aeffcf5c653aa2ad9994e762c612e42ce72ab142dfe4a29d9e491a774",
+      "profiled_calls": 9,
+      "status": "PASS",
+      "violations": 0
+    },
+    "redzone": {
+      "adjacent_sequence_boundaries": 19,
+      "guard_regions": 4,
+      "receipt_sha256": "2087feada5bee78b633dae4603f99156c0f9bd37856f0327b4c820c2f33655cf",
+      "status": "PASS"
+    },
+    "sanitizer": {
+      "authoritative_attempt": "sanitizer-r1",
+      "memcheck_cases": 4,
+      "r0_control_failure_supersession_sha256": "0badba1fb8444cfe9c5c3944146a41bdad13360258339d56ba99c7b5b6bd07e3",
+      "racecheck_hazards": 0,
+      "status": "PASS",
+      "synccheck_errors": 0
+    }
+  },
+  "sanitizer_summary": {
+    "authoritative_attempt": "sanitizer-r1",
+    "memcheck_cases": 4,
+    "r0_control_failure_supersession_sha256": "0badba1fb8444cfe9c5c3944146a41bdad13360258339d56ba99c7b5b6bd07e3",
+    "racecheck_hazards": 0,
+    "status": "PASS",
+    "synccheck_errors": 0
+  },
+  "schema": "gdn-sm90a.public-safety-summary.v1",
+  "status": "PASS"
+}

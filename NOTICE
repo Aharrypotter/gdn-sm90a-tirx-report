@@ -1,0 +1,19 @@
+TIRx GDN SM90a Technical Report
+Copyright 2026 Hongyi Wu
+
+This repository describes and links to modifications of Apache TVM. Apache
+TVM is developed by The Apache Software Foundation and is licensed under the
+Apache License, Version 2.0. The Apache TVM name is used only to identify the
+upstream project; this work is not endorsed by The Apache Software Foundation.
+
+The TIRx kernel source is derived from mlc-ai/tirx-kernels under the Apache
+License, Version 2.0.
+
+The CuTeDSL comparator is sourced from inclusionAI/cuLA. Its relevant source
+files retain: Copyright 2026 Ant Group Co., Ltd.; SPDX-License-Identifier:
+Apache-2.0. The corrected historical comparator tag is
+gdn-sm90a-comparator-r1. The unrelated gdn2-sm90a-comparator-r0 artifact is
+not evidence for this report.
+
+NVIDIA, CUDA, Hopper, H20, CUTLASS, and CuTe are names or marks of their
+respective owners. Their use here is nominative and does not imply endorsement.
